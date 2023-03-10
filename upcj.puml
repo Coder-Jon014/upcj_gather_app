@@ -1,0 +1,1532 @@
+@startuml
+set namespaceSeparator ::
+
+class "upcj_gather_app::auth::auth_util.dart::AuthUserStreamWidget" {
+  +Widget Function(BuildContext) builder
+  +Widget build()
+}
+
+"upcj_gather_app::auth::auth_util.dart::AuthUserStreamWidget" o-- "flutter::src::widgets::framework.dart::Widget Function(BuildContext)"
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "upcj_gather_app::auth::auth_util.dart::AuthUserStreamWidget"
+
+class "upcj_gather_app::auth::firebase_user_provider.dart::UpcjGatherAppFirebaseUser" {
+  +User? user
+  +bool loggedIn
+}
+
+"upcj_gather_app::auth::firebase_user_provider.dart::UpcjGatherAppFirebaseUser" o-- "firebase_auth::firebase_auth.dart::User"
+
+class "upcj_gather_app::backend::backend.dart::FFFirestorePage" {
+  +List<T> data
+  +Stream<List<T>>? dataStream
+  +QueryDocumentSnapshot<Object?>? nextPageMarker
+}
+
+"upcj_gather_app::backend::backend.dart::FFFirestorePage" o-- "dart::async::Stream<List<T>>"
+"upcj_gather_app::backend::backend.dart::FFFirestorePage" o-- "cloud_firestore::cloud_firestore.dart::QueryDocumentSnapshot<Object>"
+
+abstract class "upcj_gather_app::backend::schema::church_service_record.dart::ChurchServiceRecord" {
+  {static} +Serializer<ChurchServiceRecord> serializer
+  +String? title
+  +DateTime? serviceDate
+  +int? serviceCapacity
+  +bool? infectedStatus
+  +int? availableSpace
+  +BuiltList<String>? membersAttending
+  +DocumentReference<Object?>? ffRef
+  +DocumentReference<Object?> reference
+  {static} +CollectionReference<Object?> collection
+  {static} -void _initializeBuilder()
+  {static} +Stream<ChurchServiceRecord> getDocument()
+  {static} +Future<ChurchServiceRecord> getDocumentOnce()
+  {static} +ChurchServiceRecord getDocumentFromData()
+}
+
+"upcj_gather_app::backend::schema::church_service_record.dart::ChurchServiceRecord" o-- "built_value::serializer.dart::Serializer<ChurchServiceRecord>"
+"upcj_gather_app::backend::schema::church_service_record.dart::ChurchServiceRecord" o-- "built_collection::src::list.dart::BuiltList<String>"
+"upcj_gather_app::backend::schema::church_service_record.dart::ChurchServiceRecord" o-- "cloud_firestore::cloud_firestore.dart::DocumentReference<Object>"
+"upcj_gather_app::backend::schema::church_service_record.dart::ChurchServiceRecord" o-- "cloud_firestore::cloud_firestore.dart::CollectionReference<Object>"
+"built_value::built_value.dart::Built" <|-- "upcj_gather_app::backend::schema::church_service_record.dart::ChurchServiceRecord"
+
+class "upcj_gather_app::backend::schema::church_service_record.dart::_$ChurchServiceRecordSerializer" {
+  +Iterable<Type> types
+  +String wireName
+  +Iterable<Object?> serialize()
+  +ChurchServiceRecord deserialize()
+}
+
+"built_value::serializer.dart::StructuredSerializer" <|-- "upcj_gather_app::backend::schema::church_service_record.dart::_$ChurchServiceRecordSerializer"
+
+class "upcj_gather_app::backend::schema::church_service_record.dart::_$ChurchServiceRecord" {
+  +String? title
+  +DateTime? serviceDate
+  +int? serviceCapacity
+  +bool? infectedStatus
+  +int? availableSpace
+  +BuiltList<String>? membersAttending
+  +DocumentReference<Object?>? ffRef
+  +int hashCode
+  +ChurchServiceRecord rebuild()
+  +ChurchServiceRecordBuilder toBuilder()
+  +bool ==()
+  +String toString()
+}
+
+"upcj_gather_app::backend::schema::church_service_record.dart::_$ChurchServiceRecord" o-- "built_collection::src::list.dart::BuiltList<String>"
+"upcj_gather_app::backend::schema::church_service_record.dart::_$ChurchServiceRecord" o-- "cloud_firestore::cloud_firestore.dart::DocumentReference<Object>"
+"upcj_gather_app::backend::schema::church_service_record.dart::ChurchServiceRecord" <|-- "upcj_gather_app::backend::schema::church_service_record.dart::_$ChurchServiceRecord"
+
+class "upcj_gather_app::backend::schema::church_service_record.dart::ChurchServiceRecordBuilder" {
+  -_$ChurchServiceRecord? _$v
+  -String? _title
+  -DateTime? _serviceDate
+  -int? _serviceCapacity
+  -bool? _infectedStatus
+  -int? _availableSpace
+  -ListBuilder<String>? _membersAttending
+  -DocumentReference<Object?>? _ffRef
+  +String? title
+  +DateTime? serviceDate
+  +int? serviceCapacity
+  +bool? infectedStatus
+  +int? availableSpace
+  +ListBuilder<String> membersAttending
+  +DocumentReference<Object?>? ffRef
+  -ChurchServiceRecordBuilder _$this
+  +void replace()
+  +void update()
+  +ChurchServiceRecord build()
+  -_$ChurchServiceRecord _build()
+}
+
+"upcj_gather_app::backend::schema::church_service_record.dart::ChurchServiceRecordBuilder" o-- "upcj_gather_app::backend::schema::church_service_record.dart::_$ChurchServiceRecord"
+"upcj_gather_app::backend::schema::church_service_record.dart::ChurchServiceRecordBuilder" o-- "built_collection::src::list.dart::ListBuilder<String>"
+"upcj_gather_app::backend::schema::church_service_record.dart::ChurchServiceRecordBuilder" o-- "cloud_firestore::cloud_firestore.dart::DocumentReference<Object>"
+"upcj_gather_app::backend::schema::church_service_record.dart::ChurchServiceRecordBuilder" o-- "upcj_gather_app::backend::schema::church_service_record.dart::ChurchServiceRecordBuilder"
+"built_value::built_value.dart::Builder" <|-- "upcj_gather_app::backend::schema::church_service_record.dart::ChurchServiceRecordBuilder"
+
+abstract class "upcj_gather_app::backend::schema::notifications_record.dart::NotificationsRecord" {
+  {static} +Serializer<NotificationsRecord> serializer
+  +String? notificationInfo
+  +DateTime? createdDate
+  +String? notificationPhoto
+  +String? notificationTitle
+  +DocumentReference<Object?>? ffRef
+  +DocumentReference<Object?> reference
+  {static} +CollectionReference<Object?> collection
+  {static} -void _initializeBuilder()
+  {static} +Stream<NotificationsRecord> getDocument()
+  {static} +Future<NotificationsRecord> getDocumentOnce()
+  {static} +NotificationsRecord getDocumentFromData()
+}
+
+"upcj_gather_app::backend::schema::notifications_record.dart::NotificationsRecord" o-- "built_value::serializer.dart::Serializer<NotificationsRecord>"
+"upcj_gather_app::backend::schema::notifications_record.dart::NotificationsRecord" o-- "cloud_firestore::cloud_firestore.dart::DocumentReference<Object>"
+"upcj_gather_app::backend::schema::notifications_record.dart::NotificationsRecord" o-- "cloud_firestore::cloud_firestore.dart::CollectionReference<Object>"
+"built_value::built_value.dart::Built" <|-- "upcj_gather_app::backend::schema::notifications_record.dart::NotificationsRecord"
+
+class "upcj_gather_app::backend::schema::notifications_record.dart::_$NotificationsRecordSerializer" {
+  +Iterable<Type> types
+  +String wireName
+  +Iterable<Object?> serialize()
+  +NotificationsRecord deserialize()
+}
+
+"built_value::serializer.dart::StructuredSerializer" <|-- "upcj_gather_app::backend::schema::notifications_record.dart::_$NotificationsRecordSerializer"
+
+class "upcj_gather_app::backend::schema::notifications_record.dart::_$NotificationsRecord" {
+  +String? notificationInfo
+  +DateTime? createdDate
+  +String? notificationPhoto
+  +String? notificationTitle
+  +DocumentReference<Object?>? ffRef
+  +int hashCode
+  +NotificationsRecord rebuild()
+  +NotificationsRecordBuilder toBuilder()
+  +bool ==()
+  +String toString()
+}
+
+"upcj_gather_app::backend::schema::notifications_record.dart::_$NotificationsRecord" o-- "cloud_firestore::cloud_firestore.dart::DocumentReference<Object>"
+"upcj_gather_app::backend::schema::notifications_record.dart::NotificationsRecord" <|-- "upcj_gather_app::backend::schema::notifications_record.dart::_$NotificationsRecord"
+
+class "upcj_gather_app::backend::schema::notifications_record.dart::NotificationsRecordBuilder" {
+  -_$NotificationsRecord? _$v
+  -String? _notificationInfo
+  -DateTime? _createdDate
+  -String? _notificationPhoto
+  -String? _notificationTitle
+  -DocumentReference<Object?>? _ffRef
+  +String? notificationInfo
+  +DateTime? createdDate
+  +String? notificationPhoto
+  +String? notificationTitle
+  +DocumentReference<Object?>? ffRef
+  -NotificationsRecordBuilder _$this
+  +void replace()
+  +void update()
+  +NotificationsRecord build()
+  -_$NotificationsRecord _build()
+}
+
+"upcj_gather_app::backend::schema::notifications_record.dart::NotificationsRecordBuilder" o-- "upcj_gather_app::backend::schema::notifications_record.dart::_$NotificationsRecord"
+"upcj_gather_app::backend::schema::notifications_record.dart::NotificationsRecordBuilder" o-- "cloud_firestore::cloud_firestore.dart::DocumentReference<Object>"
+"upcj_gather_app::backend::schema::notifications_record.dart::NotificationsRecordBuilder" o-- "upcj_gather_app::backend::schema::notifications_record.dart::NotificationsRecordBuilder"
+"built_value::built_value.dart::Builder" <|-- "upcj_gather_app::backend::schema::notifications_record.dart::NotificationsRecordBuilder"
+
+class "upcj_gather_app::backend::schema::serializers.dart::DocumentReferenceSerializer" {
+  +bool structured
+  +Iterable<Type> types
+  +String wireName
+  +Object serialize()
+  +DocumentReference<Object?> deserialize()
+}
+
+"built_value::serializer.dart::PrimitiveSerializer" <|-- "upcj_gather_app::backend::schema::serializers.dart::DocumentReferenceSerializer"
+
+class "upcj_gather_app::backend::schema::serializers.dart::DateTimeSerializer" {
+  +Iterable<Type> types
+  +String wireName
+  +Object serialize()
+  +DateTime deserialize()
+}
+
+"built_value::serializer.dart::PrimitiveSerializer" <|-- "upcj_gather_app::backend::schema::serializers.dart::DateTimeSerializer"
+
+class "upcj_gather_app::backend::schema::serializers.dart::LatLngSerializer" {
+  +bool structured
+  +Iterable<Type> types
+  +String wireName
+  +Object serialize()
+  +LatLng deserialize()
+}
+
+"built_value::serializer.dart::PrimitiveSerializer" <|-- "upcj_gather_app::backend::schema::serializers.dart::LatLngSerializer"
+
+class "upcj_gather_app::backend::schema::serializers.dart::FirestoreUtilData" {
+  +Map<String, dynamic> fieldValues
+  +bool clearUnsetFields
+  +bool create
+  +bool delete
+  {static} +String name
+}
+
+class "upcj_gather_app::backend::schema::serializers.dart::FirestoreUtilDataSerializer" {
+  +bool structured
+  +Iterable<Type> types
+  +String wireName
+  +Object serialize()
+  +FirestoreUtilData deserialize()
+}
+
+"built_value::serializer.dart::PrimitiveSerializer" <|-- "upcj_gather_app::backend::schema::serializers.dart::FirestoreUtilDataSerializer"
+
+class "upcj_gather_app::backend::schema::serializers.dart::ColorSerializer" {
+  +Iterable<Type> types
+  +String wireName
+  +Object serialize()
+  +Color deserialize()
+}
+
+"built_value::serializer.dart::PrimitiveSerializer" <|-- "upcj_gather_app::backend::schema::serializers.dart::ColorSerializer"
+
+abstract class "upcj_gather_app::backend::schema::users_record.dart::UsersRecord" {
+  {static} +Serializer<UsersRecord> serializer
+  +String? email
+  +String? displayName
+  +String? photoUrl
+  +String? uid
+  +DateTime? createdTime
+  +String? phoneNumber
+  +String? firstName
+  +String? lastName
+  +bool? adminStatus
+  +String? address
+  +bool? infectedStatus
+  +DocumentReference<Object?>? ffRef
+  +DocumentReference<Object?> reference
+  {static} +CollectionReference<Object?> collection
+  {static} -void _initializeBuilder()
+  {static} +Stream<UsersRecord> getDocument()
+  {static} +Future<UsersRecord> getDocumentOnce()
+  {static} +UsersRecord getDocumentFromData()
+}
+
+"upcj_gather_app::backend::schema::users_record.dart::UsersRecord" o-- "built_value::serializer.dart::Serializer<UsersRecord>"
+"upcj_gather_app::backend::schema::users_record.dart::UsersRecord" o-- "cloud_firestore::cloud_firestore.dart::DocumentReference<Object>"
+"upcj_gather_app::backend::schema::users_record.dart::UsersRecord" o-- "cloud_firestore::cloud_firestore.dart::CollectionReference<Object>"
+"built_value::built_value.dart::Built" <|-- "upcj_gather_app::backend::schema::users_record.dart::UsersRecord"
+
+class "upcj_gather_app::backend::schema::users_record.dart::_$UsersRecordSerializer" {
+  +Iterable<Type> types
+  +String wireName
+  +Iterable<Object?> serialize()
+  +UsersRecord deserialize()
+}
+
+"built_value::serializer.dart::StructuredSerializer" <|-- "upcj_gather_app::backend::schema::users_record.dart::_$UsersRecordSerializer"
+
+class "upcj_gather_app::backend::schema::users_record.dart::_$UsersRecord" {
+  +String? email
+  +String? displayName
+  +String? photoUrl
+  +String? uid
+  +DateTime? createdTime
+  +String? phoneNumber
+  +String? firstName
+  +String? lastName
+  +bool? adminStatus
+  +String? address
+  +bool? infectedStatus
+  +DocumentReference<Object?>? ffRef
+  +int hashCode
+  +UsersRecord rebuild()
+  +UsersRecordBuilder toBuilder()
+  +bool ==()
+  +String toString()
+}
+
+"upcj_gather_app::backend::schema::users_record.dart::_$UsersRecord" o-- "cloud_firestore::cloud_firestore.dart::DocumentReference<Object>"
+"upcj_gather_app::backend::schema::users_record.dart::UsersRecord" <|-- "upcj_gather_app::backend::schema::users_record.dart::_$UsersRecord"
+
+class "upcj_gather_app::backend::schema::users_record.dart::UsersRecordBuilder" {
+  -_$UsersRecord? _$v
+  -String? _email
+  -String? _displayName
+  -String? _photoUrl
+  -String? _uid
+  -DateTime? _createdTime
+  -String? _phoneNumber
+  -String? _firstName
+  -String? _lastName
+  -bool? _adminStatus
+  -String? _address
+  -bool? _infectedStatus
+  -DocumentReference<Object?>? _ffRef
+  +String? email
+  +String? displayName
+  +String? photoUrl
+  +String? uid
+  +DateTime? createdTime
+  +String? phoneNumber
+  +String? firstName
+  +String? lastName
+  +bool? adminStatus
+  +String? address
+  +bool? infectedStatus
+  +DocumentReference<Object?>? ffRef
+  -UsersRecordBuilder _$this
+  +void replace()
+  +void update()
+  +UsersRecord build()
+  -_$UsersRecord _build()
+}
+
+"upcj_gather_app::backend::schema::users_record.dart::UsersRecordBuilder" o-- "upcj_gather_app::backend::schema::users_record.dart::_$UsersRecord"
+"upcj_gather_app::backend::schema::users_record.dart::UsersRecordBuilder" o-- "cloud_firestore::cloud_firestore.dart::DocumentReference<Object>"
+"upcj_gather_app::backend::schema::users_record.dart::UsersRecordBuilder" o-- "upcj_gather_app::backend::schema::users_record.dart::UsersRecordBuilder"
+"built_value::built_value.dart::Builder" <|-- "upcj_gather_app::backend::schema::users_record.dart::UsersRecordBuilder"
+
+class "upcj_gather_app::component::google_sign_in_button::google_sign_in_button_model.dart::GoogleSignInButtonModel" {
+  +void initState()
+  +void dispose()
+}
+
+"upcj_gather_app::flutter_flow::flutter_flow_model.dart::FlutterFlowModel" <|-- "upcj_gather_app::component::google_sign_in_button::google_sign_in_button_model.dart::GoogleSignInButtonModel"
+
+class "upcj_gather_app::component::google_sign_in_button::google_sign_in_button_widget.dart::GoogleSignInButtonWidget" {
+  +_GoogleSignInButtonWidgetState createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "upcj_gather_app::component::google_sign_in_button::google_sign_in_button_widget.dart::GoogleSignInButtonWidget"
+
+class "upcj_gather_app::component::google_sign_in_button::google_sign_in_button_widget.dart::_GoogleSignInButtonWidgetState" {
+  -GoogleSignInButtonModel _model
+  +void setState()
+  +void initState()
+  +void dispose()
+  +Widget build()
+}
+
+"upcj_gather_app::component::google_sign_in_button::google_sign_in_button_widget.dart::_GoogleSignInButtonWidgetState" o-- "upcj_gather_app::component::google_sign_in_button::google_sign_in_button_model.dart::GoogleSignInButtonModel"
+"flutter::src::widgets::framework.dart::State" <|-- "upcj_gather_app::component::google_sign_in_button::google_sign_in_button_widget.dart::_GoogleSignInButtonWidgetState"
+
+class "upcj_gather_app::components::email_addres_editor_model.dart::EmailAddresEditorModel" {
+  +TextEditingController? emailAddressController
+  +String? Function(BuildContext, String?)? emailAddressControllerValidator
+  +void initState()
+  +void dispose()
+}
+
+"upcj_gather_app::components::email_addres_editor_model.dart::EmailAddresEditorModel" o-- "flutter::src::widgets::editable_text.dart::TextEditingController"
+"upcj_gather_app::components::email_addres_editor_model.dart::EmailAddresEditorModel" o-- "null::String Function(BuildContext, String)"
+"upcj_gather_app::flutter_flow::flutter_flow_model.dart::FlutterFlowModel" <|-- "upcj_gather_app::components::email_addres_editor_model.dart::EmailAddresEditorModel"
+
+class "upcj_gather_app::components::email_addres_editor_widget.dart::EmailAddresEditorWidget" {
+  +_EmailAddresEditorWidgetState createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "upcj_gather_app::components::email_addres_editor_widget.dart::EmailAddresEditorWidget"
+
+class "upcj_gather_app::components::email_addres_editor_widget.dart::_EmailAddresEditorWidgetState" {
+  -EmailAddresEditorModel _model
+  +void setState()
+  +void initState()
+  +void dispose()
+  +Widget build()
+}
+
+"upcj_gather_app::components::email_addres_editor_widget.dart::_EmailAddresEditorWidgetState" o-- "upcj_gather_app::components::email_addres_editor_model.dart::EmailAddresEditorModel"
+"flutter::src::widgets::framework.dart::State" <|-- "upcj_gather_app::components::email_addres_editor_widget.dart::_EmailAddresEditorWidgetState"
+
+class "upcj_gather_app::flutter_flow::flutter_flow_animations.dart::AnimationInfo" {
+  +AnimationTrigger trigger
+  +List<Effect<dynamic>> effects
+  +bool applyInitialState
+  +bool loop
+  +bool reverse
+  +Adapter adapter
+  +AnimationController controller
+}
+
+"upcj_gather_app::flutter_flow::flutter_flow_animations.dart::AnimationInfo" o-- "upcj_gather_app::flutter_flow::flutter_flow_animations.dart::AnimationTrigger"
+"upcj_gather_app::flutter_flow::flutter_flow_animations.dart::AnimationInfo" o-- "flutter_animate::adapters::adapter.dart::Adapter"
+"upcj_gather_app::flutter_flow::flutter_flow_animations.dart::AnimationInfo" o-- "flutter::src::animation::animation_controller.dart::AnimationController"
+
+class "upcj_gather_app::flutter_flow::flutter_flow_animations.dart::TiltEffect" {
+  +Widget build()
+}
+
+"flutter_animate::effects::effect.dart::Effect" <|-- "upcj_gather_app::flutter_flow::flutter_flow_animations.dart::TiltEffect"
+
+class "upcj_gather_app::flutter_flow::flutter_flow_animations.dart::AnimationTrigger" {
+  +int index
+  {static} +List<AnimationTrigger> values
+  {static} +AnimationTrigger onPageLoad
+  {static} +AnimationTrigger onActionTrigger
+}
+
+"upcj_gather_app::flutter_flow::flutter_flow_animations.dart::AnimationTrigger" o-- "upcj_gather_app::flutter_flow::flutter_flow_animations.dart::AnimationTrigger"
+"dart::core::Enum" <|-- "upcj_gather_app::flutter_flow::flutter_flow_animations.dart::AnimationTrigger"
+
+class "upcj_gather_app::flutter_flow::flutter_flow_icon_button.dart::FlutterFlowIconButton" {
+  +Widget icon
+  +double? borderRadius
+  +double? buttonSize
+  +Color? fillColor
+  +Color? disabledColor
+  +Color? borderColor
+  +double? borderWidth
+  +bool showLoadingIndicator
+  +dynamic Function()? onPressed
+  +State<FlutterFlowIconButton> createState()
+}
+
+"upcj_gather_app::flutter_flow::flutter_flow_icon_button.dart::FlutterFlowIconButton" o-- "flutter::src::widgets::framework.dart::Widget"
+"upcj_gather_app::flutter_flow::flutter_flow_icon_button.dart::FlutterFlowIconButton" o-- "dart::ui::Color"
+"upcj_gather_app::flutter_flow::flutter_flow_icon_button.dart::FlutterFlowIconButton" o-- "null::dynamic Function()"
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "upcj_gather_app::flutter_flow::flutter_flow_icon_button.dart::FlutterFlowIconButton"
+
+class "upcj_gather_app::flutter_flow::flutter_flow_icon_button.dart::_FlutterFlowIconButtonState" {
+  +bool loading
+  +double? iconSize
+  +Color? iconColor
+  +void initState()
+  +Widget build()
+}
+
+"upcj_gather_app::flutter_flow::flutter_flow_icon_button.dart::_FlutterFlowIconButtonState" o-- "dart::ui::Color"
+"flutter::src::widgets::framework.dart::State" <|-- "upcj_gather_app::flutter_flow::flutter_flow_icon_button.dart::_FlutterFlowIconButtonState"
+
+abstract class "upcj_gather_app::flutter_flow::flutter_flow_model.dart::FlutterFlowModel" {
+  -bool _isInitialized
+  +bool disposeOnWidgetDisposal
+  +bool updateOnChange
+  -void Function() _updateCallback
+  +void initState()
+  -void _init()
+  +void dispose()
+  +void maybeDispose()
+  +void onUpdate()
+  +FlutterFlowModel setOnUpdate()
+  +void updatePage()
+}
+
+"upcj_gather_app::flutter_flow::flutter_flow_model.dart::FlutterFlowModel" o-- "dart::ui::void Function()"
+
+class "upcj_gather_app::flutter_flow::flutter_flow_model.dart::FlutterFlowDynamicModels" {
+  +T Function() defaultBuilder
+  -Map<String, T> _childrenModels
+  -Map<String, int> _childrenIndexes
+  -Set<String>? _activeKeys
+  +T getModel()
+  +List<S> getValues()
+  +S? getValueAtIndex()
+  +S? getValueForKey()
+  +void dispose()
+  -void _updateActiveKeys()
+}
+
+"upcj_gather_app::flutter_flow::flutter_flow_model.dart::FlutterFlowDynamicModels" o-- "null::T Function()"
+
+abstract class "upcj_gather_app::flutter_flow::flutter_flow_theme.dart::FlutterFlowTheme" {
+  {static} +DeviceSize deviceSize
+  +Color primaryColor
+  +Color secondaryColor
+  +Color tertiaryColor
+  +Color alternate
+  +Color primaryBackground
+  +Color secondaryBackground
+  +Color primaryText
+  +Color secondaryText
+  +Color primaryBtnText
+  +Color lineColor
+  +String title1Family
+  +TextStyle title1
+  +String title2Family
+  +TextStyle title2
+  +String title3Family
+  +TextStyle title3
+  +String subtitle1Family
+  +TextStyle subtitle1
+  +String subtitle2Family
+  +TextStyle subtitle2
+  +String bodyText1Family
+  +TextStyle bodyText1
+  +String bodyText2Family
+  +TextStyle bodyText2
+  +Typography typography
+  {static} +FlutterFlowTheme of()
+}
+
+"upcj_gather_app::flutter_flow::flutter_flow_theme.dart::FlutterFlowTheme" o-- "upcj_gather_app::flutter_flow::flutter_flow_theme.dart::DeviceSize"
+"upcj_gather_app::flutter_flow::flutter_flow_theme.dart::FlutterFlowTheme" o-- "dart::ui::Color"
+"upcj_gather_app::flutter_flow::flutter_flow_theme.dart::FlutterFlowTheme" o-- "flutter::src::painting::text_style.dart::TextStyle"
+"upcj_gather_app::flutter_flow::flutter_flow_theme.dart::FlutterFlowTheme" o-- "upcj_gather_app::flutter_flow::flutter_flow_theme.dart::Typography"
+
+class "upcj_gather_app::flutter_flow::flutter_flow_theme.dart::LightModeTheme" {
+  +Color primaryColor
+  +Color secondaryColor
+  +Color tertiaryColor
+  +Color alternate
+  +Color primaryBackground
+  +Color secondaryBackground
+  +Color primaryText
+  +Color secondaryText
+  +Color primaryBtnText
+  +Color lineColor
+}
+
+"upcj_gather_app::flutter_flow::flutter_flow_theme.dart::LightModeTheme" o-- "dart::ui::Color"
+"upcj_gather_app::flutter_flow::flutter_flow_theme.dart::FlutterFlowTheme" <|-- "upcj_gather_app::flutter_flow::flutter_flow_theme.dart::LightModeTheme"
+
+abstract class "upcj_gather_app::flutter_flow::flutter_flow_theme.dart::Typography" {
+  +String title1Family
+  +TextStyle title1
+  +String title2Family
+  +TextStyle title2
+  +String title3Family
+  +TextStyle title3
+  +String subtitle1Family
+  +TextStyle subtitle1
+  +String subtitle2Family
+  +TextStyle subtitle2
+  +String bodyText1Family
+  +TextStyle bodyText1
+  +String bodyText2Family
+  +TextStyle bodyText2
+}
+
+"upcj_gather_app::flutter_flow::flutter_flow_theme.dart::Typography" o-- "flutter::src::painting::text_style.dart::TextStyle"
+
+class "upcj_gather_app::flutter_flow::flutter_flow_theme.dart::MobileTypography" {
+  +FlutterFlowTheme theme
+  +String title1Family
+  +TextStyle title1
+  +String title2Family
+  +TextStyle title2
+  +String title3Family
+  +TextStyle title3
+  +String subtitle1Family
+  +TextStyle subtitle1
+  +String subtitle2Family
+  +TextStyle subtitle2
+  +String bodyText1Family
+  +TextStyle bodyText1
+  +String bodyText2Family
+  +TextStyle bodyText2
+}
+
+"upcj_gather_app::flutter_flow::flutter_flow_theme.dart::MobileTypography" o-- "upcj_gather_app::flutter_flow::flutter_flow_theme.dart::FlutterFlowTheme"
+"upcj_gather_app::flutter_flow::flutter_flow_theme.dart::MobileTypography" o-- "flutter::src::painting::text_style.dart::TextStyle"
+"upcj_gather_app::flutter_flow::flutter_flow_theme.dart::Typography" <|-- "upcj_gather_app::flutter_flow::flutter_flow_theme.dart::MobileTypography"
+
+class "upcj_gather_app::flutter_flow::flutter_flow_theme.dart::TabletTypography" {
+  +FlutterFlowTheme theme
+  +String title1Family
+  +TextStyle title1
+  +String title2Family
+  +TextStyle title2
+  +String title3Family
+  +TextStyle title3
+  +String subtitle1Family
+  +TextStyle subtitle1
+  +String subtitle2Family
+  +TextStyle subtitle2
+  +String bodyText1Family
+  +TextStyle bodyText1
+  +String bodyText2Family
+  +TextStyle bodyText2
+}
+
+"upcj_gather_app::flutter_flow::flutter_flow_theme.dart::TabletTypography" o-- "upcj_gather_app::flutter_flow::flutter_flow_theme.dart::FlutterFlowTheme"
+"upcj_gather_app::flutter_flow::flutter_flow_theme.dart::TabletTypography" o-- "flutter::src::painting::text_style.dart::TextStyle"
+"upcj_gather_app::flutter_flow::flutter_flow_theme.dart::Typography" <|-- "upcj_gather_app::flutter_flow::flutter_flow_theme.dart::TabletTypography"
+
+class "upcj_gather_app::flutter_flow::flutter_flow_theme.dart::DesktopTypography" {
+  +FlutterFlowTheme theme
+  +String title1Family
+  +TextStyle title1
+  +String title2Family
+  +TextStyle title2
+  +String title3Family
+  +TextStyle title3
+  +String subtitle1Family
+  +TextStyle subtitle1
+  +String subtitle2Family
+  +TextStyle subtitle2
+  +String bodyText1Family
+  +TextStyle bodyText1
+  +String bodyText2Family
+  +TextStyle bodyText2
+}
+
+"upcj_gather_app::flutter_flow::flutter_flow_theme.dart::DesktopTypography" o-- "upcj_gather_app::flutter_flow::flutter_flow_theme.dart::FlutterFlowTheme"
+"upcj_gather_app::flutter_flow::flutter_flow_theme.dart::DesktopTypography" o-- "flutter::src::painting::text_style.dart::TextStyle"
+"upcj_gather_app::flutter_flow::flutter_flow_theme.dart::Typography" <|-- "upcj_gather_app::flutter_flow::flutter_flow_theme.dart::DesktopTypography"
+
+class "upcj_gather_app::flutter_flow::flutter_flow_theme.dart::DeviceSize" {
+  +int index
+  {static} +List<DeviceSize> values
+  {static} +DeviceSize mobile
+  {static} +DeviceSize tablet
+  {static} +DeviceSize desktop
+}
+
+"upcj_gather_app::flutter_flow::flutter_flow_theme.dart::DeviceSize" o-- "upcj_gather_app::flutter_flow::flutter_flow_theme.dart::DeviceSize"
+"dart::core::Enum" <|-- "upcj_gather_app::flutter_flow::flutter_flow_theme.dart::DeviceSize"
+
+class "upcj_gather_app::flutter_flow::flutter_flow_util.dart::FormatType" {
+  +int index
+  {static} +List<FormatType> values
+  {static} +FormatType decimal
+  {static} +FormatType percent
+  {static} +FormatType scientific
+  {static} +FormatType compact
+  {static} +FormatType compactLong
+  {static} +FormatType custom
+}
+
+"upcj_gather_app::flutter_flow::flutter_flow_util.dart::FormatType" o-- "upcj_gather_app::flutter_flow::flutter_flow_util.dart::FormatType"
+"dart::core::Enum" <|-- "upcj_gather_app::flutter_flow::flutter_flow_util.dart::FormatType"
+
+class "upcj_gather_app::flutter_flow::flutter_flow_util.dart::DecimalType" {
+  +int index
+  {static} +List<DecimalType> values
+  {static} +DecimalType automatic
+  {static} +DecimalType periodDecimal
+  {static} +DecimalType commaDecimal
+}
+
+"upcj_gather_app::flutter_flow::flutter_flow_util.dart::DecimalType" o-- "upcj_gather_app::flutter_flow::flutter_flow_util.dart::DecimalType"
+"dart::core::Enum" <|-- "upcj_gather_app::flutter_flow::flutter_flow_util.dart::DecimalType"
+
+class "upcj_gather_app::flutter_flow::flutter_flow_widgets.dart::FFButtonOptions" {
+  +TextStyle? textStyle
+  +double? elevation
+  +double? height
+  +double? width
+  +EdgeInsetsGeometry? padding
+  +Color? color
+  +Color? disabledColor
+  +Color? disabledTextColor
+  +Color? splashColor
+  +double? iconSize
+  +Color? iconColor
+  +EdgeInsetsGeometry? iconPadding
+  +BorderRadius? borderRadius
+  +BorderSide? borderSide
+  +Color? hoverColor
+  +BorderSide? hoverBorderSide
+  +Color? hoverTextColor
+  +double? hoverElevation
+}
+
+"upcj_gather_app::flutter_flow::flutter_flow_widgets.dart::FFButtonOptions" o-- "flutter::src::painting::text_style.dart::TextStyle"
+"upcj_gather_app::flutter_flow::flutter_flow_widgets.dart::FFButtonOptions" o-- "flutter::src::painting::edge_insets.dart::EdgeInsetsGeometry"
+"upcj_gather_app::flutter_flow::flutter_flow_widgets.dart::FFButtonOptions" o-- "dart::ui::Color"
+"upcj_gather_app::flutter_flow::flutter_flow_widgets.dart::FFButtonOptions" o-- "flutter::src::painting::border_radius.dart::BorderRadius"
+"upcj_gather_app::flutter_flow::flutter_flow_widgets.dart::FFButtonOptions" o-- "flutter::src::painting::borders.dart::BorderSide"
+
+class "upcj_gather_app::flutter_flow::flutter_flow_widgets.dart::FFButtonWidget" {
+  +String text
+  +Widget? icon
+  +IconData? iconData
+  +dynamic Function()? onPressed
+  +FFButtonOptions options
+  +bool showLoadingIndicator
+  +State<FFButtonWidget> createState()
+}
+
+"upcj_gather_app::flutter_flow::flutter_flow_widgets.dart::FFButtonWidget" o-- "flutter::src::widgets::framework.dart::Widget"
+"upcj_gather_app::flutter_flow::flutter_flow_widgets.dart::FFButtonWidget" o-- "flutter::src::widgets::icon_data.dart::IconData"
+"upcj_gather_app::flutter_flow::flutter_flow_widgets.dart::FFButtonWidget" o-- "null::dynamic Function()"
+"upcj_gather_app::flutter_flow::flutter_flow_widgets.dart::FFButtonWidget" o-- "upcj_gather_app::flutter_flow::flutter_flow_widgets.dart::FFButtonOptions"
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "upcj_gather_app::flutter_flow::flutter_flow_widgets.dart::FFButtonWidget"
+
+class "upcj_gather_app::flutter_flow::flutter_flow_widgets.dart::_FFButtonWidgetState" {
+  +bool loading
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::State" <|-- "upcj_gather_app::flutter_flow::flutter_flow_widgets.dart::_FFButtonWidgetState"
+
+class "upcj_gather_app::flutter_flow::internationalization.dart::FFLocalizations" {
+  +Locale locale
+  {static} -SharedPreferences _prefs
+  {static} -Set<String> _languagesWithShortCode
+  +String languageCode
+  +String? languageShortCode
+  +int languageIndex
+  {static} +FFLocalizations of()
+  {static} +List<String> languages()
+  {static} +Future<dynamic> initialize()
+  {static} +Future<dynamic> storeLocale()
+  {static} +Locale? getStoredLocale()
+  +String getText()
+  +String getVariableText()
+}
+
+"upcj_gather_app::flutter_flow::internationalization.dart::FFLocalizations" o-- "dart::ui::Locale"
+"upcj_gather_app::flutter_flow::internationalization.dart::FFLocalizations" o-- "shared_preferences::shared_preferences.dart::SharedPreferences"
+
+class "upcj_gather_app::flutter_flow::internationalization.dart::FFLocalizationsDelegate" {
+  +bool isSupported()
+  +Future<FFLocalizations> load()
+  +bool shouldReload()
+}
+
+"flutter::src::widgets::localizations.dart::LocalizationsDelegate" <|-- "upcj_gather_app::flutter_flow::internationalization.dart::FFLocalizationsDelegate"
+
+class "upcj_gather_app::flutter_flow::lat_lng.dart::LatLng" {
+  +double latitude
+  +double longitude
+  +int hashCode
+  +String toString()
+  +String serialize()
+  +bool ==()
+}
+
+class "upcj_gather_app::flutter_flow::nav::nav.dart::AppStateNotifier" {
+  +UpcjGatherAppFirebaseUser? initialUser
+  +UpcjGatherAppFirebaseUser? user
+  +bool showSplashImage
+  -String? _redirectLocation
+  +bool notifyOnAuthChange
+  +bool loading
+  +bool loggedIn
+  +bool initiallyLoggedIn
+  +bool shouldRedirect
+  +String getRedirectLocation()
+  +bool hasRedirect()
+  +void setRedirectLocationIfUnset()
+  +void clearRedirectLocation()
+  +void updateNotifyOnAuthChange()
+  +void update()
+  +void stopShowingSplashImage()
+}
+
+"upcj_gather_app::flutter_flow::nav::nav.dart::AppStateNotifier" o-- "upcj_gather_app::auth::firebase_user_provider.dart::UpcjGatherAppFirebaseUser"
+"flutter::src::foundation::change_notifier.dart::ChangeNotifier" <|-- "upcj_gather_app::flutter_flow::nav::nav.dart::AppStateNotifier"
+
+class "upcj_gather_app::flutter_flow::nav::nav.dart::FFParameters" {
+  +GoRouterState state
+  +Map<String, Future<dynamic> Function(String)> asyncParams
+  +Map<String, dynamic> futureParamValues
+  +bool isEmpty
+  +bool hasFutures
+  +bool isAsyncParam()
+  +Future<bool> completeFutures()
+  +dynamic getParam()
+}
+
+"upcj_gather_app::flutter_flow::nav::nav.dart::FFParameters" o-- "go_router::src::go_router_state.dart::GoRouterState"
+
+class "upcj_gather_app::flutter_flow::nav::nav.dart::FFRoute" {
+  +String name
+  +String path
+  +bool requireAuth
+  +Map<String, Future<dynamic> Function(String)> asyncParams
+  +Widget Function(BuildContext, FFParameters) builder
+  +List<GoRoute> routes
+  +GoRoute toRoute()
+}
+
+"upcj_gather_app::flutter_flow::nav::nav.dart::FFRoute" o-- "null::Widget Function(BuildContext, FFParameters)"
+
+class "upcj_gather_app::flutter_flow::nav::nav.dart::TransitionInfo" {
+  +bool hasTransition
+  +PageTransitionType transitionType
+  +Duration duration
+  +Alignment? alignment
+  {static} +TransitionInfo appDefault()
+}
+
+"upcj_gather_app::flutter_flow::nav::nav.dart::TransitionInfo" o-- "page_transition::src::enum.dart::PageTransitionType"
+"upcj_gather_app::flutter_flow::nav::nav.dart::TransitionInfo" o-- "flutter::src::painting::alignment.dart::Alignment"
+
+class "upcj_gather_app::flutter_flow::nav::serialization_util.dart::ParamType" {
+  +int index
+  {static} +List<ParamType> values
+  {static} +ParamType int
+  {static} +ParamType double
+  {static} +ParamType String
+  {static} +ParamType bool
+  {static} +ParamType DateTime
+  {static} +ParamType DateTimeRange
+  {static} +ParamType LatLng
+  {static} +ParamType Color
+  {static} +ParamType FFPlace
+  {static} +ParamType FFUploadedFile
+  {static} +ParamType JSON
+  {static} +ParamType Document
+  {static} +ParamType DocumentReference
+}
+
+"upcj_gather_app::flutter_flow::nav::serialization_util.dart::ParamType" o-- "upcj_gather_app::flutter_flow::nav::serialization_util.dart::ParamType"
+"dart::core::Enum" <|-- "upcj_gather_app::flutter_flow::nav::serialization_util.dart::ParamType"
+
+class "upcj_gather_app::flutter_flow::place.dart::FFPlace" {
+  +LatLng latLng
+  +String name
+  +String address
+  +String city
+  +String state
+  +String country
+  +String zipCode
+  +int hashCode
+  +String toString()
+  +bool ==()
+}
+
+"upcj_gather_app::flutter_flow::place.dart::FFPlace" o-- "upcj_gather_app::flutter_flow::lat_lng.dart::LatLng"
+
+class "upcj_gather_app::flutter_flow::uploaded_file.dart::FFUploadedFile" {
+  +String? name
+  +Uint8List? bytes
+  +double? height
+  +double? width
+  +int hashCode
+  +String toString()
+  +String serialize()
+  {static} +FFUploadedFile deserialize()
+  +bool ==()
+}
+
+"upcj_gather_app::flutter_flow::uploaded_file.dart::FFUploadedFile" o-- "dart::typed_data::Uint8List"
+
+class "upcj_gather_app::flutter_flow::upload_media.dart::SelectedMedia" {
+  +String storagePath
+  +String? filePath
+  +Uint8List bytes
+  +MediaDimensions? dimensions
+}
+
+"upcj_gather_app::flutter_flow::upload_media.dart::SelectedMedia" o-- "dart::typed_data::Uint8List"
+"upcj_gather_app::flutter_flow::upload_media.dart::SelectedMedia" o-- "upcj_gather_app::flutter_flow::upload_media.dart::MediaDimensions"
+
+class "upcj_gather_app::flutter_flow::upload_media.dart::MediaDimensions" {
+  +double? height
+  +double? width
+}
+
+class "upcj_gather_app::flutter_flow::upload_media.dart::MediaSource" {
+  +int index
+  {static} +List<MediaSource> values
+  {static} +MediaSource photoGallery
+  {static} +MediaSource videoGallery
+  {static} +MediaSource camera
+}
+
+"upcj_gather_app::flutter_flow::upload_media.dart::MediaSource" o-- "upcj_gather_app::flutter_flow::upload_media.dart::MediaSource"
+"dart::core::Enum" <|-- "upcj_gather_app::flutter_flow::upload_media.dart::MediaSource"
+
+class "upcj_gather_app::main.dart::MyApp" {
+  +State<MyApp> createState()
+  {static} +_MyAppState of()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "upcj_gather_app::main.dart::MyApp"
+
+class "upcj_gather_app::main.dart::_MyAppState" {
+  -Locale? _locale
+  -ThemeMode _themeMode
+  +Stream<UpcjGatherAppFirebaseUser> userStream
+  -AppStateNotifier _appStateNotifier
+  -GoRouter _router
+  +StreamSubscription<UsersRecord?> authUserSub
+  +void initState()
+  +void dispose()
+  +void setLocale()
+  +void setThemeMode()
+  +Widget build()
+}
+
+"upcj_gather_app::main.dart::_MyAppState" o-- "dart::ui::Locale"
+"upcj_gather_app::main.dart::_MyAppState" o-- "flutter::src::material::app.dart::ThemeMode"
+"upcj_gather_app::main.dart::_MyAppState" o-- "dart::async::Stream<UpcjGatherAppFirebaseUser>"
+"upcj_gather_app::main.dart::_MyAppState" o-- "upcj_gather_app::flutter_flow::nav::nav.dart::AppStateNotifier"
+"upcj_gather_app::main.dart::_MyAppState" o-- "go_router::src::go_router.dart::GoRouter"
+"upcj_gather_app::main.dart::_MyAppState" o-- "dart::async::StreamSubscription<UsersRecord>"
+"flutter::src::widgets::framework.dart::State" <|-- "upcj_gather_app::main.dart::_MyAppState"
+
+class "upcj_gather_app::screens::admin::admin_church_service_details_screen::admin_church_service_details_screen_model.dart::AdminChurchServiceDetailsScreenModel" {
+  +void initState()
+  +void dispose()
+}
+
+"upcj_gather_app::flutter_flow::flutter_flow_model.dart::FlutterFlowModel" <|-- "upcj_gather_app::screens::admin::admin_church_service_details_screen::admin_church_service_details_screen_model.dart::AdminChurchServiceDetailsScreenModel"
+
+class "upcj_gather_app::screens::admin::admin_church_service_details_screen::admin_church_service_details_screen_widget.dart::AdminChurchServiceDetailsScreenWidget" {
+  +DocumentReference<Object?>? churchServiceInfo
+  +_AdminChurchServiceDetailsScreenWidgetState createState()
+}
+
+"upcj_gather_app::screens::admin::admin_church_service_details_screen::admin_church_service_details_screen_widget.dart::AdminChurchServiceDetailsScreenWidget" o-- "cloud_firestore::cloud_firestore.dart::DocumentReference<Object>"
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "upcj_gather_app::screens::admin::admin_church_service_details_screen::admin_church_service_details_screen_widget.dart::AdminChurchServiceDetailsScreenWidget"
+
+class "upcj_gather_app::screens::admin::admin_church_service_details_screen::admin_church_service_details_screen_widget.dart::_AdminChurchServiceDetailsScreenWidgetState" {
+  -AdminChurchServiceDetailsScreenModel _model
+  +GlobalKey<ScaffoldState> scaffoldKey
+  +void initState()
+  +void dispose()
+  +Widget build()
+}
+
+"upcj_gather_app::screens::admin::admin_church_service_details_screen::admin_church_service_details_screen_widget.dart::_AdminChurchServiceDetailsScreenWidgetState" o-- "upcj_gather_app::screens::admin::admin_church_service_details_screen::admin_church_service_details_screen_model.dart::AdminChurchServiceDetailsScreenModel"
+"upcj_gather_app::screens::admin::admin_church_service_details_screen::admin_church_service_details_screen_widget.dart::_AdminChurchServiceDetailsScreenWidgetState" o-- "flutter::src::widgets::framework.dart::GlobalKey<ScaffoldState>"
+"flutter::src::widgets::framework.dart::State" <|-- "upcj_gather_app::screens::admin::admin_church_service_details_screen::admin_church_service_details_screen_widget.dart::_AdminChurchServiceDetailsScreenWidgetState"
+"flutter::src::widgets::ticker_provider.dart::TickerProviderStateMixin" <|-- "upcj_gather_app::screens::admin::admin_church_service_details_screen::admin_church_service_details_screen_widget.dart::_AdminChurchServiceDetailsScreenWidgetState"
+
+class "upcj_gather_app::screens::admin::admin_church_service_edit_screen::admin_church_service_edit_screen_model.dart::AdminChurchServiceEditScreenModel" {
+  +GlobalKey<FormState> formKey
+  +TextEditingController? churchServiceTitleController
+  +String? Function(BuildContext, String?)? churchServiceTitleControllerValidator
+  +DateTime? datePicked
+  +TextEditingController? serviceCapacityController
+  +String? Function(BuildContext, String?)? serviceCapacityControllerValidator
+  +void initState()
+  +void dispose()
+}
+
+"upcj_gather_app::screens::admin::admin_church_service_edit_screen::admin_church_service_edit_screen_model.dart::AdminChurchServiceEditScreenModel" o-- "flutter::src::widgets::framework.dart::GlobalKey<FormState>"
+"upcj_gather_app::screens::admin::admin_church_service_edit_screen::admin_church_service_edit_screen_model.dart::AdminChurchServiceEditScreenModel" o-- "flutter::src::widgets::editable_text.dart::TextEditingController"
+"upcj_gather_app::screens::admin::admin_church_service_edit_screen::admin_church_service_edit_screen_model.dart::AdminChurchServiceEditScreenModel" o-- "null::String Function(BuildContext, String)"
+"upcj_gather_app::flutter_flow::flutter_flow_model.dart::FlutterFlowModel" <|-- "upcj_gather_app::screens::admin::admin_church_service_edit_screen::admin_church_service_edit_screen_model.dart::AdminChurchServiceEditScreenModel"
+
+class "upcj_gather_app::screens::admin::admin_church_service_edit_screen::admin_church_service_edit_screen_widget.dart::AdminChurchServiceEditScreenWidget" {
+  +DocumentReference<Object?>? churchServiceInfo
+  +_AdminChurchServiceEditScreenWidgetState createState()
+}
+
+"upcj_gather_app::screens::admin::admin_church_service_edit_screen::admin_church_service_edit_screen_widget.dart::AdminChurchServiceEditScreenWidget" o-- "cloud_firestore::cloud_firestore.dart::DocumentReference<Object>"
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "upcj_gather_app::screens::admin::admin_church_service_edit_screen::admin_church_service_edit_screen_widget.dart::AdminChurchServiceEditScreenWidget"
+
+class "upcj_gather_app::screens::admin::admin_church_service_edit_screen::admin_church_service_edit_screen_widget.dart::_AdminChurchServiceEditScreenWidgetState" {
+  -AdminChurchServiceEditScreenModel _model
+  +GlobalKey<ScaffoldState> scaffoldKey
+  -FocusNode _unfocusNode
+  +void initState()
+  +void dispose()
+  +Widget build()
+}
+
+"upcj_gather_app::screens::admin::admin_church_service_edit_screen::admin_church_service_edit_screen_widget.dart::_AdminChurchServiceEditScreenWidgetState" o-- "upcj_gather_app::screens::admin::admin_church_service_edit_screen::admin_church_service_edit_screen_model.dart::AdminChurchServiceEditScreenModel"
+"upcj_gather_app::screens::admin::admin_church_service_edit_screen::admin_church_service_edit_screen_widget.dart::_AdminChurchServiceEditScreenWidgetState" o-- "flutter::src::widgets::framework.dart::GlobalKey<ScaffoldState>"
+"upcj_gather_app::screens::admin::admin_church_service_edit_screen::admin_church_service_edit_screen_widget.dart::_AdminChurchServiceEditScreenWidgetState" o-- "flutter::src::widgets::focus_manager.dart::FocusNode"
+"flutter::src::widgets::framework.dart::State" <|-- "upcj_gather_app::screens::admin::admin_church_service_edit_screen::admin_church_service_edit_screen_widget.dart::_AdminChurchServiceEditScreenWidgetState"
+
+class "upcj_gather_app::screens::admin::admin_church_service_main_screen::admin_church_service_main_screen_model.dart::AdminChurchServiceMainScreenModel" {
+  +void initState()
+  +void dispose()
+}
+
+"upcj_gather_app::flutter_flow::flutter_flow_model.dart::FlutterFlowModel" <|-- "upcj_gather_app::screens::admin::admin_church_service_main_screen::admin_church_service_main_screen_model.dart::AdminChurchServiceMainScreenModel"
+
+class "upcj_gather_app::screens::admin::admin_church_service_main_screen::admin_church_service_main_screen_widget.dart::AdminChurchServiceMainScreenWidget" {
+  +_AdminChurchServiceMainScreenWidgetState createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "upcj_gather_app::screens::admin::admin_church_service_main_screen::admin_church_service_main_screen_widget.dart::AdminChurchServiceMainScreenWidget"
+
+class "upcj_gather_app::screens::admin::admin_church_service_main_screen::admin_church_service_main_screen_widget.dart::_AdminChurchServiceMainScreenWidgetState" {
+  -AdminChurchServiceMainScreenModel _model
+  +GlobalKey<ScaffoldState> scaffoldKey
+  -FocusNode _unfocusNode
+  +void initState()
+  +void dispose()
+  +Widget build()
+}
+
+"upcj_gather_app::screens::admin::admin_church_service_main_screen::admin_church_service_main_screen_widget.dart::_AdminChurchServiceMainScreenWidgetState" o-- "upcj_gather_app::screens::admin::admin_church_service_main_screen::admin_church_service_main_screen_model.dart::AdminChurchServiceMainScreenModel"
+"upcj_gather_app::screens::admin::admin_church_service_main_screen::admin_church_service_main_screen_widget.dart::_AdminChurchServiceMainScreenWidgetState" o-- "flutter::src::widgets::framework.dart::GlobalKey<ScaffoldState>"
+"upcj_gather_app::screens::admin::admin_church_service_main_screen::admin_church_service_main_screen_widget.dart::_AdminChurchServiceMainScreenWidgetState" o-- "flutter::src::widgets::focus_manager.dart::FocusNode"
+"flutter::src::widgets::framework.dart::State" <|-- "upcj_gather_app::screens::admin::admin_church_service_main_screen::admin_church_service_main_screen_widget.dart::_AdminChurchServiceMainScreenWidgetState"
+
+class "upcj_gather_app::screens::admin::admin_home_screen::admin_home_screen_model.dart::AdminHomeScreenModel" {
+  +void initState()
+  +void dispose()
+}
+
+"upcj_gather_app::flutter_flow::flutter_flow_model.dart::FlutterFlowModel" <|-- "upcj_gather_app::screens::admin::admin_home_screen::admin_home_screen_model.dart::AdminHomeScreenModel"
+
+class "upcj_gather_app::screens::admin::admin_home_screen::admin_home_screen_widget.dart::AdminHomeScreenWidget" {
+  +_AdminHomeScreenWidgetState createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "upcj_gather_app::screens::admin::admin_home_screen::admin_home_screen_widget.dart::AdminHomeScreenWidget"
+
+class "upcj_gather_app::screens::admin::admin_home_screen::admin_home_screen_widget.dart::_AdminHomeScreenWidgetState" {
+  -AdminHomeScreenModel _model
+  +GlobalKey<ScaffoldState> scaffoldKey
+  -FocusNode _unfocusNode
+  +void initState()
+  +void dispose()
+  +Widget build()
+}
+
+"upcj_gather_app::screens::admin::admin_home_screen::admin_home_screen_widget.dart::_AdminHomeScreenWidgetState" o-- "upcj_gather_app::screens::admin::admin_home_screen::admin_home_screen_model.dart::AdminHomeScreenModel"
+"upcj_gather_app::screens::admin::admin_home_screen::admin_home_screen_widget.dart::_AdminHomeScreenWidgetState" o-- "flutter::src::widgets::framework.dart::GlobalKey<ScaffoldState>"
+"upcj_gather_app::screens::admin::admin_home_screen::admin_home_screen_widget.dart::_AdminHomeScreenWidgetState" o-- "flutter::src::widgets::focus_manager.dart::FocusNode"
+"flutter::src::widgets::framework.dart::State" <|-- "upcj_gather_app::screens::admin::admin_home_screen::admin_home_screen_widget.dart::_AdminHomeScreenWidgetState"
+
+class "upcj_gather_app::screens::admin::admin_members_view_screen::admin_members_view_screen_model.dart::AdminMembersViewScreenModel" {
+  +TextEditingController? memberSearchController
+  +String? Function(BuildContext, String?)? memberSearchControllerValidator
+  +void initState()
+  +void dispose()
+}
+
+"upcj_gather_app::screens::admin::admin_members_view_screen::admin_members_view_screen_model.dart::AdminMembersViewScreenModel" o-- "flutter::src::widgets::editable_text.dart::TextEditingController"
+"upcj_gather_app::screens::admin::admin_members_view_screen::admin_members_view_screen_model.dart::AdminMembersViewScreenModel" o-- "null::String Function(BuildContext, String)"
+"upcj_gather_app::flutter_flow::flutter_flow_model.dart::FlutterFlowModel" <|-- "upcj_gather_app::screens::admin::admin_members_view_screen::admin_members_view_screen_model.dart::AdminMembersViewScreenModel"
+
+class "upcj_gather_app::screens::admin::admin_members_view_screen::admin_members_view_screen_widget.dart::AdminMembersViewScreenWidget" {
+  +_AdminMembersViewScreenWidgetState createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "upcj_gather_app::screens::admin::admin_members_view_screen::admin_members_view_screen_widget.dart::AdminMembersViewScreenWidget"
+
+class "upcj_gather_app::screens::admin::admin_members_view_screen::admin_members_view_screen_widget.dart::_AdminMembersViewScreenWidgetState" {
+  -AdminMembersViewScreenModel _model
+  +GlobalKey<ScaffoldState> scaffoldKey
+  -FocusNode _unfocusNode
+  +void initState()
+  +void dispose()
+  +Widget build()
+}
+
+"upcj_gather_app::screens::admin::admin_members_view_screen::admin_members_view_screen_widget.dart::_AdminMembersViewScreenWidgetState" o-- "upcj_gather_app::screens::admin::admin_members_view_screen::admin_members_view_screen_model.dart::AdminMembersViewScreenModel"
+"upcj_gather_app::screens::admin::admin_members_view_screen::admin_members_view_screen_widget.dart::_AdminMembersViewScreenWidgetState" o-- "flutter::src::widgets::framework.dart::GlobalKey<ScaffoldState>"
+"upcj_gather_app::screens::admin::admin_members_view_screen::admin_members_view_screen_widget.dart::_AdminMembersViewScreenWidgetState" o-- "flutter::src::widgets::focus_manager.dart::FocusNode"
+"flutter::src::widgets::framework.dart::State" <|-- "upcj_gather_app::screens::admin::admin_members_view_screen::admin_members_view_screen_widget.dart::_AdminMembersViewScreenWidgetState"
+
+class "upcj_gather_app::screens::admin::admin_member_profile_screen::admin_member_profile_screen_model.dart::AdminMemberProfileScreenModel" {
+  +GlobalKey<FormState> formKey
+  +bool isMediaUploading
+  +FFUploadedFile uploadedLocalFile
+  +String uploadedFileUrl
+  +bool? checkboxValue
+  +TextEditingController? phoneNumberUpdateTextFieldController
+  +String? Function(BuildContext, String?)? phoneNumberUpdateTextFieldControllerValidator
+  +TextEditingController? emailUpdateTextFieldController
+  +String? Function(BuildContext, String?)? emailUpdateTextFieldControllerValidator
+  +TextEditingController? addressUpdateTextFieldController
+  +String? Function(BuildContext, String?)? addressUpdateTextFieldControllerValidator
+  +void initState()
+  +void dispose()
+}
+
+"upcj_gather_app::screens::admin::admin_member_profile_screen::admin_member_profile_screen_model.dart::AdminMemberProfileScreenModel" o-- "flutter::src::widgets::framework.dart::GlobalKey<FormState>"
+"upcj_gather_app::screens::admin::admin_member_profile_screen::admin_member_profile_screen_model.dart::AdminMemberProfileScreenModel" o-- "upcj_gather_app::flutter_flow::uploaded_file.dart::FFUploadedFile"
+"upcj_gather_app::screens::admin::admin_member_profile_screen::admin_member_profile_screen_model.dart::AdminMemberProfileScreenModel" o-- "flutter::src::widgets::editable_text.dart::TextEditingController"
+"upcj_gather_app::screens::admin::admin_member_profile_screen::admin_member_profile_screen_model.dart::AdminMemberProfileScreenModel" o-- "null::String Function(BuildContext, String)"
+"upcj_gather_app::flutter_flow::flutter_flow_model.dart::FlutterFlowModel" <|-- "upcj_gather_app::screens::admin::admin_member_profile_screen::admin_member_profile_screen_model.dart::AdminMemberProfileScreenModel"
+
+class "upcj_gather_app::screens::admin::admin_member_profile_screen::admin_member_profile_screen_widget.dart::AdminMemberProfileScreenWidget" {
+  +DocumentReference<Object?>? memberInfo
+  +_AdminMemberProfileScreenWidgetState createState()
+}
+
+"upcj_gather_app::screens::admin::admin_member_profile_screen::admin_member_profile_screen_widget.dart::AdminMemberProfileScreenWidget" o-- "cloud_firestore::cloud_firestore.dart::DocumentReference<Object>"
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "upcj_gather_app::screens::admin::admin_member_profile_screen::admin_member_profile_screen_widget.dart::AdminMemberProfileScreenWidget"
+
+class "upcj_gather_app::screens::admin::admin_member_profile_screen::admin_member_profile_screen_widget.dart::_AdminMemberProfileScreenWidgetState" {
+  -AdminMemberProfileScreenModel _model
+  +GlobalKey<ScaffoldState> scaffoldKey
+  -FocusNode _unfocusNode
+  +void initState()
+  +void dispose()
+  +Widget build()
+}
+
+"upcj_gather_app::screens::admin::admin_member_profile_screen::admin_member_profile_screen_widget.dart::_AdminMemberProfileScreenWidgetState" o-- "upcj_gather_app::screens::admin::admin_member_profile_screen::admin_member_profile_screen_model.dart::AdminMemberProfileScreenModel"
+"upcj_gather_app::screens::admin::admin_member_profile_screen::admin_member_profile_screen_widget.dart::_AdminMemberProfileScreenWidgetState" o-- "flutter::src::widgets::framework.dart::GlobalKey<ScaffoldState>"
+"upcj_gather_app::screens::admin::admin_member_profile_screen::admin_member_profile_screen_widget.dart::_AdminMemberProfileScreenWidgetState" o-- "flutter::src::widgets::focus_manager.dart::FocusNode"
+"flutter::src::widgets::framework.dart::State" <|-- "upcj_gather_app::screens::admin::admin_member_profile_screen::admin_member_profile_screen_widget.dart::_AdminMemberProfileScreenWidgetState"
+
+class "upcj_gather_app::screens::admin::admin_notifications_screen::admin_notifications_screen_model.dart::AdminNotificationsScreenModel" {
+  +void initState()
+  +void dispose()
+}
+
+"upcj_gather_app::flutter_flow::flutter_flow_model.dart::FlutterFlowModel" <|-- "upcj_gather_app::screens::admin::admin_notifications_screen::admin_notifications_screen_model.dart::AdminNotificationsScreenModel"
+
+class "upcj_gather_app::screens::admin::admin_notifications_screen::admin_notifications_screen_widget.dart::AdminNotificationsScreenWidget" {
+  +_AdminNotificationsScreenWidgetState createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "upcj_gather_app::screens::admin::admin_notifications_screen::admin_notifications_screen_widget.dart::AdminNotificationsScreenWidget"
+
+class "upcj_gather_app::screens::admin::admin_notifications_screen::admin_notifications_screen_widget.dart::_AdminNotificationsScreenWidgetState" {
+  -AdminNotificationsScreenModel _model
+  +GlobalKey<ScaffoldState> scaffoldKey
+  -FocusNode _unfocusNode
+  +void initState()
+  +void dispose()
+  +Widget build()
+}
+
+"upcj_gather_app::screens::admin::admin_notifications_screen::admin_notifications_screen_widget.dart::_AdminNotificationsScreenWidgetState" o-- "upcj_gather_app::screens::admin::admin_notifications_screen::admin_notifications_screen_model.dart::AdminNotificationsScreenModel"
+"upcj_gather_app::screens::admin::admin_notifications_screen::admin_notifications_screen_widget.dart::_AdminNotificationsScreenWidgetState" o-- "flutter::src::widgets::framework.dart::GlobalKey<ScaffoldState>"
+"upcj_gather_app::screens::admin::admin_notifications_screen::admin_notifications_screen_widget.dart::_AdminNotificationsScreenWidgetState" o-- "flutter::src::widgets::focus_manager.dart::FocusNode"
+"flutter::src::widgets::framework.dart::State" <|-- "upcj_gather_app::screens::admin::admin_notifications_screen::admin_notifications_screen_widget.dart::_AdminNotificationsScreenWidgetState"
+
+class "upcj_gather_app::screens::admin::admin_notification_creation_screen::admin_notification_creation_screen_model.dart::AdminNotificationCreationScreenModel" {
+  +GlobalKey<FormState> formKey
+  +TextEditingController? notificationTitleController
+  +String? Function(BuildContext, String?)? notificationTitleControllerValidator
+  +TextEditingController? notificationInfoFieldController
+  +String? Function(BuildContext, String?)? notificationInfoFieldControllerValidator
+  +bool isMediaUploading
+  +FFUploadedFile uploadedLocalFile
+  +String uploadedFileUrl
+  +void initState()
+  +void dispose()
+}
+
+"upcj_gather_app::screens::admin::admin_notification_creation_screen::admin_notification_creation_screen_model.dart::AdminNotificationCreationScreenModel" o-- "flutter::src::widgets::framework.dart::GlobalKey<FormState>"
+"upcj_gather_app::screens::admin::admin_notification_creation_screen::admin_notification_creation_screen_model.dart::AdminNotificationCreationScreenModel" o-- "flutter::src::widgets::editable_text.dart::TextEditingController"
+"upcj_gather_app::screens::admin::admin_notification_creation_screen::admin_notification_creation_screen_model.dart::AdminNotificationCreationScreenModel" o-- "null::String Function(BuildContext, String)"
+"upcj_gather_app::screens::admin::admin_notification_creation_screen::admin_notification_creation_screen_model.dart::AdminNotificationCreationScreenModel" o-- "upcj_gather_app::flutter_flow::uploaded_file.dart::FFUploadedFile"
+"upcj_gather_app::flutter_flow::flutter_flow_model.dart::FlutterFlowModel" <|-- "upcj_gather_app::screens::admin::admin_notification_creation_screen::admin_notification_creation_screen_model.dart::AdminNotificationCreationScreenModel"
+
+class "upcj_gather_app::screens::admin::admin_notification_creation_screen::admin_notification_creation_screen_widget.dart::AdminNotificationCreationScreenWidget" {
+  +_AdminNotificationCreationScreenWidgetState createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "upcj_gather_app::screens::admin::admin_notification_creation_screen::admin_notification_creation_screen_widget.dart::AdminNotificationCreationScreenWidget"
+
+class "upcj_gather_app::screens::admin::admin_notification_creation_screen::admin_notification_creation_screen_widget.dart::_AdminNotificationCreationScreenWidgetState" {
+  -AdminNotificationCreationScreenModel _model
+  +GlobalKey<ScaffoldState> scaffoldKey
+  -FocusNode _unfocusNode
+  +void initState()
+  +void dispose()
+  +Widget build()
+}
+
+"upcj_gather_app::screens::admin::admin_notification_creation_screen::admin_notification_creation_screen_widget.dart::_AdminNotificationCreationScreenWidgetState" o-- "upcj_gather_app::screens::admin::admin_notification_creation_screen::admin_notification_creation_screen_model.dart::AdminNotificationCreationScreenModel"
+"upcj_gather_app::screens::admin::admin_notification_creation_screen::admin_notification_creation_screen_widget.dart::_AdminNotificationCreationScreenWidgetState" o-- "flutter::src::widgets::framework.dart::GlobalKey<ScaffoldState>"
+"upcj_gather_app::screens::admin::admin_notification_creation_screen::admin_notification_creation_screen_widget.dart::_AdminNotificationCreationScreenWidgetState" o-- "flutter::src::widgets::focus_manager.dart::FocusNode"
+"flutter::src::widgets::framework.dart::State" <|-- "upcj_gather_app::screens::admin::admin_notification_creation_screen::admin_notification_creation_screen_widget.dart::_AdminNotificationCreationScreenWidgetState"
+
+class "upcj_gather_app::screens::admin::admin_notification_screen::admin_notification_screen_model.dart::AdminNotificationScreenModel" {
+  +void initState()
+  +void dispose()
+}
+
+"upcj_gather_app::flutter_flow::flutter_flow_model.dart::FlutterFlowModel" <|-- "upcj_gather_app::screens::admin::admin_notification_screen::admin_notification_screen_model.dart::AdminNotificationScreenModel"
+
+class "upcj_gather_app::screens::admin::admin_notification_screen::admin_notification_screen_widget.dart::AdminNotificationScreenWidget" {
+  +DocumentReference<Object?>? notificationInfo
+  +_AdminNotificationScreenWidgetState createState()
+}
+
+"upcj_gather_app::screens::admin::admin_notification_screen::admin_notification_screen_widget.dart::AdminNotificationScreenWidget" o-- "cloud_firestore::cloud_firestore.dart::DocumentReference<Object>"
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "upcj_gather_app::screens::admin::admin_notification_screen::admin_notification_screen_widget.dart::AdminNotificationScreenWidget"
+
+class "upcj_gather_app::screens::admin::admin_notification_screen::admin_notification_screen_widget.dart::_AdminNotificationScreenWidgetState" {
+  -AdminNotificationScreenModel _model
+  +GlobalKey<ScaffoldState> scaffoldKey
+  -FocusNode _unfocusNode
+  +void initState()
+  +void dispose()
+  +Widget build()
+}
+
+"upcj_gather_app::screens::admin::admin_notification_screen::admin_notification_screen_widget.dart::_AdminNotificationScreenWidgetState" o-- "upcj_gather_app::screens::admin::admin_notification_screen::admin_notification_screen_model.dart::AdminNotificationScreenModel"
+"upcj_gather_app::screens::admin::admin_notification_screen::admin_notification_screen_widget.dart::_AdminNotificationScreenWidgetState" o-- "flutter::src::widgets::framework.dart::GlobalKey<ScaffoldState>"
+"upcj_gather_app::screens::admin::admin_notification_screen::admin_notification_screen_widget.dart::_AdminNotificationScreenWidgetState" o-- "flutter::src::widgets::focus_manager.dart::FocusNode"
+"flutter::src::widgets::framework.dart::State" <|-- "upcj_gather_app::screens::admin::admin_notification_screen::admin_notification_screen_widget.dart::_AdminNotificationScreenWidgetState"
+
+class "upcj_gather_app::screens::admin::church_service_creation_screen::church_service_creation_screen_model.dart::ChurchServiceCreationScreenModel" {
+  +GlobalKey<FormState> formKey
+  +TextEditingController? churchServiceTitleController
+  +String? Function(BuildContext, String?)? churchServiceTitleControllerValidator
+  +DateTime? datePicked
+  +TextEditingController? serviceCapacityController
+  +String? Function(BuildContext, String?)? serviceCapacityControllerValidator
+  +void initState()
+  +void dispose()
+}
+
+"upcj_gather_app::screens::admin::church_service_creation_screen::church_service_creation_screen_model.dart::ChurchServiceCreationScreenModel" o-- "flutter::src::widgets::framework.dart::GlobalKey<FormState>"
+"upcj_gather_app::screens::admin::church_service_creation_screen::church_service_creation_screen_model.dart::ChurchServiceCreationScreenModel" o-- "flutter::src::widgets::editable_text.dart::TextEditingController"
+"upcj_gather_app::screens::admin::church_service_creation_screen::church_service_creation_screen_model.dart::ChurchServiceCreationScreenModel" o-- "null::String Function(BuildContext, String)"
+"upcj_gather_app::flutter_flow::flutter_flow_model.dart::FlutterFlowModel" <|-- "upcj_gather_app::screens::admin::church_service_creation_screen::church_service_creation_screen_model.dart::ChurchServiceCreationScreenModel"
+
+class "upcj_gather_app::screens::admin::church_service_creation_screen::church_service_creation_screen_widget.dart::ChurchServiceCreationScreenWidget" {
+  +_ChurchServiceCreationScreenWidgetState createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "upcj_gather_app::screens::admin::church_service_creation_screen::church_service_creation_screen_widget.dart::ChurchServiceCreationScreenWidget"
+
+class "upcj_gather_app::screens::admin::church_service_creation_screen::church_service_creation_screen_widget.dart::_ChurchServiceCreationScreenWidgetState" {
+  -ChurchServiceCreationScreenModel _model
+  +GlobalKey<ScaffoldState> scaffoldKey
+  -FocusNode _unfocusNode
+  +void initState()
+  +void dispose()
+  +Widget build()
+}
+
+"upcj_gather_app::screens::admin::church_service_creation_screen::church_service_creation_screen_widget.dart::_ChurchServiceCreationScreenWidgetState" o-- "upcj_gather_app::screens::admin::church_service_creation_screen::church_service_creation_screen_model.dart::ChurchServiceCreationScreenModel"
+"upcj_gather_app::screens::admin::church_service_creation_screen::church_service_creation_screen_widget.dart::_ChurchServiceCreationScreenWidgetState" o-- "flutter::src::widgets::framework.dart::GlobalKey<ScaffoldState>"
+"upcj_gather_app::screens::admin::church_service_creation_screen::church_service_creation_screen_widget.dart::_ChurchServiceCreationScreenWidgetState" o-- "flutter::src::widgets::focus_manager.dart::FocusNode"
+"flutter::src::widgets::framework.dart::State" <|-- "upcj_gather_app::screens::admin::church_service_creation_screen::church_service_creation_screen_widget.dart::_ChurchServiceCreationScreenWidgetState"
+
+class "upcj_gather_app::screens::auth_screens::get_started_screen::get_started_screen_model.dart::GetStartedScreenModel" {
+  +void initState()
+  +void dispose()
+}
+
+"upcj_gather_app::flutter_flow::flutter_flow_model.dart::FlutterFlowModel" <|-- "upcj_gather_app::screens::auth_screens::get_started_screen::get_started_screen_model.dart::GetStartedScreenModel"
+
+class "upcj_gather_app::screens::auth_screens::get_started_screen::get_started_screen_widget.dart::GetStartedScreenWidget" {
+  +_GetStartedScreenWidgetState createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "upcj_gather_app::screens::auth_screens::get_started_screen::get_started_screen_widget.dart::GetStartedScreenWidget"
+
+class "upcj_gather_app::screens::auth_screens::get_started_screen::get_started_screen_widget.dart::_GetStartedScreenWidgetState" {
+  -GetStartedScreenModel _model
+  +GlobalKey<ScaffoldState> scaffoldKey
+  +void initState()
+  +void dispose()
+  +Widget build()
+}
+
+"upcj_gather_app::screens::auth_screens::get_started_screen::get_started_screen_widget.dart::_GetStartedScreenWidgetState" o-- "upcj_gather_app::screens::auth_screens::get_started_screen::get_started_screen_model.dart::GetStartedScreenModel"
+"upcj_gather_app::screens::auth_screens::get_started_screen::get_started_screen_widget.dart::_GetStartedScreenWidgetState" o-- "flutter::src::widgets::framework.dart::GlobalKey<ScaffoldState>"
+"flutter::src::widgets::framework.dart::State" <|-- "upcj_gather_app::screens::auth_screens::get_started_screen::get_started_screen_widget.dart::_GetStartedScreenWidgetState"
+"flutter::src::widgets::ticker_provider.dart::TickerProviderStateMixin" <|-- "upcj_gather_app::screens::auth_screens::get_started_screen::get_started_screen_widget.dart::_GetStartedScreenWidgetState"
+
+class "upcj_gather_app::screens::auth_screens::login_screen::login_screen_model.dart::LoginScreenModel" {
+  +TextEditingController? emailAddressController
+  +String? Function(BuildContext, String?)? emailAddressControllerValidator
+  +TextEditingController? passwordController
+  +bool passwordVisibility
+  +String? Function(BuildContext, String?)? passwordControllerValidator
+  +GoogleSignInButtonModel googleSignInButtonModel
+  +void initState()
+  +void dispose()
+}
+
+"upcj_gather_app::screens::auth_screens::login_screen::login_screen_model.dart::LoginScreenModel" o-- "flutter::src::widgets::editable_text.dart::TextEditingController"
+"upcj_gather_app::screens::auth_screens::login_screen::login_screen_model.dart::LoginScreenModel" o-- "null::String Function(BuildContext, String)"
+"upcj_gather_app::screens::auth_screens::login_screen::login_screen_model.dart::LoginScreenModel" o-- "upcj_gather_app::component::google_sign_in_button::google_sign_in_button_model.dart::GoogleSignInButtonModel"
+"upcj_gather_app::flutter_flow::flutter_flow_model.dart::FlutterFlowModel" <|-- "upcj_gather_app::screens::auth_screens::login_screen::login_screen_model.dart::LoginScreenModel"
+
+class "upcj_gather_app::screens::auth_screens::login_screen::login_screen_widget.dart::LoginScreenWidget" {
+  +_LoginScreenWidgetState createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "upcj_gather_app::screens::auth_screens::login_screen::login_screen_widget.dart::LoginScreenWidget"
+
+class "upcj_gather_app::screens::auth_screens::login_screen::login_screen_widget.dart::_LoginScreenWidgetState" {
+  -LoginScreenModel _model
+  +GlobalKey<ScaffoldState> scaffoldKey
+  -FocusNode _unfocusNode
+  +void initState()
+  +void dispose()
+  +Widget build()
+}
+
+"upcj_gather_app::screens::auth_screens::login_screen::login_screen_widget.dart::_LoginScreenWidgetState" o-- "upcj_gather_app::screens::auth_screens::login_screen::login_screen_model.dart::LoginScreenModel"
+"upcj_gather_app::screens::auth_screens::login_screen::login_screen_widget.dart::_LoginScreenWidgetState" o-- "flutter::src::widgets::framework.dart::GlobalKey<ScaffoldState>"
+"upcj_gather_app::screens::auth_screens::login_screen::login_screen_widget.dart::_LoginScreenWidgetState" o-- "flutter::src::widgets::focus_manager.dart::FocusNode"
+"flutter::src::widgets::framework.dart::State" <|-- "upcj_gather_app::screens::auth_screens::login_screen::login_screen_widget.dart::_LoginScreenWidgetState"
+
+class "upcj_gather_app::screens::auth_screens::sign_up_screen::sign_up_screen_model.dart::SignUpScreenModel" {
+  +TextEditingController? firstNameController
+  +String? Function(BuildContext, String?)? firstNameControllerValidator
+  +TextEditingController? lastNameController
+  +String? Function(BuildContext, String?)? lastNameControllerValidator
+  +TextEditingController? phoneNumberController
+  +String? Function(BuildContext, String?)? phoneNumberControllerValidator
+  +TextEditingController? emailAddressController
+  +String? Function(BuildContext, String?)? emailAddressControllerValidator
+  +TextEditingController? passwordController
+  +bool passwordVisibility
+  +String? Function(BuildContext, String?)? passwordControllerValidator
+  +TextEditingController? passwordConfirmController
+  +bool passwordConfirmVisibility
+  +String? Function(BuildContext, String?)? passwordConfirmControllerValidator
+  +GoogleSignInButtonModel googleSignInButtonModel
+  +void initState()
+  +void dispose()
+}
+
+"upcj_gather_app::screens::auth_screens::sign_up_screen::sign_up_screen_model.dart::SignUpScreenModel" o-- "flutter::src::widgets::editable_text.dart::TextEditingController"
+"upcj_gather_app::screens::auth_screens::sign_up_screen::sign_up_screen_model.dart::SignUpScreenModel" o-- "null::String Function(BuildContext, String)"
+"upcj_gather_app::screens::auth_screens::sign_up_screen::sign_up_screen_model.dart::SignUpScreenModel" o-- "upcj_gather_app::component::google_sign_in_button::google_sign_in_button_model.dart::GoogleSignInButtonModel"
+"upcj_gather_app::flutter_flow::flutter_flow_model.dart::FlutterFlowModel" <|-- "upcj_gather_app::screens::auth_screens::sign_up_screen::sign_up_screen_model.dart::SignUpScreenModel"
+
+class "upcj_gather_app::screens::auth_screens::sign_up_screen::sign_up_screen_widget.dart::SignUpScreenWidget" {
+  +_SignUpScreenWidgetState createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "upcj_gather_app::screens::auth_screens::sign_up_screen::sign_up_screen_widget.dart::SignUpScreenWidget"
+
+class "upcj_gather_app::screens::auth_screens::sign_up_screen::sign_up_screen_widget.dart::_SignUpScreenWidgetState" {
+  -SignUpScreenModel _model
+  +GlobalKey<ScaffoldState> scaffoldKey
+  -FocusNode _unfocusNode
+  +void initState()
+  +void dispose()
+  +Widget build()
+}
+
+"upcj_gather_app::screens::auth_screens::sign_up_screen::sign_up_screen_widget.dart::_SignUpScreenWidgetState" o-- "upcj_gather_app::screens::auth_screens::sign_up_screen::sign_up_screen_model.dart::SignUpScreenModel"
+"upcj_gather_app::screens::auth_screens::sign_up_screen::sign_up_screen_widget.dart::_SignUpScreenWidgetState" o-- "flutter::src::widgets::framework.dart::GlobalKey<ScaffoldState>"
+"upcj_gather_app::screens::auth_screens::sign_up_screen::sign_up_screen_widget.dart::_SignUpScreenWidgetState" o-- "flutter::src::widgets::focus_manager.dart::FocusNode"
+"flutter::src::widgets::framework.dart::State" <|-- "upcj_gather_app::screens::auth_screens::sign_up_screen::sign_up_screen_widget.dart::_SignUpScreenWidgetState"
+
+class "upcj_gather_app::screens::auth_screens::splashscreen::splashscreen_model.dart::SplashscreenModel" {
+  +void initState()
+  +void dispose()
+}
+
+"upcj_gather_app::flutter_flow::flutter_flow_model.dart::FlutterFlowModel" <|-- "upcj_gather_app::screens::auth_screens::splashscreen::splashscreen_model.dart::SplashscreenModel"
+
+class "upcj_gather_app::screens::auth_screens::splashscreen::splashscreen_widget.dart::SplashscreenWidget" {
+  +_SplashscreenWidgetState createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "upcj_gather_app::screens::auth_screens::splashscreen::splashscreen_widget.dart::SplashscreenWidget"
+
+class "upcj_gather_app::screens::auth_screens::splashscreen::splashscreen_widget.dart::_SplashscreenWidgetState" {
+  -SplashscreenModel _model
+  +GlobalKey<ScaffoldState> scaffoldKey
+  +void initState()
+  +void dispose()
+  +Widget build()
+}
+
+"upcj_gather_app::screens::auth_screens::splashscreen::splashscreen_widget.dart::_SplashscreenWidgetState" o-- "upcj_gather_app::screens::auth_screens::splashscreen::splashscreen_model.dart::SplashscreenModel"
+"upcj_gather_app::screens::auth_screens::splashscreen::splashscreen_widget.dart::_SplashscreenWidgetState" o-- "flutter::src::widgets::framework.dart::GlobalKey<ScaffoldState>"
+"flutter::src::widgets::framework.dart::State" <|-- "upcj_gather_app::screens::auth_screens::splashscreen::splashscreen_widget.dart::_SplashscreenWidgetState"
+"flutter::src::widgets::ticker_provider.dart::TickerProviderStateMixin" <|-- "upcj_gather_app::screens::auth_screens::splashscreen::splashscreen_widget.dart::_SplashscreenWidgetState"
+
+class "upcj_gather_app::screens::member::covid_alert_screen::covid_alert_screen_model.dart::CovidAlertScreenModel" {
+  +void initState()
+  +void dispose()
+}
+
+"upcj_gather_app::flutter_flow::flutter_flow_model.dart::FlutterFlowModel" <|-- "upcj_gather_app::screens::member::covid_alert_screen::covid_alert_screen_model.dart::CovidAlertScreenModel"
+
+class "upcj_gather_app::screens::member::covid_alert_screen::covid_alert_screen_widget.dart::CovidAlertScreenWidget" {
+  +_CovidAlertScreenWidgetState createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "upcj_gather_app::screens::member::covid_alert_screen::covid_alert_screen_widget.dart::CovidAlertScreenWidget"
+
+class "upcj_gather_app::screens::member::covid_alert_screen::covid_alert_screen_widget.dart::_CovidAlertScreenWidgetState" {
+  -CovidAlertScreenModel _model
+  +GlobalKey<ScaffoldState> scaffoldKey
+  -FocusNode _unfocusNode
+  +void initState()
+  +void dispose()
+  +Widget build()
+}
+
+"upcj_gather_app::screens::member::covid_alert_screen::covid_alert_screen_widget.dart::_CovidAlertScreenWidgetState" o-- "upcj_gather_app::screens::member::covid_alert_screen::covid_alert_screen_model.dart::CovidAlertScreenModel"
+"upcj_gather_app::screens::member::covid_alert_screen::covid_alert_screen_widget.dart::_CovidAlertScreenWidgetState" o-- "flutter::src::widgets::framework.dart::GlobalKey<ScaffoldState>"
+"upcj_gather_app::screens::member::covid_alert_screen::covid_alert_screen_widget.dart::_CovidAlertScreenWidgetState" o-- "flutter::src::widgets::focus_manager.dart::FocusNode"
+"flutter::src::widgets::framework.dart::State" <|-- "upcj_gather_app::screens::member::covid_alert_screen::covid_alert_screen_widget.dart::_CovidAlertScreenWidgetState"
+
+class "upcj_gather_app::screens::member::member_church_service_details_screen::member_church_service_details_screen_model.dart::MemberChurchServiceDetailsScreenModel" {
+  +void initState()
+  +void dispose()
+}
+
+"upcj_gather_app::flutter_flow::flutter_flow_model.dart::FlutterFlowModel" <|-- "upcj_gather_app::screens::member::member_church_service_details_screen::member_church_service_details_screen_model.dart::MemberChurchServiceDetailsScreenModel"
+
+class "upcj_gather_app::screens::member::member_church_service_details_screen::member_church_service_details_screen_widget.dart::MemberChurchServiceDetailsScreenWidget" {
+  +DocumentReference<Object?>? churchServiceInfo
+  +_MemberChurchServiceDetailsScreenWidgetState createState()
+}
+
+"upcj_gather_app::screens::member::member_church_service_details_screen::member_church_service_details_screen_widget.dart::MemberChurchServiceDetailsScreenWidget" o-- "cloud_firestore::cloud_firestore.dart::DocumentReference<Object>"
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "upcj_gather_app::screens::member::member_church_service_details_screen::member_church_service_details_screen_widget.dart::MemberChurchServiceDetailsScreenWidget"
+
+class "upcj_gather_app::screens::member::member_church_service_details_screen::member_church_service_details_screen_widget.dart::_MemberChurchServiceDetailsScreenWidgetState" {
+  -MemberChurchServiceDetailsScreenModel _model
+  +GlobalKey<ScaffoldState> scaffoldKey
+  +void initState()
+  +void dispose()
+  +Widget build()
+}
+
+"upcj_gather_app::screens::member::member_church_service_details_screen::member_church_service_details_screen_widget.dart::_MemberChurchServiceDetailsScreenWidgetState" o-- "upcj_gather_app::screens::member::member_church_service_details_screen::member_church_service_details_screen_model.dart::MemberChurchServiceDetailsScreenModel"
+"upcj_gather_app::screens::member::member_church_service_details_screen::member_church_service_details_screen_widget.dart::_MemberChurchServiceDetailsScreenWidgetState" o-- "flutter::src::widgets::framework.dart::GlobalKey<ScaffoldState>"
+"flutter::src::widgets::framework.dart::State" <|-- "upcj_gather_app::screens::member::member_church_service_details_screen::member_church_service_details_screen_widget.dart::_MemberChurchServiceDetailsScreenWidgetState"
+"flutter::src::widgets::ticker_provider.dart::TickerProviderStateMixin" <|-- "upcj_gather_app::screens::member::member_church_service_details_screen::member_church_service_details_screen_widget.dart::_MemberChurchServiceDetailsScreenWidgetState"
+
+class "upcj_gather_app::screens::member::member_church_service_main_screen::member_church_service_main_screen_model.dart::MemberChurchServiceMainScreenModel" {
+  +void initState()
+  +void dispose()
+}
+
+"upcj_gather_app::flutter_flow::flutter_flow_model.dart::FlutterFlowModel" <|-- "upcj_gather_app::screens::member::member_church_service_main_screen::member_church_service_main_screen_model.dart::MemberChurchServiceMainScreenModel"
+
+class "upcj_gather_app::screens::member::member_church_service_main_screen::member_church_service_main_screen_widget.dart::MemberChurchServiceMainScreenWidget" {
+  +_MemberChurchServiceMainScreenWidgetState createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "upcj_gather_app::screens::member::member_church_service_main_screen::member_church_service_main_screen_widget.dart::MemberChurchServiceMainScreenWidget"
+
+class "upcj_gather_app::screens::member::member_church_service_main_screen::member_church_service_main_screen_widget.dart::_MemberChurchServiceMainScreenWidgetState" {
+  -MemberChurchServiceMainScreenModel _model
+  +GlobalKey<ScaffoldState> scaffoldKey
+  -FocusNode _unfocusNode
+  +void initState()
+  +void dispose()
+  +Widget build()
+}
+
+"upcj_gather_app::screens::member::member_church_service_main_screen::member_church_service_main_screen_widget.dart::_MemberChurchServiceMainScreenWidgetState" o-- "upcj_gather_app::screens::member::member_church_service_main_screen::member_church_service_main_screen_model.dart::MemberChurchServiceMainScreenModel"
+"upcj_gather_app::screens::member::member_church_service_main_screen::member_church_service_main_screen_widget.dart::_MemberChurchServiceMainScreenWidgetState" o-- "flutter::src::widgets::framework.dart::GlobalKey<ScaffoldState>"
+"upcj_gather_app::screens::member::member_church_service_main_screen::member_church_service_main_screen_widget.dart::_MemberChurchServiceMainScreenWidgetState" o-- "flutter::src::widgets::focus_manager.dart::FocusNode"
+"flutter::src::widgets::framework.dart::State" <|-- "upcj_gather_app::screens::member::member_church_service_main_screen::member_church_service_main_screen_widget.dart::_MemberChurchServiceMainScreenWidgetState"
+
+class "upcj_gather_app::screens::member::member_home_screen::member_home_screen_model.dart::MemberHomeScreenModel" {
+  +void initState()
+  +void dispose()
+}
+
+"upcj_gather_app::flutter_flow::flutter_flow_model.dart::FlutterFlowModel" <|-- "upcj_gather_app::screens::member::member_home_screen::member_home_screen_model.dart::MemberHomeScreenModel"
+
+class "upcj_gather_app::screens::member::member_home_screen::member_home_screen_widget.dart::MemberHomeScreenWidget" {
+  +_MemberHomeScreenWidgetState createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "upcj_gather_app::screens::member::member_home_screen::member_home_screen_widget.dart::MemberHomeScreenWidget"
+
+class "upcj_gather_app::screens::member::member_home_screen::member_home_screen_widget.dart::_MemberHomeScreenWidgetState" {
+  -MemberHomeScreenModel _model
+  +GlobalKey<ScaffoldState> scaffoldKey
+  -FocusNode _unfocusNode
+  +void initState()
+  +void dispose()
+  +Widget build()
+}
+
+"upcj_gather_app::screens::member::member_home_screen::member_home_screen_widget.dart::_MemberHomeScreenWidgetState" o-- "upcj_gather_app::screens::member::member_home_screen::member_home_screen_model.dart::MemberHomeScreenModel"
+"upcj_gather_app::screens::member::member_home_screen::member_home_screen_widget.dart::_MemberHomeScreenWidgetState" o-- "flutter::src::widgets::framework.dart::GlobalKey<ScaffoldState>"
+"upcj_gather_app::screens::member::member_home_screen::member_home_screen_widget.dart::_MemberHomeScreenWidgetState" o-- "flutter::src::widgets::focus_manager.dart::FocusNode"
+"flutter::src::widgets::framework.dart::State" <|-- "upcj_gather_app::screens::member::member_home_screen::member_home_screen_widget.dart::_MemberHomeScreenWidgetState"
+
+class "upcj_gather_app::screens::member::member_notifications_screen::member_notifications_screen_model.dart::MemberNotificationsScreenModel" {
+  +void initState()
+  +void dispose()
+}
+
+"upcj_gather_app::flutter_flow::flutter_flow_model.dart::FlutterFlowModel" <|-- "upcj_gather_app::screens::member::member_notifications_screen::member_notifications_screen_model.dart::MemberNotificationsScreenModel"
+
+class "upcj_gather_app::screens::member::member_notifications_screen::member_notifications_screen_widget.dart::MemberNotificationsScreenWidget" {
+  +_MemberNotificationsScreenWidgetState createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "upcj_gather_app::screens::member::member_notifications_screen::member_notifications_screen_widget.dart::MemberNotificationsScreenWidget"
+
+class "upcj_gather_app::screens::member::member_notifications_screen::member_notifications_screen_widget.dart::_MemberNotificationsScreenWidgetState" {
+  -MemberNotificationsScreenModel _model
+  +GlobalKey<ScaffoldState> scaffoldKey
+  -FocusNode _unfocusNode
+  +void initState()
+  +void dispose()
+  +Widget build()
+}
+
+"upcj_gather_app::screens::member::member_notifications_screen::member_notifications_screen_widget.dart::_MemberNotificationsScreenWidgetState" o-- "upcj_gather_app::screens::member::member_notifications_screen::member_notifications_screen_model.dart::MemberNotificationsScreenModel"
+"upcj_gather_app::screens::member::member_notifications_screen::member_notifications_screen_widget.dart::_MemberNotificationsScreenWidgetState" o-- "flutter::src::widgets::framework.dart::GlobalKey<ScaffoldState>"
+"upcj_gather_app::screens::member::member_notifications_screen::member_notifications_screen_widget.dart::_MemberNotificationsScreenWidgetState" o-- "flutter::src::widgets::focus_manager.dart::FocusNode"
+"flutter::src::widgets::framework.dart::State" <|-- "upcj_gather_app::screens::member::member_notifications_screen::member_notifications_screen_widget.dart::_MemberNotificationsScreenWidgetState"
+
+class "upcj_gather_app::screens::member::member_profile_screen::member_profile_screen_model.dart::MemberProfileScreenModel" {
+  +GlobalKey<FormState> formKey
+  +bool isMediaUploading
+  +FFUploadedFile uploadedLocalFile
+  +String uploadedFileUrl
+  +TextEditingController? phoneNumberUpdateTextFieldController
+  +String? Function(BuildContext, String?)? phoneNumberUpdateTextFieldControllerValidator
+  +TextEditingController? emailUpdateTextFieldController
+  +String? Function(BuildContext, String?)? emailUpdateTextFieldControllerValidator
+  +TextEditingController? addressUpdateTextFieldController
+  +String? Function(BuildContext, String?)? addressUpdateTextFieldControllerValidator
+  +void initState()
+  +void dispose()
+}
+
+"upcj_gather_app::screens::member::member_profile_screen::member_profile_screen_model.dart::MemberProfileScreenModel" o-- "flutter::src::widgets::framework.dart::GlobalKey<FormState>"
+"upcj_gather_app::screens::member::member_profile_screen::member_profile_screen_model.dart::MemberProfileScreenModel" o-- "upcj_gather_app::flutter_flow::uploaded_file.dart::FFUploadedFile"
+"upcj_gather_app::screens::member::member_profile_screen::member_profile_screen_model.dart::MemberProfileScreenModel" o-- "flutter::src::widgets::editable_text.dart::TextEditingController"
+"upcj_gather_app::screens::member::member_profile_screen::member_profile_screen_model.dart::MemberProfileScreenModel" o-- "null::String Function(BuildContext, String)"
+"upcj_gather_app::flutter_flow::flutter_flow_model.dart::FlutterFlowModel" <|-- "upcj_gather_app::screens::member::member_profile_screen::member_profile_screen_model.dart::MemberProfileScreenModel"
+
+class "upcj_gather_app::screens::member::member_profile_screen::member_profile_screen_widget.dart::MemberProfileScreenWidget" {
+  +DocumentReference<Object?>? memberInfo
+  +_MemberProfileScreenWidgetState createState()
+}
+
+"upcj_gather_app::screens::member::member_profile_screen::member_profile_screen_widget.dart::MemberProfileScreenWidget" o-- "cloud_firestore::cloud_firestore.dart::DocumentReference<Object>"
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "upcj_gather_app::screens::member::member_profile_screen::member_profile_screen_widget.dart::MemberProfileScreenWidget"
+
+class "upcj_gather_app::screens::member::member_profile_screen::member_profile_screen_widget.dart::_MemberProfileScreenWidgetState" {
+  -MemberProfileScreenModel _model
+  +GlobalKey<ScaffoldState> scaffoldKey
+  -FocusNode _unfocusNode
+  +void initState()
+  +void dispose()
+  +Widget build()
+}
+
+"upcj_gather_app::screens::member::member_profile_screen::member_profile_screen_widget.dart::_MemberProfileScreenWidgetState" o-- "upcj_gather_app::screens::member::member_profile_screen::member_profile_screen_model.dart::MemberProfileScreenModel"
+"upcj_gather_app::screens::member::member_profile_screen::member_profile_screen_widget.dart::_MemberProfileScreenWidgetState" o-- "flutter::src::widgets::framework.dart::GlobalKey<ScaffoldState>"
+"upcj_gather_app::screens::member::member_profile_screen::member_profile_screen_widget.dart::_MemberProfileScreenWidgetState" o-- "flutter::src::widgets::focus_manager.dart::FocusNode"
+"flutter::src::widgets::framework.dart::State" <|-- "upcj_gather_app::screens::member::member_profile_screen::member_profile_screen_widget.dart::_MemberProfileScreenWidgetState"
+
+
+@enduml
