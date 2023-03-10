@@ -28,6 +28,6 @@ For projects with Firestore integration, you must first run the following comman
 flutter pub get
 flutter packages pub run build_runner build --delete-conflicting-outputs
 ```
-
+APK is also attached which can be installed on an emulator to view.
 
 
