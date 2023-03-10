@@ -1,13 +1,13 @@
 // Export pages
-export '/screens/auth_screens/sign_up_screen/sign_up_screen_widget.dart'
+export '/screens/sign_up_screen/sign_up_screen_widget.dart'
     show SignUpScreenWidget;
-export '/screens/auth_screens/login_screen/login_screen_widget.dart'
+export '/screens/login_screen/login_screen_widget.dart'
     show LoginScreenWidget;
 export '/screens/admin/admin_home_screen/admin_home_screen_widget.dart'
     show AdminHomeScreenWidget;
 export '/screens/member/member_home_screen/member_home_screen_widget.dart'
     show MemberHomeScreenWidget;
-export '/screens/auth_screens/splashscreen/splashscreen_widget.dart'
+export 'screens/splashscreen/splashscreen_widget.dart'
     show SplashscreenWidget;
 export '/screens/admin/church_service_creation_screen/church_service_creation_screen_widget.dart'
     show ChurchServiceCreationScreenWidget;
@@ -17,7 +17,7 @@ export '/screens/member/member_profile_screen/member_profile_screen_widget.dart'
     show MemberProfileScreenWidget;
 export '/screens/admin/admin_member_profile_screen/admin_member_profile_screen_widget.dart'
     show AdminMemberProfileScreenWidget;
-export '/screens/auth_screens/get_started_screen/get_started_screen_widget.dart'
+export '/screens/get_started_screen/get_started_screen_widget.dart'
     show GetStartedScreenWidget;
 export '/screens/admin/admin_church_service_main_screen/admin_church_service_main_screen_widget.dart'
     show AdminChurchServiceMainScreenWidget;
