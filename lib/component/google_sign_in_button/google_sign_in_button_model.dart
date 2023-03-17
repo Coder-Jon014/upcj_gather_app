@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '/flutter_flow/flutter_flow_util.dart';
 
-class MemberChurchServiceDetailsScreenModel extends FlutterFlowModel {
+class GoogleSignInButtonModel extends FlutterFlowModel {
   /// Initialization and disposal methods.
 
   void initState(BuildContext context) {}

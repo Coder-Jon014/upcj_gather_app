@@ -1,23 +1,21 @@
-import 'package:built_value/serializer.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+
 import '../auth/auth_util.dart';
-
 import '../flutter_flow/flutter_flow_util.dart';
-
-import 'schema/users_record.dart';
 import 'schema/church_service_record.dart';
 import 'schema/notifications_record.dart';
 import 'schema/serializers.dart';
+import 'schema/users_record.dart';
 
 export 'dart:async' show StreamSubscription;
-export 'package:cloud_firestore/cloud_firestore.dart';
-export 'schema/index.dart';
-export 'schema/serializers.dart';
 
-export 'schema/users_record.dart';
+export 'package:cloud_firestore/cloud_firestore.dart';
+
 export 'schema/church_service_record.dart';
+export 'schema/index.dart';
 export 'schema/notifications_record.dart';
+export 'schema/serializers.dart';
+export 'schema/users_record.dart';
 
 /// Functions to query UsersRecords (as a Stream and as a Future).
 Future<int> queryUsersRecordCount({

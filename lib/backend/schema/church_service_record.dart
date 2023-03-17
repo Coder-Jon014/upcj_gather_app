@@ -1,8 +1,8 @@
 import 'dart:async';
 
-import 'index.dart';
-import 'serializers.dart';
 import 'package:built_value/built_value.dart';
+
+import 'serializers.dart';
 
 part 'church_service_record.g.dart';
 

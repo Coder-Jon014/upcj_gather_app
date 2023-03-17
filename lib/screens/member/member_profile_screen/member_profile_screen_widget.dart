@@ -1,4 +1,7 @@
-import '/auth/auth_util.dart';
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+
 import '/backend/backend.dart';
 import '/backend/firebase_storage/storage.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
@@ -6,12 +9,8 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/upload_media.dart';
-import 'package:cached_network_image/cached_network_image.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'member_profile_screen_model.dart';
+
 export 'member_profile_screen_model.dart';
 
 class MemberProfileScreenWidget extends StatefulWidget {
@@ -330,8 +329,7 @@ class _MemberProfileScreenWidgetState extends State<MemberProfileScreenWidget> {
                                   children: [
                                     Form(
                                       key: _model.formKey,
-                                      autovalidateMode:
-                                          AutovalidateMode.disabled,
+                                      autovalidateMode: AutovalidateMode.always,
                                       child: Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             0.0, 10.0, 0.0, 10.0),
@@ -717,6 +715,21 @@ class _MemberProfileScreenWidgetState extends State<MemberProfileScreenWidget> {
                                 _model.addressUpdateTextFieldController.text,
                           );
                           await widget.memberInfo!.update(usersUpdateData);
+                          await showDialog(
+                            context: context,
+                            builder: (alertDialogContext) {
+                              return AlertDialog(
+                                content: Text('Update Successful'),
+                                actions: [
+                                  TextButton(
+                                    onPressed: () =>
+                                        Navigator.pop(alertDialogContext),
+                                    child: Text('Great!'),
+                                  ),
+                                ],
+                              );
+                            },
+                          );
                         },
                         text: 'Update',
                         options: FFButtonOptions(

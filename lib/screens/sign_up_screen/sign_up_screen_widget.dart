@@ -1,14 +1,15 @@
+import 'package:auto_size_text/auto_size_text.dart';
+import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+
 import '/auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/component/google_sign_in_button/google_sign_in_button_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import 'package:auto_size_text/auto_size_text.dart';
-import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'sign_up_screen_model.dart';
+
 export 'sign_up_screen_model.dart';
 
 class SignUpScreenWidget extends StatefulWidget {
@@ -736,6 +737,8 @@ class _SignUpScreenWidgetState extends State<SignUpScreenWidget> {
                                             _model.phoneNumberController.text,
                                         phoneNumber:
                                             _model.phoneNumberController.text,
+                                        adminStatus: false,
+                                        infectedStatus: false,
                                       );
                                       await UsersRecord.collection
                                           .doc(user.uid)

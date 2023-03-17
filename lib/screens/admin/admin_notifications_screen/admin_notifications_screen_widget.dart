@@ -1,12 +1,13 @@
+import 'package:badges/badges.dart' as badges;
+import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import 'package:badges/badges.dart' as badges;
-import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'admin_notifications_screen_model.dart';
+
 export 'admin_notifications_screen_model.dart';
 
 class AdminNotificationsScreenWidget extends StatefulWidget {

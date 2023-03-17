@@ -354,7 +354,8 @@ class _LoginScreenWidgetState extends State<LoginScreenWidget> {
                                 return;
                               }
 
-                              context.pushNamedAuth('LoginScreen', mounted);
+                              context.pushNamedAuth(
+                                  'GetStartedScreen', mounted);
                             },
                             child: wrapWithModel(
                               model: _model.googleSignInButtonModel,
