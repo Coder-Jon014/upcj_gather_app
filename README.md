@@ -6,15 +6,21 @@ The app has the following features:
 For ADMINS:
 
 Create and Update Services
+
 Send and Recieve Notifcations
+
 View Infected Members and Services
+
 View all members
 
 For MEMBERS:
 
 Send Covid Alert
+
 View Notifications
+
 View and Register for Services
+
 Managing contact information
 
 It was made with the help of FlutterFlow.
