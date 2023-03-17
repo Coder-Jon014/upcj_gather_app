@@ -3,7 +3,7 @@
 
 The app has the following features:
 
-For ADMINS:
+# For ADMINS:
 
 -Create and Update Services
 
@@ -13,7 +13,7 @@ For ADMINS:
 
 -View all members
 
-For MEMBERS:
+# For MEMBERS:
 
 -Send Covid Alert
 
