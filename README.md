@@ -1,8 +1,23 @@
 # UPCJ GATHER APP
 
-A new Flutter project.
 
-## Getting Started
+The app has the following features:
+
+For ADMINS:
+
+Create and Update Services
+Send and Recieve Notifcations
+View Infected Members and Services
+View all members
+
+For MEMBERS:
+
+Send Covid Alert
+View Notifications
+View and Register for Services
+Managing contact information
+
+It was made with the help of FlutterFlow.
 
 FlutterFlow projects are built to run on the Flutter _stable_ release.
 
@@ -15,17 +30,5 @@ flutter pub get
 flutter packages pub run build_runner build --delete-conflicting-outputs
 ```
 
-This command creates the generated files that parse each Record from Firestore into a schema object.
 
-### Getting started continued:
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
