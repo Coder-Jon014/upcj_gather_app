@@ -734,7 +734,7 @@ class _SignUpScreenWidgetState extends State<SignUpScreenWidget> {
                                         firstName:
                                             _model.firstNameController.text,
                                         lastName:
-                                            _model.phoneNumberController.text,
+                                            _model.lastNameController.text,
                                         phoneNumber:
                                             _model.phoneNumberController.text,
                                         adminStatus: false,
