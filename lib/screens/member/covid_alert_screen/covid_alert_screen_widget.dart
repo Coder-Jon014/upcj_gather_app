@@ -39,47 +39,47 @@ class _CovidAlertScreenWidgetState extends State<CovidAlertScreenWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      key: scaffoldKey,
-      backgroundColor: Colors.white,
-      appBar: AppBar(
+    return GestureDetector(
+      onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
+      child: Scaffold(
+        key: scaffoldKey,
         backgroundColor: Colors.white,
-        automaticallyImplyLeading: false,
-        title: Text(
-          'Send Covid Alert',
-          style: FlutterFlowTheme.of(context).title2.override(
-                fontFamily: 'Outfit',
-                color: Color(0xFF14181B),
-                fontSize: 28.0,
-                fontWeight: FontWeight.normal,
-                useGoogleFonts: GoogleFonts.asMap()
-                    .containsKey(FlutterFlowTheme.of(context).title2Family),
-              ),
-        ),
-        actions: [
-          Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 12.0, 0.0),
-            child: FlutterFlowIconButton(
-              borderColor: Colors.transparent,
-              borderRadius: 30.0,
-              buttonSize: 48.0,
-              icon: Icon(
-                Icons.close_rounded,
-                color: Color(0xFF57636C),
-                size: 30.0,
-              ),
-              onPressed: () async {
-                context.pop();
-              },
-            ),
+        appBar: AppBar(
+          backgroundColor: Colors.white,
+          automaticallyImplyLeading: false,
+          title: Text(
+            'Send Covid Alert',
+            style: FlutterFlowTheme.of(context).headlineMedium.override(
+                  fontFamily: 'Outfit',
+                  color: Color(0xFF14181B),
+                  fontSize: 28.0,
+                  fontWeight: FontWeight.normal,
+                  useGoogleFonts: GoogleFonts.asMap().containsKey(
+                      FlutterFlowTheme.of(context).headlineMediumFamily),
+                ),
           ),
-        ],
-        centerTitle: false,
-        elevation: 0.0,
-      ),
-      body: SafeArea(
-        child: GestureDetector(
-          onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
+          actions: [
+            Padding(
+              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 12.0, 0.0),
+              child: FlutterFlowIconButton(
+                borderColor: Colors.transparent,
+                borderRadius: 30.0,
+                buttonSize: 48.0,
+                icon: Icon(
+                  Icons.close_rounded,
+                  color: Color(0xFF57636C),
+                  size: 30.0,
+                ),
+                onPressed: () async {
+                  context.pop();
+                },
+              ),
+            ),
+          ],
+          centerTitle: false,
+          elevation: 0.0,
+        ),
+        body: SafeArea(
           child: Container(
             width: 410.0,
             height: 834.4,
@@ -98,12 +98,13 @@ class _CovidAlertScreenWidgetState extends State<CovidAlertScreenWidget> {
                       child: Text(
                         'If you have tested postive for Covid and would like to notify your fellow church leaders please select the most recent church service you attended and the tap it.',
                         textAlign: TextAlign.center,
-                        style: FlutterFlowTheme.of(context).bodyText1.override(
+                        style: FlutterFlowTheme.of(context).bodyMedium.override(
                               fontFamily:
-                                  FlutterFlowTheme.of(context).bodyText1Family,
+                                  FlutterFlowTheme.of(context).bodyMediumFamily,
                               fontWeight: FontWeight.w600,
                               useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                  FlutterFlowTheme.of(context).bodyText1Family),
+                                  FlutterFlowTheme.of(context)
+                                      .bodyMediumFamily),
                               lineHeight: 2.0,
                             ),
                       ),
@@ -125,8 +126,7 @@ class _CovidAlertScreenWidgetState extends State<CovidAlertScreenWidget> {
                                 width: 50.0,
                                 height: 50.0,
                                 child: CircularProgressIndicator(
-                                  color:
-                                      FlutterFlowTheme.of(context).primaryColor,
+                                  color: FlutterFlowTheme.of(context).primary,
                                 ),
                               ),
                             );
@@ -179,7 +179,7 @@ class _CovidAlertScreenWidgetState extends State<CovidAlertScreenWidget> {
                                                       .title!,
                                                   style: FlutterFlowTheme.of(
                                                           context)
-                                                      .subtitle1
+                                                      .titleMedium
                                                       .override(
                                                         fontFamily: 'Outfit',
                                                         color:
@@ -192,7 +192,7 @@ class _CovidAlertScreenWidgetState extends State<CovidAlertScreenWidget> {
                                                             .containsKey(
                                                                 FlutterFlowTheme.of(
                                                                         context)
-                                                                    .subtitle1Family),
+                                                                    .titleMediumFamily),
                                                       ),
                                                 ),
                                                 Row(
@@ -203,13 +203,13 @@ class _CovidAlertScreenWidgetState extends State<CovidAlertScreenWidget> {
                                                   children: [
                                                     Text(
                                                       dateTimeFormat(
-                                                          'M/d H:mm',
+                                                          'MMMEd',
                                                           listViewChurchServiceRecord
                                                               .serviceDate!),
                                                       style:
                                                           FlutterFlowTheme.of(
                                                                   context)
-                                                              .bodyText2,
+                                                              .bodySmall,
                                                     ),
                                                   ],
                                                 ),
@@ -222,7 +222,7 @@ class _CovidAlertScreenWidgetState extends State<CovidAlertScreenWidget> {
                                                       style:
                                                           FlutterFlowTheme.of(
                                                                   context)
-                                                              .bodyText2,
+                                                              .bodySmall,
                                                     ),
                                                     Text(
                                                       () {
@@ -239,7 +239,7 @@ class _CovidAlertScreenWidgetState extends State<CovidAlertScreenWidget> {
                                                       style:
                                                           FlutterFlowTheme.of(
                                                                   context)
-                                                              .bodyText2,
+                                                              .bodySmall,
                                                     ),
                                                   ],
                                                 ),
@@ -270,40 +270,82 @@ class _CovidAlertScreenWidgetState extends State<CovidAlertScreenWidget> {
                                               );
                                               return;
                                             } else {
-                                              final churchServiceUpdateData =
-                                                  createChurchServiceRecordData(
-                                                infectedStatus: true,
-                                              );
-                                              await listViewChurchServiceRecord
-                                                  .reference
-                                                  .update(
-                                                      churchServiceUpdateData);
+                                              if (listViewChurchServiceRecord
+                                                  .membersAttending!
+                                                  .toList()
+                                                  .contains(
+                                                      currentUserDisplayName)) {
+                                                final churchServiceUpdateData =
+                                                    createChurchServiceRecordData(
+                                                  infectedStatus: true,
+                                                );
+                                                await listViewChurchServiceRecord
+                                                    .reference
+                                                    .update(
+                                                        churchServiceUpdateData);
 
-                                              final usersUpdateData =
-                                                  createUsersRecordData(
-                                                infectedStatus: true,
-                                              );
-                                              await currentUserReference!
-                                                  .update(usersUpdateData);
-                                              await showDialog(
-                                                context: context,
-                                                builder: (alertDialogContext) {
-                                                  return AlertDialog(
-                                                    content: Text(
-                                                        'Successfully sent alert'),
-                                                    actions: [
-                                                      TextButton(
-                                                        onPressed: () =>
-                                                            Navigator.pop(
-                                                                alertDialogContext),
-                                                        child: Text('Ok'),
-                                                      ),
-                                                    ],
-                                                  );
-                                                },
-                                              );
-                                              context.pop();
-                                              return;
+                                                final usersUpdateData =
+                                                    createUsersRecordData(
+                                                  infectedStatus: true,
+                                                );
+                                                await currentUserReference!
+                                                    .update(usersUpdateData);
+                                                await showDialog(
+                                                  context: context,
+                                                  builder:
+                                                      (alertDialogContext) {
+                                                    return AlertDialog(
+                                                      content: Text(
+                                                          'Successfully sent alert'),
+                                                      actions: [
+                                                        TextButton(
+                                                          onPressed: () =>
+                                                              Navigator.pop(
+                                                                  alertDialogContext),
+                                                          child: Text('Ok'),
+                                                        ),
+                                                      ],
+                                                    );
+                                                  },
+                                                );
+
+                                                final notificationsCreateData =
+                                                    createNotificationsRecordData(
+                                                  notificationInfo:
+                                                      'Covid Alert!! For members who attended the service on ${dateTimeFormat('MMMMEEEEd', listViewChurchServiceRecord.serviceDate)}, please ensure to take steps to get tested for the virus. Thank you.',
+                                                  createdDate:
+                                                      getCurrentTimestamp,
+                                                  notificationTitle:
+                                                      'Covid Alert!!',
+                                                );
+                                                await NotificationsRecord
+                                                    .collection
+                                                    .doc()
+                                                    .set(
+                                                        notificationsCreateData);
+                                                context.pop();
+                                                return;
+                                              } else {
+                                                await showDialog(
+                                                  context: context,
+                                                  builder:
+                                                      (alertDialogContext) {
+                                                    return AlertDialog(
+                                                      content: Text(
+                                                          'Sorry, you did not register for this church service before. Hence you\'re unable to send an alert for it.'),
+                                                      actions: [
+                                                        TextButton(
+                                                          onPressed: () =>
+                                                              Navigator.pop(
+                                                                  alertDialogContext),
+                                                          child: Text('Ok'),
+                                                        ),
+                                                      ],
+                                                    );
+                                                  },
+                                                );
+                                                return;
+                                              }
                                             }
                                           },
                                           child: Container(

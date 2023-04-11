@@ -8,7 +8,7 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/flutter_flow/upload_media.dart';
+import '/flutter_flow/upload_data.dart';
 import 'admin_member_profile_screen_model.dart';
 
 export 'admin_member_profile_screen_model.dart';
@@ -63,50 +63,50 @@ class _AdminMemberProfileScreenWidgetState
               width: 50.0,
               height: 50.0,
               child: CircularProgressIndicator(
-                color: FlutterFlowTheme.of(context).primaryColor,
+                color: FlutterFlowTheme.of(context).primary,
               ),
             ),
           );
         }
         final adminMemberProfileScreenUsersRecord = snapshot.data!;
-        return Scaffold(
-          key: scaffoldKey,
-          backgroundColor: Color(0xFFF1F4F8),
-          appBar: AppBar(
+        return GestureDetector(
+          onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
+          child: Scaffold(
+            key: scaffoldKey,
             backgroundColor: Color(0xFFF1F4F8),
-            automaticallyImplyLeading: false,
-            leading: FlutterFlowIconButton(
-              borderColor: Colors.transparent,
-              borderRadius: 30.0,
-              borderWidth: 1.0,
-              buttonSize: 54.0,
-              icon: Icon(
-                Icons.arrow_back_rounded,
-                color: Color(0xFF57636C),
-                size: 24.0,
+            appBar: AppBar(
+              backgroundColor: Color(0xFFF1F4F8),
+              automaticallyImplyLeading: false,
+              leading: FlutterFlowIconButton(
+                borderColor: Colors.transparent,
+                borderRadius: 30.0,
+                borderWidth: 1.0,
+                buttonSize: 54.0,
+                icon: Icon(
+                  Icons.arrow_back_rounded,
+                  color: Color(0xFF57636C),
+                  size: 24.0,
+                ),
+                onPressed: () async {
+                  context.pop();
+                },
               ),
-              onPressed: () async {
-                context.pop();
-              },
+              title: Text(
+                'My Profile',
+                style: FlutterFlowTheme.of(context).headlineSmall.override(
+                      fontFamily: 'Outfit',
+                      color: Color(0xFF1D2429),
+                      fontSize: 20.0,
+                      fontWeight: FontWeight.normal,
+                      useGoogleFonts: GoogleFonts.asMap().containsKey(
+                          FlutterFlowTheme.of(context).headlineSmallFamily),
+                    ),
+              ),
+              actions: [],
+              centerTitle: false,
+              elevation: 0.0,
             ),
-            title: Text(
-              'My Profile',
-              style: FlutterFlowTheme.of(context).title3.override(
-                    fontFamily: 'Outfit',
-                    color: Color(0xFF1D2429),
-                    fontSize: 20.0,
-                    fontWeight: FontWeight.normal,
-                    useGoogleFonts: GoogleFonts.asMap()
-                        .containsKey(FlutterFlowTheme.of(context).title3Family),
-                  ),
-            ),
-            actions: [],
-            centerTitle: false,
-            elevation: 0.0,
-          ),
-          body: GestureDetector(
-            onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
-            child: SingleChildScrollView(
+            body: SingleChildScrollView(
               child: Column(
                 mainAxisSize: MainAxisSize.max,
                 children: [
@@ -129,7 +129,7 @@ class _AdminMemberProfileScreenWidgetState
                               if (selectedMedia != null &&
                                   selectedMedia.every((m) => validateFileFormat(
                                       m.storagePath, context))) {
-                                setState(() => _model.isMediaUploading = true);
+                                setState(() => _model.isDataUploading = true);
                                 var selectedUploadedFiles = <FFUploadedFile>[];
                                 var downloadUrls = <String>[];
                                 try {
@@ -152,7 +152,7 @@ class _AdminMemberProfileScreenWidgetState
                                       .map((u) => u!)
                                       .toList();
                                 } finally {
-                                  _model.isMediaUploading = false;
+                                  _model.isDataUploading = false;
                                 }
                                 if (selectedUploadedFiles.length ==
                                         selectedMedia.length &&
@@ -193,7 +193,7 @@ class _AdminMemberProfileScreenWidgetState
                                   child: Text(
                                     '${adminMemberProfileScreenUsersRecord.firstName} ${adminMemberProfileScreenUsersRecord.lastName}',
                                     style: FlutterFlowTheme.of(context)
-                                        .bodyText2
+                                        .bodySmall
                                         .override(
                                           fontFamily: 'Outfit',
                                           color: Color(0xFF57636C),
@@ -202,7 +202,7 @@ class _AdminMemberProfileScreenWidgetState
                                           useGoogleFonts: GoogleFonts.asMap()
                                               .containsKey(
                                                   FlutterFlowTheme.of(context)
-                                                      .bodyText2Family),
+                                                      .bodySmallFamily),
                                         ),
                                   ),
                                 ),
@@ -214,9 +214,9 @@ class _AdminMemberProfileScreenWidgetState
                           padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 10.0, 0.0, 0.0),
                           child: Text(
-                            adminMemberProfileScreenUsersRecord.address!,
+                            'Address: ${adminMemberProfileScreenUsersRecord.address}',
                             style: FlutterFlowTheme.of(context)
-                                .bodyText2
+                                .bodySmall
                                 .override(
                                   fontFamily: 'Outfit',
                                   color: Color(0xFF57636C),
@@ -224,7 +224,7 @@ class _AdminMemberProfileScreenWidgetState
                                   fontWeight: FontWeight.normal,
                                   useGoogleFonts: GoogleFonts.asMap()
                                       .containsKey(FlutterFlowTheme.of(context)
-                                          .bodyText2Family),
+                                          .bodySmallFamily),
                                 ),
                           ),
                         ),
@@ -232,9 +232,9 @@ class _AdminMemberProfileScreenWidgetState
                           padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 10.0, 0.0, 0.0),
                           child: Text(
-                            adminMemberProfileScreenUsersRecord.email!,
+                            'Email: ${adminMemberProfileScreenUsersRecord.email}',
                             style: FlutterFlowTheme.of(context)
-                                .bodyText2
+                                .bodySmall
                                 .override(
                                   fontFamily: 'Outfit',
                                   color: Color(0xFF57636C),
@@ -242,7 +242,7 @@ class _AdminMemberProfileScreenWidgetState
                                   fontWeight: FontWeight.normal,
                                   useGoogleFonts: GoogleFonts.asMap()
                                       .containsKey(FlutterFlowTheme.of(context)
-                                          .bodyText2Family),
+                                          .bodySmallFamily),
                                 ),
                           ),
                         ),
@@ -250,9 +250,9 @@ class _AdminMemberProfileScreenWidgetState
                           padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 10.0, 0.0, 0.0),
                           child: Text(
-                            adminMemberProfileScreenUsersRecord.phoneNumber!,
+                            'Phone Number: ${adminMemberProfileScreenUsersRecord.phoneNumber}',
                             style: FlutterFlowTheme.of(context)
-                                .bodyText2
+                                .bodySmall
                                 .override(
                                   fontFamily: 'Outfit',
                                   color: Color(0xFF57636C),
@@ -260,7 +260,7 @@ class _AdminMemberProfileScreenWidgetState
                                   fontWeight: FontWeight.normal,
                                   useGoogleFonts: GoogleFonts.asMap()
                                       .containsKey(FlutterFlowTheme.of(context)
-                                          .bodyText2Family),
+                                          .bodySmallFamily),
                                 ),
                           ),
                         ),
@@ -270,13 +270,13 @@ class _AdminMemberProfileScreenWidgetState
                           child: Text(
                             'When updating, for areas that are not being updated, please re-enter.',
                             style: FlutterFlowTheme.of(context)
-                                .bodyText1
+                                .bodyMedium
                                 .override(
                                   fontFamily: 'Outfit',
                                   color: Colors.black,
                                   useGoogleFonts: GoogleFonts.asMap()
                                       .containsKey(FlutterFlowTheme.of(context)
-                                          .bodyText1Family),
+                                          .bodyMediumFamily),
                                 ),
                           ),
                         ),
@@ -314,7 +314,7 @@ class _AdminMemberProfileScreenWidgetState
                                                 'Phone Number',
                                                 style:
                                                     FlutterFlowTheme.of(context)
-                                                        .bodyText2
+                                                        .bodySmall
                                                         .override(
                                                           fontFamily: 'Outfit',
                                                           color:
@@ -327,7 +327,7 @@ class _AdminMemberProfileScreenWidgetState
                                                               .containsKey(
                                                                   FlutterFlowTheme.of(
                                                                           context)
-                                                                      .bodyText2Family),
+                                                                      .bodySmallFamily),
                                                         ),
                                               ),
                                             ),
@@ -341,7 +341,7 @@ class _AdminMemberProfileScreenWidgetState
                                                     'Enter new phone number',
                                                 hintStyle:
                                                     FlutterFlowTheme.of(context)
-                                                        .bodyText2,
+                                                        .bodySmall,
                                                 enabledBorder:
                                                     OutlineInputBorder(
                                                   borderSide: BorderSide(
@@ -388,7 +388,7 @@ class _AdminMemberProfileScreenWidgetState
                                               ),
                                               style:
                                                   FlutterFlowTheme.of(context)
-                                                      .bodyText1
+                                                      .bodyMedium
                                                       .override(
                                                         fontFamily: 'Outfit',
                                                         color:
@@ -400,8 +400,10 @@ class _AdminMemberProfileScreenWidgetState
                                                             .containsKey(
                                                                 FlutterFlowTheme.of(
                                                                         context)
-                                                                    .bodyText1Family),
+                                                                    .bodyMediumFamily),
                                                       ),
+                                              keyboardType:
+                                                  TextInputType.number,
                                               validator: _model
                                                   .phoneNumberUpdateTextFieldControllerValidator
                                                   .asValidator(context),
@@ -425,7 +427,7 @@ class _AdminMemberProfileScreenWidgetState
                                                   'Email',
                                                   style: FlutterFlowTheme.of(
                                                           context)
-                                                      .bodyText2
+                                                      .bodySmall
                                                       .override(
                                                         fontFamily: 'Outfit',
                                                         color:
@@ -438,7 +440,7 @@ class _AdminMemberProfileScreenWidgetState
                                                             .containsKey(
                                                                 FlutterFlowTheme.of(
                                                                         context)
-                                                                    .bodyText2Family),
+                                                                    .bodySmallFamily),
                                                       ),
                                                 ),
                                               ),
@@ -452,7 +454,7 @@ class _AdminMemberProfileScreenWidgetState
                                                   hintStyle:
                                                       FlutterFlowTheme.of(
                                                               context)
-                                                          .bodyText2,
+                                                          .bodySmall,
                                                   enabledBorder:
                                                       OutlineInputBorder(
                                                     borderSide: BorderSide(
@@ -501,7 +503,7 @@ class _AdminMemberProfileScreenWidgetState
                                                 ),
                                                 style:
                                                     FlutterFlowTheme.of(context)
-                                                        .bodyText1
+                                                        .bodyMedium
                                                         .override(
                                                           fontFamily: 'Outfit',
                                                           color: FlutterFlowTheme
@@ -512,7 +514,7 @@ class _AdminMemberProfileScreenWidgetState
                                                               .containsKey(
                                                                   FlutterFlowTheme.of(
                                                                           context)
-                                                                      .bodyText1Family),
+                                                                      .bodyMediumFamily),
                                                         ),
                                                 validator: _model
                                                     .emailUpdateTextFieldControllerValidator
@@ -538,7 +540,7 @@ class _AdminMemberProfileScreenWidgetState
                                                   'Address',
                                                   style: FlutterFlowTheme.of(
                                                           context)
-                                                      .bodyText2
+                                                      .bodySmall
                                                       .override(
                                                         fontFamily: 'Outfit',
                                                         color:
@@ -551,7 +553,7 @@ class _AdminMemberProfileScreenWidgetState
                                                             .containsKey(
                                                                 FlutterFlowTheme.of(
                                                                         context)
-                                                                    .bodyText2Family),
+                                                                    .bodySmallFamily),
                                                       ),
                                                 ),
                                               ),
@@ -565,7 +567,7 @@ class _AdminMemberProfileScreenWidgetState
                                                   hintStyle:
                                                       FlutterFlowTheme.of(
                                                               context)
-                                                          .bodyText2,
+                                                          .bodySmall,
                                                   enabledBorder:
                                                       OutlineInputBorder(
                                                     borderSide: BorderSide(
@@ -614,7 +616,7 @@ class _AdminMemberProfileScreenWidgetState
                                                 ),
                                                 style:
                                                     FlutterFlowTheme.of(context)
-                                                        .bodyText1
+                                                        .bodyMedium
                                                         .override(
                                                           fontFamily: 'Outfit',
                                                           color: FlutterFlowTheme
@@ -625,7 +627,7 @@ class _AdminMemberProfileScreenWidgetState
                                                               .containsKey(
                                                                   FlutterFlowTheme.of(
                                                                           context)
-                                                                      .bodyText1Family),
+                                                                      .bodyMediumFamily),
                                                         ),
                                                 validator: _model
                                                     .addressUpdateTextFieldControllerValidator
@@ -658,7 +660,7 @@ class _AdminMemberProfileScreenWidgetState
                                                       style:
                                                           FlutterFlowTheme.of(
                                                                   context)
-                                                              .bodyText2
+                                                              .bodySmall
                                                               .override(
                                                                 fontFamily:
                                                                     'Outfit',
@@ -672,7 +674,7 @@ class _AdminMemberProfileScreenWidgetState
                                                                         .asMap()
                                                                     .containsKey(
                                                                         FlutterFlowTheme.of(context)
-                                                                            .bodyText2Family),
+                                                                            .bodySmallFamily),
                                                               ),
                                                     ),
                                                   ),
@@ -696,7 +698,7 @@ class _AdminMemberProfileScreenWidgetState
                                                               .toString(),
                                                           style: FlutterFlowTheme
                                                                   .of(context)
-                                                              .bodyText2
+                                                              .bodySmall
                                                               .override(
                                                                 fontFamily:
                                                                     'Outfit',
@@ -710,7 +712,7 @@ class _AdminMemberProfileScreenWidgetState
                                                                         .asMap()
                                                                     .containsKey(
                                                                         FlutterFlowTheme.of(context)
-                                                                            .bodyText2Family),
+                                                                            .bodySmallFamily),
                                                               ),
                                                         ),
                                                       ),
@@ -778,7 +780,7 @@ class _AdminMemberProfileScreenWidgetState
                                                       style:
                                                           FlutterFlowTheme.of(
                                                                   context)
-                                                              .bodyText2
+                                                              .bodySmall
                                                               .override(
                                                                 fontFamily:
                                                                     'Outfit',
@@ -792,7 +794,7 @@ class _AdminMemberProfileScreenWidgetState
                                                                         .asMap()
                                                                     .containsKey(
                                                                         FlutterFlowTheme.of(context)
-                                                                            .bodyText2Family),
+                                                                            .bodySmallFamily),
                                                               ),
                                                     ),
                                                   ),
@@ -813,11 +815,11 @@ class _AdminMemberProfileScreenWidgetState
                                                         child: Text(
                                                           adminMemberProfileScreenUsersRecord
                                                                   .infectedStatus!
-                                                              ? 'Not Infected'
-                                                              : 'Infected',
+                                                              ? 'Infected'
+                                                              : 'Not Infected',
                                                           style: FlutterFlowTheme
                                                                   .of(context)
-                                                              .bodyText2
+                                                              .bodySmall
                                                               .override(
                                                                 fontFamily:
                                                                     'Outfit',
@@ -831,7 +833,7 @@ class _AdminMemberProfileScreenWidgetState
                                                                         .asMap()
                                                                     .containsKey(
                                                                         FlutterFlowTheme.of(context)
-                                                                            .bodyText2Family),
+                                                                            .bodySmallFamily),
                                                               ),
                                                         ),
                                                       ),
@@ -883,6 +885,7 @@ class _AdminMemberProfileScreenWidgetState
                           );
                         },
                       );
+                      context.safePop();
                     },
                     text: 'Update',
                     options: FFButtonOptions(
@@ -894,14 +897,15 @@ class _AdminMemberProfileScreenWidgetState
                           EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                       color: Color(0xFF397BEF),
                       textStyle: FlutterFlowTheme.of(context)
-                          .subtitle2
+                          .titleSmall
                           .override(
                             fontFamily:
-                                FlutterFlowTheme.of(context).subtitle2Family,
+                                FlutterFlowTheme.of(context).titleSmallFamily,
                             color: FlutterFlowTheme.of(context).primaryBtnText,
                             useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                FlutterFlowTheme.of(context).subtitle2Family),
+                                FlutterFlowTheme.of(context).titleSmallFamily),
                           ),
+                      elevation: 2.0,
                       borderSide: BorderSide(
                         color: Colors.transparent,
                         width: 1.0,

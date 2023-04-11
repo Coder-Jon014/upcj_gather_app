@@ -1,5 +1,6 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '/auth/auth_util.dart';
@@ -48,12 +49,12 @@ class _SignUpScreenWidgetState extends State<SignUpScreenWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      key: scaffoldKey,
-      backgroundColor: Colors.white,
-      body: GestureDetector(
-        onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
-        child: Padding(
+    return GestureDetector(
+      onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
+      child: Scaffold(
+        key: scaffoldKey,
+        backgroundColor: Colors.white,
+        body: Padding(
           padding: EdgeInsetsDirectional.fromSTEB(20.0, 20.0, 20.0, 20.0),
           child: SingleChildScrollView(
             child: Column(
@@ -70,22 +71,18 @@ class _SignUpScreenWidgetState extends State<SignUpScreenWidget> {
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Image.asset(
-                            'assets/images/UPCJ_Gather-1.png',
-                            width: 289.0,
-                            height: 60.0,
-                            fit: BoxFit.fitWidth,
-                          ),
                           Text(
                             'Get Started',
-                            style: FlutterFlowTheme.of(context).title1.override(
+                            style: FlutterFlowTheme.of(context)
+                                .displaySmall
+                                .override(
                                   fontFamily: 'Outfit',
                                   color: Color(0xFF0F1113),
                                   fontSize: 32.0,
                                   fontWeight: FontWeight.w500,
                                   useGoogleFonts: GoogleFonts.asMap()
                                       .containsKey(FlutterFlowTheme.of(context)
-                                          .title1Family),
+                                          .displaySmallFamily),
                                 ),
                           ),
                           Padding(
@@ -94,7 +91,7 @@ class _SignUpScreenWidgetState extends State<SignUpScreenWidget> {
                             child: Text(
                               'Use the form below to get started.',
                               style: FlutterFlowTheme.of(context)
-                                  .bodyText2
+                                  .bodySmall
                                   .override(
                                     fontFamily: 'Outfit',
                                     color: Color(0xFF57636C),
@@ -103,7 +100,7 @@ class _SignUpScreenWidgetState extends State<SignUpScreenWidget> {
                                     useGoogleFonts: GoogleFonts.asMap()
                                         .containsKey(
                                             FlutterFlowTheme.of(context)
-                                                .bodyText2Family),
+                                                .bodySmallFamily),
                                   ),
                             ),
                           ),
@@ -120,19 +117,29 @@ class _SignUpScreenWidgetState extends State<SignUpScreenWidget> {
                                         0.0, 16.0, 0.0, 0.0),
                                     child: TextFormField(
                                       controller: _model.firstNameController,
+                                      textCapitalization:
+                                          TextCapitalization.words,
                                       obscureText: false,
                                       decoration: InputDecoration(
                                         labelText: 'First Name',
                                         labelStyle: FlutterFlowTheme.of(context)
-                                            .bodyText2,
+                                            .bodySmall,
                                         hintText:
                                             'Enter your first name here...',
                                         hintStyle: FlutterFlowTheme.of(context)
-                                            .bodyText2,
+                                            .bodySmall
+                                            .override(
+                                              fontFamily: 'Outfit',
+                                              useGoogleFonts:
+                                                  GoogleFonts.asMap()
+                                                      .containsKey(
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodySmallFamily),
+                                            ),
                                         enabledBorder: OutlineInputBorder(
                                           borderSide: BorderSide(
-                                            color: FlutterFlowTheme.of(context)
-                                                .secondaryText,
+                                            color: Color(0xFFF1F4F8),
                                             width: 0.5,
                                           ),
                                           borderRadius:
@@ -171,17 +178,7 @@ class _SignUpScreenWidgetState extends State<SignUpScreenWidget> {
                                                 16.0, 24.0, 0.0, 24.0),
                                       ),
                                       style: FlutterFlowTheme.of(context)
-                                          .bodyText1
-                                          .override(
-                                            fontFamily: 'Outfit',
-                                            color: FlutterFlowTheme.of(context)
-                                                .secondaryText,
-                                            fontSize: 14.0,
-                                            useGoogleFonts: GoogleFonts.asMap()
-                                                .containsKey(
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyText1Family),
-                                          ),
+                                          .bodyMedium,
                                       maxLines: null,
                                       validator: _model
                                           .firstNameControllerValidator
@@ -205,19 +202,29 @@ class _SignUpScreenWidgetState extends State<SignUpScreenWidget> {
                                         0.0, 16.0, 0.0, 0.0),
                                     child: TextFormField(
                                       controller: _model.lastNameController,
+                                      textCapitalization:
+                                          TextCapitalization.words,
                                       obscureText: false,
                                       decoration: InputDecoration(
                                         labelText: 'Last Name',
                                         labelStyle: FlutterFlowTheme.of(context)
-                                            .bodyText2,
+                                            .bodySmall,
                                         hintText:
-                                            'Enter your first name here...',
+                                            'Enter your last name here...',
                                         hintStyle: FlutterFlowTheme.of(context)
-                                            .bodyText2,
+                                            .bodySmall
+                                            .override(
+                                              fontFamily: 'Outfit',
+                                              useGoogleFonts:
+                                                  GoogleFonts.asMap()
+                                                      .containsKey(
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodySmallFamily),
+                                            ),
                                         enabledBorder: OutlineInputBorder(
                                           borderSide: BorderSide(
-                                            color: FlutterFlowTheme.of(context)
-                                                .secondaryText,
+                                            color: Color(0xFFF1F4F8),
                                             width: 0.5,
                                           ),
                                           borderRadius:
@@ -256,7 +263,7 @@ class _SignUpScreenWidgetState extends State<SignUpScreenWidget> {
                                                 16.0, 24.0, 0.0, 24.0),
                                       ),
                                       style: FlutterFlowTheme.of(context)
-                                          .bodyText1
+                                          .bodyMedium
                                           .override(
                                             fontFamily: 'Outfit',
                                             color: FlutterFlowTheme.of(context)
@@ -265,7 +272,7 @@ class _SignUpScreenWidgetState extends State<SignUpScreenWidget> {
                                             useGoogleFonts: GoogleFonts.asMap()
                                                 .containsKey(
                                                     FlutterFlowTheme.of(context)
-                                                        .bodyText1Family),
+                                                        .bodyMediumFamily),
                                           ),
                                       maxLines: null,
                                       validator: _model
@@ -294,27 +301,24 @@ class _SignUpScreenWidgetState extends State<SignUpScreenWidget> {
                                       decoration: InputDecoration(
                                         labelText: 'Phone Number',
                                         labelStyle: FlutterFlowTheme.of(context)
-                                            .bodyText2,
+                                            .bodySmall,
                                         hintText:
                                             'Enter your phone number here...',
                                         hintStyle: FlutterFlowTheme.of(context)
-                                            .bodyText2
+                                            .bodySmall
                                             .override(
-                                              fontFamily:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyText2Family,
-                                              fontWeight: FontWeight.w500,
+                                              fontFamily: 'Outfit',
+                                              fontWeight: FontWeight.normal,
                                               useGoogleFonts:
                                                   GoogleFonts.asMap()
                                                       .containsKey(
                                                           FlutterFlowTheme.of(
                                                                   context)
-                                                              .bodyText2Family),
+                                                              .bodySmallFamily),
                                             ),
                                         enabledBorder: OutlineInputBorder(
                                           borderSide: BorderSide(
-                                            color: FlutterFlowTheme.of(context)
-                                                .secondaryText,
+                                            color: Color(0xFFF1F4F8),
                                             width: 0.5,
                                           ),
                                           borderRadius:
@@ -353,7 +357,7 @@ class _SignUpScreenWidgetState extends State<SignUpScreenWidget> {
                                                 16.0, 24.0, 0.0, 24.0),
                                       ),
                                       style: FlutterFlowTheme.of(context)
-                                          .bodyText1
+                                          .bodyMedium
                                           .override(
                                             fontFamily: 'Outfit',
                                             color: FlutterFlowTheme.of(context)
@@ -362,12 +366,16 @@ class _SignUpScreenWidgetState extends State<SignUpScreenWidget> {
                                             useGoogleFonts: GoogleFonts.asMap()
                                                 .containsKey(
                                                     FlutterFlowTheme.of(context)
-                                                        .bodyText1Family),
+                                                        .bodyMediumFamily),
                                           ),
                                       maxLines: null,
                                       validator: _model
                                           .phoneNumberControllerValidator
                                           .asValidator(context),
+                                      inputFormatters: [
+                                        FilteringTextInputFormatter.allow(
+                                            RegExp('[0-9]'))
+                                      ],
                                     ),
                                   ),
                                 ),
@@ -391,7 +399,7 @@ class _SignUpScreenWidgetState extends State<SignUpScreenWidget> {
                                       decoration: InputDecoration(
                                         labelText: 'Email Address',
                                         labelStyle: FlutterFlowTheme.of(context)
-                                            .bodyText2
+                                            .bodySmall
                                             .override(
                                               fontFamily: 'Outfit',
                                               color: Color(0xFF57636C),
@@ -402,11 +410,11 @@ class _SignUpScreenWidgetState extends State<SignUpScreenWidget> {
                                                       .containsKey(
                                                           FlutterFlowTheme.of(
                                                                   context)
-                                                              .bodyText2Family),
+                                                              .bodySmallFamily),
                                             ),
                                         hintText: 'Enter your email here...',
                                         hintStyle: FlutterFlowTheme.of(context)
-                                            .bodyText2
+                                            .bodySmall
                                             .override(
                                               fontFamily: 'Outfit',
                                               color: Color(0xFF57636C),
@@ -417,7 +425,7 @@ class _SignUpScreenWidgetState extends State<SignUpScreenWidget> {
                                                       .containsKey(
                                                           FlutterFlowTheme.of(
                                                                   context)
-                                                              .bodyText2Family),
+                                                              .bodySmallFamily),
                                             ),
                                         enabledBorder: OutlineInputBorder(
                                           borderSide: BorderSide(
@@ -459,7 +467,7 @@ class _SignUpScreenWidgetState extends State<SignUpScreenWidget> {
                                                 16.0, 24.0, 0.0, 24.0),
                                       ),
                                       style: FlutterFlowTheme.of(context)
-                                          .bodyText1
+                                          .bodyMedium
                                           .override(
                                             fontFamily: 'Outfit',
                                             color: Color(0xFF0F1113),
@@ -468,7 +476,7 @@ class _SignUpScreenWidgetState extends State<SignUpScreenWidget> {
                                             useGoogleFonts: GoogleFonts.asMap()
                                                 .containsKey(
                                                     FlutterFlowTheme.of(context)
-                                                        .bodyText1Family),
+                                                        .bodyMediumFamily),
                                           ),
                                       maxLines: null,
                                       validator: _model
@@ -494,7 +502,7 @@ class _SignUpScreenWidgetState extends State<SignUpScreenWidget> {
                                     decoration: InputDecoration(
                                       labelText: 'Password',
                                       labelStyle: FlutterFlowTheme.of(context)
-                                          .bodyText2
+                                          .bodySmall
                                           .override(
                                             fontFamily: 'Outfit',
                                             color: Color(0xFF57636C),
@@ -503,11 +511,11 @@ class _SignUpScreenWidgetState extends State<SignUpScreenWidget> {
                                             useGoogleFonts: GoogleFonts.asMap()
                                                 .containsKey(
                                                     FlutterFlowTheme.of(context)
-                                                        .bodyText2Family),
+                                                        .bodySmallFamily),
                                           ),
                                       hintText: 'Enter your password here...',
                                       hintStyle: FlutterFlowTheme.of(context)
-                                          .bodyText2
+                                          .bodySmall
                                           .override(
                                             fontFamily: 'Outfit',
                                             color: Color(0xFF57636C),
@@ -516,7 +524,7 @@ class _SignUpScreenWidgetState extends State<SignUpScreenWidget> {
                                             useGoogleFonts: GoogleFonts.asMap()
                                                 .containsKey(
                                                     FlutterFlowTheme.of(context)
-                                                        .bodyText2Family),
+                                                        .bodySmallFamily),
                                           ),
                                       enabledBorder: OutlineInputBorder(
                                         borderSide: BorderSide(
@@ -573,7 +581,7 @@ class _SignUpScreenWidgetState extends State<SignUpScreenWidget> {
                                       ),
                                     ),
                                     style: FlutterFlowTheme.of(context)
-                                        .bodyText1
+                                        .bodyMedium
                                         .override(
                                           fontFamily: 'Outfit',
                                           color: Color(0xFF0F1113),
@@ -582,7 +590,7 @@ class _SignUpScreenWidgetState extends State<SignUpScreenWidget> {
                                           useGoogleFonts: GoogleFonts.asMap()
                                               .containsKey(
                                                   FlutterFlowTheme.of(context)
-                                                      .bodyText1Family),
+                                                      .bodyMediumFamily),
                                         ),
                                     validator: _model
                                         .passwordControllerValidator
@@ -603,7 +611,7 @@ class _SignUpScreenWidgetState extends State<SignUpScreenWidget> {
                                 decoration: InputDecoration(
                                   labelText: 'Confirm Password',
                                   labelStyle: FlutterFlowTheme.of(context)
-                                      .bodyText2
+                                      .bodySmall
                                       .override(
                                         fontFamily: 'Outfit',
                                         color: Color(0xFF57636C),
@@ -612,11 +620,11 @@ class _SignUpScreenWidgetState extends State<SignUpScreenWidget> {
                                         useGoogleFonts: GoogleFonts.asMap()
                                             .containsKey(
                                                 FlutterFlowTheme.of(context)
-                                                    .bodyText2Family),
+                                                    .bodySmallFamily),
                                       ),
                                   hintText: 'Re-enter your password here...',
                                   hintStyle: FlutterFlowTheme.of(context)
-                                      .bodyText2
+                                      .bodySmall
                                       .override(
                                         fontFamily: 'Outfit',
                                         color: Color(0xFF57636C),
@@ -625,7 +633,7 @@ class _SignUpScreenWidgetState extends State<SignUpScreenWidget> {
                                         useGoogleFonts: GoogleFonts.asMap()
                                             .containsKey(
                                                 FlutterFlowTheme.of(context)
-                                                    .bodyText2Family),
+                                                    .bodySmallFamily),
                                       ),
                                   enabledBorder: OutlineInputBorder(
                                     borderSide: BorderSide(
@@ -677,7 +685,7 @@ class _SignUpScreenWidgetState extends State<SignUpScreenWidget> {
                                   ),
                                 ),
                                 style: FlutterFlowTheme.of(context)
-                                    .bodyText1
+                                    .bodyMedium
                                     .override(
                                       fontFamily: 'Outfit',
                                       color: Color(0xFF0F1113),
@@ -686,7 +694,7 @@ class _SignUpScreenWidgetState extends State<SignUpScreenWidget> {
                                       useGoogleFonts: GoogleFonts.asMap()
                                           .containsKey(
                                               FlutterFlowTheme.of(context)
-                                                  .bodyText1Family),
+                                                  .bodyMediumFamily),
                                     ),
                                 validator: _model
                                     .passwordConfirmControllerValidator
@@ -739,6 +747,9 @@ class _SignUpScreenWidgetState extends State<SignUpScreenWidget> {
                                             _model.phoneNumberController.text,
                                         adminStatus: false,
                                         infectedStatus: false,
+                                        address: 'Please Update Address',
+                                        displayName:
+                                            '${_model.firstNameController.text} ${_model.lastNameController.text}',
                                       );
                                       await UsersRecord.collection
                                           .doc(user.uid)
@@ -758,7 +769,7 @@ class _SignUpScreenWidgetState extends State<SignUpScreenWidget> {
                                               0.0, 0.0, 0.0, 0.0),
                                       color: Color(0xFF397BEF),
                                       textStyle: FlutterFlowTheme.of(context)
-                                          .subtitle1
+                                          .titleMedium
                                           .override(
                                             fontFamily: 'Outfit',
                                             color: Colors.white,
@@ -767,7 +778,7 @@ class _SignUpScreenWidgetState extends State<SignUpScreenWidget> {
                                             useGoogleFonts: GoogleFonts.asMap()
                                                 .containsKey(
                                                     FlutterFlowTheme.of(context)
-                                                        .subtitle1Family),
+                                                        .titleMediumFamily),
                                           ),
                                       elevation: 3.0,
                                       borderSide: BorderSide(
@@ -791,7 +802,7 @@ class _SignUpScreenWidgetState extends State<SignUpScreenWidget> {
                                   'Or ',
                                   textAlign: TextAlign.center,
                                   style: FlutterFlowTheme.of(context)
-                                      .bodyText2
+                                      .bodySmall
                                       .override(
                                         fontFamily: 'Outfit',
                                         color: Color(0xFF57636C),
@@ -800,7 +811,7 @@ class _SignUpScreenWidgetState extends State<SignUpScreenWidget> {
                                         useGoogleFonts: GoogleFonts.asMap()
                                             .containsKey(
                                                 FlutterFlowTheme.of(context)
-                                                    .bodyText2Family),
+                                                    .bodySmallFamily),
                                       ),
                                 ),
                               ],
@@ -842,7 +853,7 @@ class _SignUpScreenWidgetState extends State<SignUpScreenWidget> {
                                 Text(
                                   'Already have an account?',
                                   style: FlutterFlowTheme.of(context)
-                                      .bodyText1
+                                      .bodyMedium
                                       .override(
                                         fontFamily: 'Outfit',
                                         color: Color(0xFF0F1113),
@@ -851,7 +862,7 @@ class _SignUpScreenWidgetState extends State<SignUpScreenWidget> {
                                         useGoogleFonts: GoogleFonts.asMap()
                                             .containsKey(
                                                 FlutterFlowTheme.of(context)
-                                                    .bodyText1Family),
+                                                    .bodyMediumFamily),
                                       ),
                                 ),
                                 FFButtonWidget(
@@ -878,7 +889,7 @@ class _SignUpScreenWidgetState extends State<SignUpScreenWidget> {
                                         0.0, 0.0, 0.0, 0.0),
                                     color: Color(0x00FFFFFF),
                                     textStyle: FlutterFlowTheme.of(context)
-                                        .subtitle2
+                                        .titleSmall
                                         .override(
                                           fontFamily: 'Outfit',
                                           color: Color(0xFF397BEF),
@@ -887,7 +898,7 @@ class _SignUpScreenWidgetState extends State<SignUpScreenWidget> {
                                           useGoogleFonts: GoogleFonts.asMap()
                                               .containsKey(
                                                   FlutterFlowTheme.of(context)
-                                                      .subtitle2Family),
+                                                      .titleSmallFamily),
                                         ),
                                     elevation: 0.0,
                                     borderSide: BorderSide(

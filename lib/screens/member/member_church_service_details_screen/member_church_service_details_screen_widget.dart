@@ -57,7 +57,7 @@ class _MemberChurchServiceDetailsScreenWidgetState
               width: 50.0,
               height: 50.0,
               child: CircularProgressIndicator(
-                color: FlutterFlowTheme.of(context).primaryColor,
+                color: FlutterFlowTheme.of(context).primary,
               ),
             ),
           );
@@ -95,13 +95,16 @@ class _MemberChurchServiceDetailsScreenWidgetState
                         child: Text(
                           memberChurchServiceDetailsScreenChurchServiceRecord
                               .title!,
-                          style: FlutterFlowTheme.of(context).title1.override(
+                          style: FlutterFlowTheme.of(context)
+                              .displaySmall
+                              .override(
                                 fontFamily: 'Lexend Deca',
                                 color: Color(0xFF090F13),
                                 fontSize: 24.0,
                                 fontWeight: FontWeight.bold,
                                 useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                    FlutterFlowTheme.of(context).title1Family),
+                                    FlutterFlowTheme.of(context)
+                                        .displaySmallFamily),
                               ),
                         ),
                       ),
@@ -141,13 +144,13 @@ class _MemberChurchServiceDetailsScreenWidgetState
                       AutoSizeText(
                         'SPACE(S) LEFT',
                         textAlign: TextAlign.center,
-                        style: FlutterFlowTheme.of(context).bodyText2.override(
+                        style: FlutterFlowTheme.of(context).bodySmall.override(
                               fontFamily: 'Lexend Deca',
                               color: Color(0xFF95A1AC),
                               fontSize: 14.0,
                               fontWeight: FontWeight.normal,
                               useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                  FlutterFlowTheme.of(context).bodyText2Family),
+                                  FlutterFlowTheme.of(context).bodySmallFamily),
                             ),
                       ),
                     ],
@@ -177,7 +180,7 @@ class _MemberChurchServiceDetailsScreenWidgetState
                             child: Text(
                               'Date',
                               style: FlutterFlowTheme.of(context)
-                                  .bodyText2
+                                  .bodySmall
                                   .override(
                                     fontFamily: 'Lexend Deca',
                                     color: Color(0xFF95A1AC),
@@ -186,7 +189,7 @@ class _MemberChurchServiceDetailsScreenWidgetState
                                     useGoogleFonts: GoogleFonts.asMap()
                                         .containsKey(
                                             FlutterFlowTheme.of(context)
-                                                .bodyText2Family),
+                                                .bodySmallFamily),
                                   ),
                             ),
                           ),
@@ -196,7 +199,7 @@ class _MemberChurchServiceDetailsScreenWidgetState
                                 memberChurchServiceDetailsScreenChurchServiceRecord
                                     .serviceDate!),
                             textAlign: TextAlign.center,
-                            style: FlutterFlowTheme.of(context).subtitle2,
+                            style: FlutterFlowTheme.of(context).titleSmall,
                           ),
                         ],
                       ),
@@ -210,7 +213,7 @@ class _MemberChurchServiceDetailsScreenWidgetState
                             child: Text(
                               'Capacity',
                               style: FlutterFlowTheme.of(context)
-                                  .bodyText2
+                                  .bodySmall
                                   .override(
                                     fontFamily: 'Lexend Deca',
                                     color: Color(0xFF95A1AC),
@@ -219,7 +222,7 @@ class _MemberChurchServiceDetailsScreenWidgetState
                                     useGoogleFonts: GoogleFonts.asMap()
                                         .containsKey(
                                             FlutterFlowTheme.of(context)
-                                                .bodyText2Family),
+                                                .bodySmallFamily),
                                   ),
                             ),
                           ),
@@ -227,7 +230,7 @@ class _MemberChurchServiceDetailsScreenWidgetState
                             memberChurchServiceDetailsScreenChurchServiceRecord
                                 .serviceCapacity!
                                 .toString(),
-                            style: FlutterFlowTheme.of(context).subtitle2,
+                            style: FlutterFlowTheme.of(context).titleSmall,
                           ),
                         ],
                       ),
@@ -261,7 +264,7 @@ class _MemberChurchServiceDetailsScreenWidgetState
                                     Text(
                                       'I want to attend!',
                                       style: FlutterFlowTheme.of(context)
-                                          .subtitle1
+                                          .titleMedium
                                           .override(
                                             fontFamily: 'Lexend Deca',
                                             color: Color(0xFF39D2C0),
@@ -270,7 +273,7 @@ class _MemberChurchServiceDetailsScreenWidgetState
                                             useGoogleFonts: GoogleFonts.asMap()
                                                 .containsKey(
                                                     FlutterFlowTheme.of(context)
-                                                        .subtitle1Family),
+                                                        .titleMediumFamily),
                                           ),
                                     ),
                                     Padding(
@@ -280,7 +283,7 @@ class _MemberChurchServiceDetailsScreenWidgetState
                                         'Click the button to secure your attendance for the service',
                                         textAlign: TextAlign.center,
                                         style: FlutterFlowTheme.of(context)
-                                            .bodyText2
+                                            .bodySmall
                                             .override(
                                               fontFamily: 'Lexend Deca',
                                               color: Color(0xFF95A1AC),
@@ -291,7 +294,7 @@ class _MemberChurchServiceDetailsScreenWidgetState
                                                       .containsKey(
                                                           FlutterFlowTheme.of(
                                                                   context)
-                                                              .bodyText2Family),
+                                                              .bodySmallFamily),
                                             ),
                                       ),
                                     ),
@@ -341,36 +344,59 @@ class _MemberChurchServiceDetailsScreenWidgetState
                                   );
                                   return;
                                 } else {
-                                  final churchServiceUpdateData1 = {
-                                    'members_attending': FieldValue.arrayUnion([
-                                      '${valueOrDefault(currentUserDocument?.firstName, '')} ${valueOrDefault(currentUserDocument?.lastName, '')}'
-                                    ]),
-                                  };
-                                  await widget.churchServiceInfo!
-                                      .update(churchServiceUpdateData1);
+                                  if (memberChurchServiceDetailsScreenChurchServiceRecord
+                                          .availableSpace! !=
+                                      0) {
+                                    final churchServiceUpdateData1 = {
+                                      'available_space':
+                                          FieldValue.increment(-(1)),
+                                    };
+                                    await widget.churchServiceInfo!
+                                        .update(churchServiceUpdateData1);
 
-                                  final churchServiceUpdateData2 = {
-                                    'available_space':
-                                        FieldValue.increment(-(1)),
-                                  };
-                                  await widget.churchServiceInfo!
-                                      .update(churchServiceUpdateData2);
-                                  await showDialog(
-                                    context: context,
-                                    builder: (alertDialogContext) {
-                                      return AlertDialog(
-                                        content: Text(
-                                            'You just registered to join the service'),
-                                        actions: [
-                                          TextButton(
-                                            onPressed: () => Navigator.pop(
-                                                alertDialogContext),
-                                            child: Text('Great!'),
-                                          ),
-                                        ],
-                                      );
-                                    },
-                                  );
+                                    final churchServiceUpdateData2 = {
+                                      'members_attending':
+                                          FieldValue.arrayUnion([
+                                        '${valueOrDefault(currentUserDocument?.firstName, '')} ${valueOrDefault(currentUserDocument?.lastName, '')}'
+                                      ]),
+                                    };
+                                    await widget.churchServiceInfo!
+                                        .update(churchServiceUpdateData2);
+                                    await showDialog(
+                                      context: context,
+                                      builder: (alertDialogContext) {
+                                        return AlertDialog(
+                                          content: Text(
+                                              'You just registered to join the service'),
+                                          actions: [
+                                            TextButton(
+                                              onPressed: () => Navigator.pop(
+                                                  alertDialogContext),
+                                              child: Text('Great!'),
+                                            ),
+                                          ],
+                                        );
+                                      },
+                                    );
+                                  } else {
+                                    await showDialog(
+                                      context: context,
+                                      builder: (alertDialogContext) {
+                                        return AlertDialog(
+                                          content: Text(
+                                              'Sorry, the church service has reached maxed capacity.'),
+                                          actions: [
+                                            TextButton(
+                                              onPressed: () => Navigator.pop(
+                                                  alertDialogContext),
+                                              child: Text('Ok'),
+                                            ),
+                                          ],
+                                        );
+                                      },
+                                    );
+                                    return;
+                                  }
                                 }
                               },
                               child: FaIcon(

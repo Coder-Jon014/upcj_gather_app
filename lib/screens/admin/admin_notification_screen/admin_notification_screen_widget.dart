@@ -55,53 +55,53 @@ class _AdminNotificationScreenWidgetState
               width: 50.0,
               height: 50.0,
               child: CircularProgressIndicator(
-                color: FlutterFlowTheme.of(context).primaryColor,
+                color: FlutterFlowTheme.of(context).primary,
               ),
             ),
           );
         }
         final adminNotificationScreenNotificationsRecord = snapshot.data!;
-        return Scaffold(
-          key: scaffoldKey,
-          backgroundColor: Colors.white,
-          appBar: AppBar(
+        return GestureDetector(
+          onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
+          child: Scaffold(
+            key: scaffoldKey,
             backgroundColor: Colors.white,
-            automaticallyImplyLeading: false,
-            title: Text(
-              adminNotificationScreenNotificationsRecord.notificationTitle!,
-              style: FlutterFlowTheme.of(context).title2.override(
-                    fontFamily: 'Outfit',
-                    color: Color(0xFF14181B),
-                    fontSize: 28.0,
-                    fontWeight: FontWeight.normal,
-                    useGoogleFonts: GoogleFonts.asMap()
-                        .containsKey(FlutterFlowTheme.of(context).title2Family),
-                  ),
-            ),
-            actions: [
-              Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 12.0, 0.0),
-                child: FlutterFlowIconButton(
-                  borderColor: Colors.transparent,
-                  borderRadius: 30.0,
-                  buttonSize: 48.0,
-                  icon: Icon(
-                    Icons.close_rounded,
-                    color: Color(0xFF57636C),
-                    size: 30.0,
-                  ),
-                  onPressed: () async {
-                    context.pop();
-                  },
-                ),
+            appBar: AppBar(
+              backgroundColor: Colors.white,
+              automaticallyImplyLeading: false,
+              title: Text(
+                adminNotificationScreenNotificationsRecord.notificationTitle!,
+                style: FlutterFlowTheme.of(context).headlineMedium.override(
+                      fontFamily: 'Outfit',
+                      color: Color(0xFF14181B),
+                      fontSize: 28.0,
+                      fontWeight: FontWeight.normal,
+                      useGoogleFonts: GoogleFonts.asMap().containsKey(
+                          FlutterFlowTheme.of(context).headlineMediumFamily),
+                    ),
               ),
-            ],
-            centerTitle: false,
-            elevation: 0.0,
-          ),
-          body: SafeArea(
-            child: GestureDetector(
-              onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
+              actions: [
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 12.0, 0.0),
+                  child: FlutterFlowIconButton(
+                    borderColor: Colors.transparent,
+                    borderRadius: 30.0,
+                    buttonSize: 48.0,
+                    icon: Icon(
+                      Icons.close_rounded,
+                      color: Color(0xFF57636C),
+                      size: 30.0,
+                    ),
+                    onPressed: () async {
+                      context.pop();
+                    },
+                  ),
+                ),
+              ],
+              centerTitle: false,
+              elevation: 0.0,
+            ),
+            body: SafeArea(
               child: Container(
                 width: 394.4,
                 height: 803.3,
@@ -125,7 +125,7 @@ class _AdminNotificationScreenWidgetState
                         child: Text(
                           adminNotificationScreenNotificationsRecord
                               .notificationInfo!,
-                          style: FlutterFlowTheme.of(context).bodyText1,
+                          style: FlutterFlowTheme.of(context).bodyMedium,
                         ),
                       ),
                       Padding(
@@ -136,7 +136,7 @@ class _AdminNotificationScreenWidgetState
                               'MMMMEEEEd',
                               adminNotificationScreenNotificationsRecord
                                   .createdDate!),
-                          style: FlutterFlowTheme.of(context).bodyText1,
+                          style: FlutterFlowTheme.of(context).bodyMedium,
                         ),
                       ),
                     ],

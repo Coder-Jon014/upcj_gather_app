@@ -70,13 +70,13 @@ class _SplashscreenWidgetState extends State<SplashscreenWidget>
                   Text(
                     'Welcome to UPCJ Gather',
                     textAlign: TextAlign.center,
-                    style: FlutterFlowTheme.of(context).title1.override(
+                    style: FlutterFlowTheme.of(context).displaySmall.override(
                           fontFamily: 'Outfit',
                           color: FlutterFlowTheme.of(context).primaryBtnText,
                           fontSize: 30.0,
                           fontWeight: FontWeight.w600,
                           useGoogleFonts: GoogleFonts.asMap().containsKey(
-                              FlutterFlowTheme.of(context).title1Family),
+                              FlutterFlowTheme.of(context).displaySmallFamily),
                         ),
                   ),
                 ],
@@ -95,13 +95,14 @@ class _SplashscreenWidgetState extends State<SplashscreenWidget>
                   iconPadding:
                       EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                   color: Colors.white,
-                  textStyle: FlutterFlowTheme.of(context).subtitle2.override(
+                  textStyle: FlutterFlowTheme.of(context).titleSmall.override(
                         fontFamily:
-                            FlutterFlowTheme.of(context).subtitle2Family,
+                            FlutterFlowTheme.of(context).titleSmallFamily,
                         color: Colors.black,
                         useGoogleFonts: GoogleFonts.asMap().containsKey(
-                            FlutterFlowTheme.of(context).subtitle2Family),
+                            FlutterFlowTheme.of(context).titleSmallFamily),
                       ),
+                  elevation: 2.0,
                   borderSide: BorderSide(
                     color: Colors.transparent,
                     width: 1.0,

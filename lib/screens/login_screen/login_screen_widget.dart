@@ -1,13 +1,14 @@
+import 'package:auto_size_text/auto_size_text.dart';
+import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+
 import '/auth/auth_util.dart';
 import '/component/google_sign_in_button/google_sign_in_button_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import 'package:auto_size_text/auto_size_text.dart';
-import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'login_screen_model.dart';
+
 export 'login_screen_model.dart';
 
 class LoginScreenWidget extends StatefulWidget {
@@ -42,38 +43,22 @@ class _LoginScreenWidgetState extends State<LoginScreenWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      key: scaffoldKey,
-      backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
-      body: GestureDetector(
-        onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
-        child: SingleChildScrollView(
+    return GestureDetector(
+      onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
+      child: Scaffold(
+        key: scaffoldKey,
+        backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
+        body: SingleChildScrollView(
           child: Column(
             mainAxisSize: MainAxisSize.max,
             children: [
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(20.0, 20.0, 20.0, 20.0),
+                padding: EdgeInsetsDirectional.fromSTEB(20.0, 50.0, 20.0, 20.0),
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Padding(
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 70.0, 0.0, 30.0),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Image.asset(
-                            'assets/images/UPCJ_Gather-1.png',
-                            width: 242.0,
-                            height: 61.1,
-                            fit: BoxFit.fitWidth,
-                          ),
-                        ],
-                      ),
-                    ),
                     Image.asset(
                       'assets/images/UPCJ_Gather-1_(1).png',
                       width: 242.0,
@@ -85,14 +70,16 @@ class _LoginScreenWidgetState extends State<LoginScreenWidget> {
                           EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 20.0),
                       child: Text(
                         'Welcome Back!',
-                        style: FlutterFlowTheme.of(context).title1.override(
-                              fontFamily:
-                                  FlutterFlowTheme.of(context).title1Family,
-                              fontSize: 40.0,
-                              fontWeight: FontWeight.w500,
-                              useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                  FlutterFlowTheme.of(context).title1Family),
-                            ),
+                        style:
+                            FlutterFlowTheme.of(context).displaySmall.override(
+                                  fontFamily: FlutterFlowTheme.of(context)
+                                      .displaySmallFamily,
+                                  fontSize: 40.0,
+                                  fontWeight: FontWeight.w500,
+                                  useGoogleFonts: GoogleFonts.asMap()
+                                      .containsKey(FlutterFlowTheme.of(context)
+                                          .displaySmallFamily),
+                                ),
                       ),
                     ),
                     Padding(
@@ -100,7 +87,7 @@ class _LoginScreenWidgetState extends State<LoginScreenWidget> {
                           EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
                       child: Text(
                         'Enter the details below to access your account.',
-                        style: FlutterFlowTheme.of(context).bodyText2,
+                        style: FlutterFlowTheme.of(context).bodySmall,
                       ),
                     ),
                     Padding(
@@ -120,10 +107,10 @@ class _LoginScreenWidgetState extends State<LoginScreenWidget> {
                                 decoration: InputDecoration(
                                   labelText: 'Email Address',
                                   labelStyle:
-                                      FlutterFlowTheme.of(context).bodyText2,
+                                      FlutterFlowTheme.of(context).bodySmall,
                                   hintText: 'Enter your email here...',
                                   hintStyle:
-                                      FlutterFlowTheme.of(context).bodyText2,
+                                      FlutterFlowTheme.of(context).bodySmall,
                                   enabledBorder: OutlineInputBorder(
                                     borderSide: BorderSide(
                                       color: FlutterFlowTheme.of(context)
@@ -161,7 +148,7 @@ class _LoginScreenWidgetState extends State<LoginScreenWidget> {
                                       EdgeInsetsDirectional.fromSTEB(
                                           16.0, 24.0, 0.0, 24.0),
                                 ),
-                                style: FlutterFlowTheme.of(context).bodyText1,
+                                style: FlutterFlowTheme.of(context).bodyMedium,
                                 maxLines: null,
                                 validator: _model
                                     .emailAddressControllerValidator
@@ -186,10 +173,10 @@ class _LoginScreenWidgetState extends State<LoginScreenWidget> {
                               decoration: InputDecoration(
                                 labelText: 'Password',
                                 labelStyle:
-                                    FlutterFlowTheme.of(context).bodyText2,
+                                    FlutterFlowTheme.of(context).bodySmall,
                                 hintText: 'Enter your password here...',
                                 hintStyle:
-                                    FlutterFlowTheme.of(context).bodyText2,
+                                    FlutterFlowTheme.of(context).bodySmall,
                                 enabledBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
                                     color: FlutterFlowTheme.of(context)
@@ -241,7 +228,7 @@ class _LoginScreenWidgetState extends State<LoginScreenWidget> {
                                   ),
                                 ),
                               ),
-                              style: FlutterFlowTheme.of(context).bodyText1,
+                              style: FlutterFlowTheme.of(context).bodyMedium,
                               validator: _model.passwordControllerValidator
                                   .asValidator(context),
                             ),
@@ -269,7 +256,7 @@ class _LoginScreenWidgetState extends State<LoginScreenWidget> {
                               iconPadding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
                               color: Color(0x00FFFFFF),
-                              textStyle: FlutterFlowTheme.of(context).bodyText2,
+                              textStyle: FlutterFlowTheme.of(context).bodySmall,
                               elevation: 0.0,
                               borderSide: BorderSide(
                                 color: Colors.transparent,
@@ -306,15 +293,15 @@ class _LoginScreenWidgetState extends State<LoginScreenWidget> {
                                     0.0, 0.0, 0.0, 0.0),
                                 color: Color(0xFF397BEF),
                                 textStyle: FlutterFlowTheme.of(context)
-                                    .subtitle1
+                                    .titleMedium
                                     .override(
                                       fontFamily: FlutterFlowTheme.of(context)
-                                          .subtitle1Family,
+                                          .titleMediumFamily,
                                       color: Colors.white,
                                       useGoogleFonts: GoogleFonts.asMap()
                                           .containsKey(
                                               FlutterFlowTheme.of(context)
-                                                  .subtitle1Family),
+                                                  .titleMediumFamily),
                                     ),
                                 elevation: 3.0,
                                 borderSide: BorderSide(
@@ -337,7 +324,7 @@ class _LoginScreenWidgetState extends State<LoginScreenWidget> {
                           AutoSizeText(
                             'or',
                             textAlign: TextAlign.center,
-                            style: FlutterFlowTheme.of(context).bodyText2,
+                            style: FlutterFlowTheme.of(context).bodySmall,
                           ),
                         ],
                       ),
@@ -375,7 +362,14 @@ class _LoginScreenWidgetState extends State<LoginScreenWidget> {
                         children: [
                           Text(
                             'Don\'t have an account?',
-                            style: FlutterFlowTheme.of(context).bodyText1,
+                            style: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .override(
+                                  fontFamily: 'Outfit',
+                                  useGoogleFonts: GoogleFonts.asMap()
+                                      .containsKey(FlutterFlowTheme.of(context)
+                                          .bodyMediumFamily),
+                                ),
                           ),
                           FFButtonWidget(
                             onPressed: () async {
@@ -401,15 +395,14 @@ class _LoginScreenWidgetState extends State<LoginScreenWidget> {
                                   0.0, 0.0, 0.0, 0.0),
                               color: Color(0x00FFFFFF),
                               textStyle: FlutterFlowTheme.of(context)
-                                  .subtitle2
+                                  .titleSmall
                                   .override(
-                                    fontFamily: FlutterFlowTheme.of(context)
-                                        .subtitle2Family,
+                                    fontFamily: 'Outfit',
                                     color: Color(0xFF397BEF),
                                     useGoogleFonts: GoogleFonts.asMap()
                                         .containsKey(
                                             FlutterFlowTheme.of(context)
-                                                .subtitle2Family),
+                                                .titleSmallFamily),
                                   ),
                               elevation: 0.0,
                               borderSide: BorderSide(

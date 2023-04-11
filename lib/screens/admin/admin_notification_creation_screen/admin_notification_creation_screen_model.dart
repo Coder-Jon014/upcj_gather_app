@@ -13,7 +13,7 @@ class AdminNotificationCreationScreenModel extends FlutterFlowModel {
   TextEditingController? notificationInfoFieldController;
   String? Function(BuildContext, String?)?
       notificationInfoFieldControllerValidator;
-  bool isMediaUploading = false;
+  bool isDataUploading = false;
   FFUploadedFile uploadedLocalFile =
       FFUploadedFile(bytes: Uint8List.fromList([]));
   String uploadedFileUrl = '';

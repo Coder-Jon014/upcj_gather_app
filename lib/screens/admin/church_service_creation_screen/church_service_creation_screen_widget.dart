@@ -44,47 +44,47 @@ class _ChurchServiceCreationScreenWidgetState
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      key: scaffoldKey,
-      backgroundColor: Colors.white,
-      appBar: AppBar(
+    return GestureDetector(
+      onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
+      child: Scaffold(
+        key: scaffoldKey,
         backgroundColor: Colors.white,
-        automaticallyImplyLeading: false,
-        title: Text(
-          'Create Service',
-          style: FlutterFlowTheme.of(context).title2.override(
-                fontFamily: 'Outfit',
-                color: Color(0xFF14181B),
-                fontSize: 28.0,
-                fontWeight: FontWeight.normal,
-                useGoogleFonts: GoogleFonts.asMap()
-                    .containsKey(FlutterFlowTheme.of(context).title2Family),
-              ),
-        ),
-        actions: [
-          Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 12.0, 0.0),
-            child: FlutterFlowIconButton(
-              borderColor: Colors.transparent,
-              borderRadius: 30.0,
-              buttonSize: 48.0,
-              icon: Icon(
-                Icons.close_rounded,
-                color: Color(0xFF57636C),
-                size: 30.0,
-              ),
-              onPressed: () async {
-                context.pop();
-              },
-            ),
+        appBar: AppBar(
+          backgroundColor: Colors.white,
+          automaticallyImplyLeading: false,
+          title: Text(
+            'Create Service',
+            style: FlutterFlowTheme.of(context).headlineMedium.override(
+                  fontFamily: 'Outfit',
+                  color: Color(0xFF14181B),
+                  fontSize: 28.0,
+                  fontWeight: FontWeight.normal,
+                  useGoogleFonts: GoogleFonts.asMap().containsKey(
+                      FlutterFlowTheme.of(context).headlineMediumFamily),
+                ),
           ),
-        ],
-        centerTitle: false,
-        elevation: 0.0,
-      ),
-      body: SafeArea(
-        child: GestureDetector(
-          onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
+          actions: [
+            Padding(
+              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 12.0, 0.0),
+              child: FlutterFlowIconButton(
+                borderColor: Colors.transparent,
+                borderRadius: 30.0,
+                buttonSize: 48.0,
+                icon: Icon(
+                  Icons.close_rounded,
+                  color: Color(0xFF57636C),
+                  size: 30.0,
+                ),
+                onPressed: () async {
+                  context.pop();
+                },
+              ),
+            ),
+          ],
+          centerTitle: false,
+          elevation: 0.0,
+        ),
+        body: SafeArea(
           child: Form(
             key: _model.formKey,
             autovalidateMode: AutovalidateMode.disabled,
@@ -106,7 +106,7 @@ class _ChurchServiceCreationScreenWidgetState
                           decoration: InputDecoration(
                             labelText: 'Service Title',
                             labelStyle: FlutterFlowTheme.of(context)
-                                .title3
+                                .headlineSmall
                                 .override(
                                   fontFamily: 'Outfit',
                                   color: Color(0xFF57636C),
@@ -114,7 +114,7 @@ class _ChurchServiceCreationScreenWidgetState
                                   fontWeight: FontWeight.normal,
                                   useGoogleFonts: GoogleFonts.asMap()
                                       .containsKey(FlutterFlowTheme.of(context)
-                                          .title3Family),
+                                          .headlineSmallFamily),
                                 ),
                             enabledBorder: OutlineInputBorder(
                               borderSide: BorderSide(
@@ -147,13 +147,16 @@ class _ChurchServiceCreationScreenWidgetState
                             contentPadding: EdgeInsetsDirectional.fromSTEB(
                                 20.0, 32.0, 20.0, 12.0),
                           ),
-                          style: FlutterFlowTheme.of(context).title3.override(
+                          style: FlutterFlowTheme.of(context)
+                              .headlineSmall
+                              .override(
                                 fontFamily: 'Outfit',
                                 color: Color(0xFF14181B),
                                 fontSize: 20.0,
                                 fontWeight: FontWeight.w500,
                                 useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                    FlutterFlowTheme.of(context).title3Family),
+                                    FlutterFlowTheme.of(context)
+                                        .headlineSmallFamily),
                               ),
                           textAlign: TextAlign.start,
                           validator: _model
@@ -194,7 +197,7 @@ class _ChurchServiceCreationScreenWidgetState
                                         dateTimeFormat(
                                             'yMMMd', _model.datePicked),
                                         style: FlutterFlowTheme.of(context)
-                                            .bodyText2
+                                            .bodySmall
                                             .override(
                                               fontFamily: 'Outfit',
                                               color: Color(0xFF57636C),
@@ -205,7 +208,7 @@ class _ChurchServiceCreationScreenWidgetState
                                                       .containsKey(
                                                           FlutterFlowTheme.of(
                                                                   context)
-                                                              .bodyText2Family),
+                                                              .bodySmallFamily),
                                             ),
                                       ),
                                       InkWell(
@@ -261,7 +264,7 @@ class _ChurchServiceCreationScreenWidgetState
                                 decoration: InputDecoration(
                                   hintText: 'Service Capacity',
                                   hintStyle:
-                                      FlutterFlowTheme.of(context).bodyText2,
+                                      FlutterFlowTheme.of(context).bodySmall,
                                   enabledBorder: OutlineInputBorder(
                                     borderSide: BorderSide(
                                       color: Color(0xFFF1F4F8),
@@ -291,7 +294,7 @@ class _ChurchServiceCreationScreenWidgetState
                                     borderRadius: BorderRadius.circular(8.0),
                                   ),
                                 ),
-                                style: FlutterFlowTheme.of(context).bodyText2,
+                                style: FlutterFlowTheme.of(context).bodySmall,
                                 keyboardType: TextInputType.number,
                                 validator: _model
                                     .serviceCapacityControllerValidator
@@ -320,6 +323,22 @@ class _ChurchServiceCreationScreenWidgetState
                         await ChurchServiceRecord.collection
                             .doc()
                             .set(churchServiceCreateData);
+                        await showDialog(
+                          context: context,
+                          builder: (alertDialogContext) {
+                            return AlertDialog(
+                              content:
+                                  Text('Church Service Created Successfully'),
+                              actions: [
+                                TextButton(
+                                  onPressed: () =>
+                                      Navigator.pop(alertDialogContext),
+                                  child: Text('Great'),
+                                ),
+                              ],
+                            );
+                          },
+                        );
                         context.pop();
                       },
                       text: 'Create Service',
@@ -331,16 +350,16 @@ class _ChurchServiceCreationScreenWidgetState
                         iconPadding:
                             EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                         color: Color(0xFF4B39EF),
-                        textStyle: FlutterFlowTheme.of(context)
-                            .subtitle1
-                            .override(
-                              fontFamily: 'Outfit',
-                              color: Colors.white,
-                              fontSize: 18.0,
-                              fontWeight: FontWeight.normal,
-                              useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                  FlutterFlowTheme.of(context).subtitle1Family),
-                            ),
+                        textStyle:
+                            FlutterFlowTheme.of(context).titleMedium.override(
+                                  fontFamily: 'Outfit',
+                                  color: Colors.white,
+                                  fontSize: 18.0,
+                                  fontWeight: FontWeight.normal,
+                                  useGoogleFonts: GoogleFonts.asMap()
+                                      .containsKey(FlutterFlowTheme.of(context)
+                                          .titleMediumFamily),
+                                ),
                         elevation: 3.0,
                         borderSide: BorderSide(
                           color: Colors.transparent,

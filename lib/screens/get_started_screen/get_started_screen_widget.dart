@@ -78,13 +78,14 @@ class _GetStartedScreenWidgetState extends State<GetStartedScreenWidget>
                   iconPadding:
                       EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                   color: Colors.white,
-                  textStyle: FlutterFlowTheme.of(context).subtitle2.override(
+                  textStyle: FlutterFlowTheme.of(context).titleSmall.override(
                         fontFamily:
-                            FlutterFlowTheme.of(context).subtitle2Family,
+                            FlutterFlowTheme.of(context).titleSmallFamily,
                         color: Colors.black,
                         useGoogleFonts: GoogleFonts.asMap().containsKey(
-                            FlutterFlowTheme.of(context).subtitle2Family),
+                            FlutterFlowTheme.of(context).titleSmallFamily),
                       ),
+                  elevation: 2.0,
                   borderSide: BorderSide(
                     color: Colors.transparent,
                     width: 1.0,

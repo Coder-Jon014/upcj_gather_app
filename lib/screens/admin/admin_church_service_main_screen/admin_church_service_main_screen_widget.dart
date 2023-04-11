@@ -54,7 +54,7 @@ class _AdminChurchServiceMainScreenWidgetState
               width: 50.0,
               height: 50.0,
               child: CircularProgressIndicator(
-                color: FlutterFlowTheme.of(context).primaryColor,
+                color: FlutterFlowTheme.of(context).primary,
               ),
             ),
           );
@@ -69,12 +69,12 @@ class _AdminChurchServiceMainScreenWidgetState
             adminChurchServiceMainScreenUsersRecordList.isNotEmpty
                 ? adminChurchServiceMainScreenUsersRecordList.first
                 : null;
-        return Scaffold(
-          key: scaffoldKey,
-          backgroundColor: Colors.white,
-          body: GestureDetector(
-            onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
-            child: Column(
+        return GestureDetector(
+          onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
+          child: Scaffold(
+            key: scaffoldKey,
+            backgroundColor: Colors.white,
+            body: Column(
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -146,7 +146,7 @@ class _AdminChurchServiceMainScreenWidgetState
                                                       style:
                                                           FlutterFlowTheme.of(
                                                                   context)
-                                                              .bodyText1
+                                                              .bodyMedium
                                                               .override(
                                                                 fontFamily:
                                                                     'Outfit',
@@ -160,7 +160,7 @@ class _AdminChurchServiceMainScreenWidgetState
                                                                         .asMap()
                                                                     .containsKey(
                                                                         FlutterFlowTheme.of(context)
-                                                                            .bodyText1Family),
+                                                                            .bodyMediumFamily),
                                                               ),
                                                     ),
                                                   ),
@@ -175,7 +175,7 @@ class _AdminChurchServiceMainScreenWidgetState
                                                 'Church Services',
                                                 style:
                                                     FlutterFlowTheme.of(context)
-                                                        .title1
+                                                        .displaySmall
                                                         .override(
                                                           fontFamily: 'Outfit',
                                                           color: Colors.white,
@@ -187,7 +187,7 @@ class _AdminChurchServiceMainScreenWidgetState
                                                               .containsKey(
                                                                   FlutterFlowTheme.of(
                                                                           context)
-                                                                      .title1Family),
+                                                                      .displaySmallFamily),
                                                         ),
                                               ),
                                             ),
@@ -205,9 +205,9 @@ class _AdminChurchServiceMainScreenWidgetState
                           padding: EdgeInsetsDirectional.fromSTEB(
                               16.0, 12.0, 0.0, 0.0),
                           child: Text(
-                            'Upcoming Lessons',
+                            'Upcoming Services',
                             style: FlutterFlowTheme.of(context)
-                                .bodyText2
+                                .bodySmall
                                 .override(
                                   fontFamily: 'Outfit',
                                   color: Color(0xFF57636C),
@@ -215,7 +215,7 @@ class _AdminChurchServiceMainScreenWidgetState
                                   fontWeight: FontWeight.normal,
                                   useGoogleFonts: GoogleFonts.asMap()
                                       .containsKey(FlutterFlowTheme.of(context)
-                                          .bodyText2Family),
+                                          .bodySmallFamily),
                                 ),
                           ),
                         ),
@@ -236,8 +236,8 @@ class _AdminChurchServiceMainScreenWidgetState
                                     width: 50.0,
                                     height: 50.0,
                                     child: CircularProgressIndicator(
-                                      color: FlutterFlowTheme.of(context)
-                                          .primaryColor,
+                                      color:
+                                          FlutterFlowTheme.of(context).primary,
                                     ),
                                   ),
                                 );
@@ -311,7 +311,7 @@ class _AdminChurchServiceMainScreenWidgetState
                                                         style:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .subtitle1
+                                                                .titleMedium
                                                                 .override(
                                                                   fontFamily:
                                                                       'Outfit',
@@ -326,7 +326,7 @@ class _AdminChurchServiceMainScreenWidgetState
                                                                           .asMap()
                                                                       .containsKey(
                                                                           FlutterFlowTheme.of(context)
-                                                                              .subtitle1Family),
+                                                                              .titleMediumFamily),
                                                                 ),
                                                       ),
                                                       Row(
@@ -343,7 +343,7 @@ class _AdminChurchServiceMainScreenWidgetState
                                                                     .serviceDate!),
                                                             style: FlutterFlowTheme
                                                                     .of(context)
-                                                                .bodyText2,
+                                                                .bodySmall,
                                                           ),
                                                           Padding(
                                                             padding:
@@ -359,14 +359,14 @@ class _AdminChurchServiceMainScreenWidgetState
                                                                   .toString(),
                                                               style: FlutterFlowTheme
                                                                       .of(context)
-                                                                  .bodyText2,
+                                                                  .bodySmall,
                                                             ),
                                                           ),
                                                           Text(
                                                             'spaces left',
                                                             style: FlutterFlowTheme
                                                                     .of(context)
-                                                                .bodyText2,
+                                                                .bodySmall,
                                                           ),
                                                         ],
                                                       ),
@@ -425,7 +425,7 @@ class _AdminChurchServiceMainScreenWidgetState
                           child: Text(
                             'Past Services',
                             style: FlutterFlowTheme.of(context)
-                                .bodyText2
+                                .bodySmall
                                 .override(
                                   fontFamily: 'Outfit',
                                   color: Color(0xFF57636C),
@@ -433,7 +433,7 @@ class _AdminChurchServiceMainScreenWidgetState
                                   fontWeight: FontWeight.normal,
                                   useGoogleFonts: GoogleFonts.asMap()
                                       .containsKey(FlutterFlowTheme.of(context)
-                                          .bodyText2Family),
+                                          .bodySmallFamily),
                                 ),
                           ),
                         ),
@@ -454,8 +454,8 @@ class _AdminChurchServiceMainScreenWidgetState
                                     width: 50.0,
                                     height: 50.0,
                                     child: CircularProgressIndicator(
-                                      color: FlutterFlowTheme.of(context)
-                                          .primaryColor,
+                                      color:
+                                          FlutterFlowTheme.of(context).primary,
                                     ),
                                   ),
                                 );
@@ -513,7 +513,7 @@ class _AdminChurchServiceMainScreenWidgetState
                                                       style:
                                                           FlutterFlowTheme.of(
                                                                   context)
-                                                              .subtitle1
+                                                              .titleMedium
                                                               .override(
                                                                 fontFamily:
                                                                     'Outfit',
@@ -527,7 +527,7 @@ class _AdminChurchServiceMainScreenWidgetState
                                                                         .asMap()
                                                                     .containsKey(
                                                                         FlutterFlowTheme.of(context)
-                                                                            .subtitle1Family),
+                                                                            .titleMediumFamily),
                                                               ),
                                                     ),
                                                     Row(
@@ -544,7 +544,7 @@ class _AdminChurchServiceMainScreenWidgetState
                                                                   .serviceDate!),
                                                           style: FlutterFlowTheme
                                                                   .of(context)
-                                                              .bodyText2,
+                                                              .bodySmall,
                                                         ),
                                                       ],
                                                     ),
@@ -556,7 +556,7 @@ class _AdminChurchServiceMainScreenWidgetState
                                                           'Covid exposure status: ',
                                                           style: FlutterFlowTheme
                                                                   .of(context)
-                                                              .bodyText2,
+                                                              .bodySmall,
                                                         ),
                                                         Text(
                                                           () {
@@ -572,11 +572,44 @@ class _AdminChurchServiceMainScreenWidgetState
                                                           }(),
                                                           style: FlutterFlowTheme
                                                                   .of(context)
-                                                              .bodyText2,
+                                                              .bodySmall,
                                                         ),
                                                       ],
                                                     ),
                                                   ],
+                                                ),
+                                              ),
+                                            ),
+                                            InkWell(
+                                              onTap: () async {
+                                                context.pushNamed(
+                                                  'AdminChurchServiceDetailsScreen',
+                                                  queryParams: {
+                                                    'churchServiceInfo':
+                                                        serializeParam(
+                                                      listViewChurchServiceRecord
+                                                          .reference,
+                                                      ParamType
+                                                          .DocumentReference,
+                                                    ),
+                                                  }.withoutNulls,
+                                                );
+                                              },
+                                              child: Container(
+                                                width: 50.0,
+                                                height: 50.0,
+                                                decoration: BoxDecoration(
+                                                  color: Color(0xFFF1F4F8),
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          10.0),
+                                                ),
+                                                alignment: AlignmentDirectional(
+                                                    0.0, 0.0),
+                                                child: Icon(
+                                                  Icons.play_arrow_rounded,
+                                                  color: Colors.black,
+                                                  size: 24.0,
                                                 ),
                                               ),
                                             ),
@@ -622,13 +655,16 @@ class _AdminChurchServiceMainScreenWidgetState
                       child: Text(
                         'Create Service',
                         textAlign: TextAlign.center,
-                        style: FlutterFlowTheme.of(context).title2.override(
+                        style: FlutterFlowTheme.of(context)
+                            .headlineMedium
+                            .override(
                               fontFamily: 'Outfit',
                               color: Colors.white,
                               fontSize: 22.0,
                               fontWeight: FontWeight.w500,
                               useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                  FlutterFlowTheme.of(context).title2Family),
+                                  FlutterFlowTheme.of(context)
+                                      .headlineMediumFamily),
                             ),
                       ),
                     ),

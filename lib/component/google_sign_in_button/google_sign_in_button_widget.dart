@@ -68,13 +68,13 @@ class _GoogleSignInButtonWidgetState extends State<GoogleSignInButtonWidget> {
               padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
               iconPadding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
               color: Colors.white,
-              textStyle: FlutterFlowTheme.of(context).subtitle1.override(
+              textStyle: FlutterFlowTheme.of(context).titleMedium.override(
                     fontFamily: 'Outfit',
                     color: FlutterFlowTheme.of(context).primaryText,
                     fontSize: 18.0,
                     fontWeight: FontWeight.w500,
                     useGoogleFonts: GoogleFonts.asMap().containsKey(
-                        FlutterFlowTheme.of(context).subtitle1Family),
+                        FlutterFlowTheme.of(context).titleMediumFamily),
                   ),
               elevation: 0.0,
               borderSide: BorderSide(

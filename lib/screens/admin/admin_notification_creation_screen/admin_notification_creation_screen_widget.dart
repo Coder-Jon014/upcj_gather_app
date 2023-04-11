@@ -10,7 +10,7 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/flutter_flow/upload_media.dart';
+import '/flutter_flow/upload_data.dart';
 import 'admin_notification_creation_screen_model.dart';
 
 export 'admin_notification_creation_screen_model.dart';
@@ -49,47 +49,47 @@ class _AdminNotificationCreationScreenWidgetState
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      key: scaffoldKey,
-      backgroundColor: Colors.white,
-      appBar: AppBar(
+    return GestureDetector(
+      onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
+      child: Scaffold(
+        key: scaffoldKey,
         backgroundColor: Colors.white,
-        automaticallyImplyLeading: false,
-        title: Text(
-          'Create Notification',
-          style: FlutterFlowTheme.of(context).title2.override(
-                fontFamily: 'Outfit',
-                color: Color(0xFF14181B),
-                fontSize: 28.0,
-                fontWeight: FontWeight.normal,
-                useGoogleFonts: GoogleFonts.asMap()
-                    .containsKey(FlutterFlowTheme.of(context).title2Family),
-              ),
-        ),
-        actions: [
-          Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 12.0, 0.0),
-            child: FlutterFlowIconButton(
-              borderColor: Colors.transparent,
-              borderRadius: 30.0,
-              buttonSize: 48.0,
-              icon: Icon(
-                Icons.close_rounded,
-                color: Color(0xFF57636C),
-                size: 30.0,
-              ),
-              onPressed: () async {
-                context.pop();
-              },
-            ),
+        appBar: AppBar(
+          backgroundColor: Colors.white,
+          automaticallyImplyLeading: false,
+          title: Text(
+            'Create Notification',
+            style: FlutterFlowTheme.of(context).headlineMedium.override(
+                  fontFamily: 'Outfit',
+                  color: Color(0xFF14181B),
+                  fontSize: 28.0,
+                  fontWeight: FontWeight.normal,
+                  useGoogleFonts: GoogleFonts.asMap().containsKey(
+                      FlutterFlowTheme.of(context).headlineMediumFamily),
+                ),
           ),
-        ],
-        centerTitle: false,
-        elevation: 0.0,
-      ),
-      body: SafeArea(
-        child: GestureDetector(
-          onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
+          actions: [
+            Padding(
+              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 12.0, 0.0),
+              child: FlutterFlowIconButton(
+                borderColor: Colors.transparent,
+                borderRadius: 30.0,
+                buttonSize: 48.0,
+                icon: Icon(
+                  Icons.close_rounded,
+                  color: Color(0xFF57636C),
+                  size: 30.0,
+                ),
+                onPressed: () async {
+                  context.pop();
+                },
+              ),
+            ),
+          ],
+          centerTitle: false,
+          elevation: 0.0,
+        ),
+        body: SafeArea(
           child: Form(
             key: _model.formKey,
             autovalidateMode: AutovalidateMode.disabled,
@@ -117,7 +117,7 @@ class _AdminNotificationCreationScreenWidgetState
                           decoration: InputDecoration(
                             labelText: 'Notification Title',
                             labelStyle: FlutterFlowTheme.of(context)
-                                .title3
+                                .headlineSmall
                                 .override(
                                   fontFamily: 'Outfit',
                                   color: Color(0xFF57636C),
@@ -125,7 +125,7 @@ class _AdminNotificationCreationScreenWidgetState
                                   fontWeight: FontWeight.normal,
                                   useGoogleFonts: GoogleFonts.asMap()
                                       .containsKey(FlutterFlowTheme.of(context)
-                                          .title3Family),
+                                          .headlineSmallFamily),
                                 ),
                             enabledBorder: OutlineInputBorder(
                               borderSide: BorderSide(
@@ -173,13 +173,16 @@ class _AdminNotificationCreationScreenWidgetState
                                   )
                                 : null,
                           ),
-                          style: FlutterFlowTheme.of(context).title3.override(
+                          style: FlutterFlowTheme.of(context)
+                              .headlineSmall
+                              .override(
                                 fontFamily: 'Outfit',
                                 color: Color(0xFF14181B),
                                 fontSize: 20.0,
                                 fontWeight: FontWeight.w500,
                                 useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                    FlutterFlowTheme.of(context).title3Family),
+                                    FlutterFlowTheme.of(context)
+                                        .headlineSmallFamily),
                               ),
                           textAlign: TextAlign.start,
                           validator: _model.notificationTitleControllerValidator
@@ -201,7 +204,7 @@ class _AdminNotificationCreationScreenWidgetState
                             labelText: 'Notification Info',
                             hintText:
                                 'Enter your notification information here',
-                            hintStyle: FlutterFlowTheme.of(context).bodyText2,
+                            hintStyle: FlutterFlowTheme.of(context).bodySmall,
                             enabledBorder: OutlineInputBorder(
                               borderSide: BorderSide(
                                 color: Color(0xFFC1C1C1),
@@ -248,7 +251,7 @@ class _AdminNotificationCreationScreenWidgetState
                                   )
                                 : null,
                           ),
-                          style: FlutterFlowTheme.of(context).bodyText1,
+                          style: FlutterFlowTheme.of(context).bodyMedium,
                           textAlign: TextAlign.start,
                           maxLines: null,
                           validator: _model
@@ -265,15 +268,15 @@ class _AdminNotificationCreationScreenWidgetState
                             AutoSizeText(
                               'Click Camera Icon to choose an image ',
                               style: FlutterFlowTheme.of(context)
-                                  .bodyText2
+                                  .bodySmall
                                   .override(
                                     fontFamily: FlutterFlowTheme.of(context)
-                                        .bodyText2Family,
+                                        .bodySmallFamily,
                                     color: Color(0xFFC1C1C1),
                                     useGoogleFonts: GoogleFonts.asMap()
                                         .containsKey(
                                             FlutterFlowTheme.of(context)
-                                                .bodyText2Family),
+                                                .bodySmallFamily),
                                   ),
                             ),
                             FlutterFlowIconButton(
@@ -296,8 +299,7 @@ class _AdminNotificationCreationScreenWidgetState
                                     selectedMedia.every((m) =>
                                         validateFileFormat(
                                             m.storagePath, context))) {
-                                  setState(
-                                      () => _model.isMediaUploading = true);
+                                  setState(() => _model.isDataUploading = true);
                                   var selectedUploadedFiles =
                                       <FFUploadedFile>[];
                                   var downloadUrls = <String>[];
@@ -322,7 +324,7 @@ class _AdminNotificationCreationScreenWidgetState
                                         .map((u) => u!)
                                         .toList();
                                   } finally {
-                                    _model.isMediaUploading = false;
+                                    _model.isDataUploading = false;
                                   }
                                   if (selectedUploadedFiles.length ==
                                           selectedMedia.length &&
@@ -391,16 +393,16 @@ class _AdminNotificationCreationScreenWidgetState
                         iconPadding:
                             EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                         color: Color(0xFF4B39EF),
-                        textStyle: FlutterFlowTheme.of(context)
-                            .subtitle1
-                            .override(
-                              fontFamily: 'Outfit',
-                              color: Colors.white,
-                              fontSize: 18.0,
-                              fontWeight: FontWeight.normal,
-                              useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                  FlutterFlowTheme.of(context).subtitle1Family),
-                            ),
+                        textStyle:
+                            FlutterFlowTheme.of(context).titleMedium.override(
+                                  fontFamily: 'Outfit',
+                                  color: Colors.white,
+                                  fontSize: 18.0,
+                                  fontWeight: FontWeight.normal,
+                                  useGoogleFonts: GoogleFonts.asMap()
+                                      .containsKey(FlutterFlowTheme.of(context)
+                                          .titleMediumFamily),
+                                ),
                         elevation: 3.0,
                         borderSide: BorderSide(
                           color: Colors.transparent,

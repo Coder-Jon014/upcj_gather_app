@@ -40,86 +40,87 @@ class _MemberNotificationsScreenWidgetState
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      key: scaffoldKey,
-      backgroundColor: Color(0xFFF1F4F8),
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        automaticallyImplyLeading: false,
-        title: Text(
-          'Notifications',
-          style: FlutterFlowTheme.of(context).title2.override(
-                fontFamily: 'Outfit',
-                color: Color(0xFF101213),
-                fontSize: 24.0,
-                fontWeight: FontWeight.w500,
-                useGoogleFonts: GoogleFonts.asMap()
-                    .containsKey(FlutterFlowTheme.of(context).title2Family),
-              ),
-        ),
-        actions: [
-          Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 24.0, 0.0),
-            child: FutureBuilder<int>(
-              future: queryNotificationsRecordCount(),
-              builder: (context, snapshot) {
-                // Customize what your widget looks like when it's loading.
-                if (!snapshot.hasData) {
-                  return Center(
-                    child: SizedBox(
-                      width: 50.0,
-                      height: 50.0,
-                      child: CircularProgressIndicator(
-                        color: FlutterFlowTheme.of(context).primaryColor,
+    return GestureDetector(
+      onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
+      child: Scaffold(
+        key: scaffoldKey,
+        backgroundColor: Color(0xFFF1F4F8),
+        appBar: AppBar(
+          backgroundColor: Colors.white,
+          automaticallyImplyLeading: false,
+          title: Text(
+            'Notifications',
+            style: FlutterFlowTheme.of(context).headlineMedium.override(
+                  fontFamily: 'Outfit',
+                  color: Color(0xFF101213),
+                  fontSize: 24.0,
+                  fontWeight: FontWeight.w500,
+                  useGoogleFonts: GoogleFonts.asMap().containsKey(
+                      FlutterFlowTheme.of(context).headlineMediumFamily),
+                ),
+          ),
+          actions: [
+            Padding(
+              padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 24.0, 0.0),
+              child: FutureBuilder<int>(
+                future: queryNotificationsRecordCount(),
+                builder: (context, snapshot) {
+                  // Customize what your widget looks like when it's loading.
+                  if (!snapshot.hasData) {
+                    return Center(
+                      child: SizedBox(
+                        width: 50.0,
+                        height: 50.0,
+                        child: CircularProgressIndicator(
+                          color: FlutterFlowTheme.of(context).primary,
+                        ),
+                      ),
+                    );
+                  }
+                  int badgeCount = snapshot.data!;
+                  return badges.Badge(
+                    badgeContent: Text(
+                      badgeCount.toString(),
+                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                            fontFamily: 'Outfit',
+                            color: Colors.white,
+                            fontSize: 14.0,
+                            fontWeight: FontWeight.normal,
+                            useGoogleFonts: GoogleFonts.asMap().containsKey(
+                                FlutterFlowTheme.of(context).bodyMediumFamily),
+                          ),
+                    ),
+                    showBadge: true,
+                    shape: badges.BadgeShape.circle,
+                    badgeColor: Color(0xFF4B39EF),
+                    elevation: 4.0,
+                    padding: EdgeInsetsDirectional.fromSTEB(8.0, 8.0, 8.0, 8.0),
+                    position: badges.BadgePosition.topEnd(),
+                    animationType: badges.BadgeAnimationType.scale,
+                    toAnimate: true,
+                    child: Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 0.0, 0.0),
+                      child: Icon(
+                        Icons.chat_bubble_outline_outlined,
+                        color: Color(0xFF57636C),
+                        size: 24.0,
                       ),
                     ),
                   );
-                }
-                int badgeCount = snapshot.data!;
-                return badges.Badge(
-                  badgeContent: Text(
-                    '1',
-                    style: FlutterFlowTheme.of(context).bodyText1.override(
-                          fontFamily: 'Outfit',
-                          color: Colors.white,
-                          fontSize: 14.0,
-                          fontWeight: FontWeight.normal,
-                          useGoogleFonts: GoogleFonts.asMap().containsKey(
-                              FlutterFlowTheme.of(context).bodyText1Family),
-                        ),
-                  ),
-                  showBadge: true,
-                  shape: badges.BadgeShape.circle,
-                  badgeColor: Color(0xFF4B39EF),
-                  elevation: 4.0,
-                  padding: EdgeInsetsDirectional.fromSTEB(8.0, 8.0, 8.0, 8.0),
-                  position: badges.BadgePosition.topEnd(),
-                  animationType: badges.BadgeAnimationType.scale,
-                  toAnimate: true,
-                  child: Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 0.0, 0.0),
-                    child: Icon(
-                      Icons.chat_bubble_outline_outlined,
-                      color: Color(0xFF57636C),
-                      size: 24.0,
-                    ),
-                  ),
-                );
-              },
+                },
+              ),
             ),
-          ),
-        ],
-        centerTitle: false,
-        elevation: 0.0,
-      ),
-      body: GestureDetector(
-        onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
-        child: Stack(
+          ],
+          centerTitle: false,
+          elevation: 0.0,
+        ),
+        body: Stack(
           children: [
             StreamBuilder<List<NotificationsRecord>>(
               stream: queryNotificationsRecord(
-                queryBuilder: (notificationsRecord) =>
-                    notificationsRecord.orderBy('createdDate'),
+                queryBuilder: (notificationsRecord) => notificationsRecord
+                    .orderBy('createdDate', descending: true),
               ),
               builder: (context, snapshot) {
                 // Customize what your widget looks like when it's loading.
@@ -129,7 +130,7 @@ class _MemberNotificationsScreenWidgetState
                       width: 50.0,
                       height: 50.0,
                       child: CircularProgressIndicator(
-                        color: FlutterFlowTheme.of(context).primaryColor,
+                        color: FlutterFlowTheme.of(context).primary,
                       ),
                     ),
                   );
@@ -206,18 +207,18 @@ class _MemberNotificationsScreenWidgetState
                                         listViewNotificationsRecord
                                             .notificationTitle!,
                                         style: FlutterFlowTheme.of(context)
-                                            .subtitle1
+                                            .titleMedium
                                             .override(
                                               fontFamily: 'Outfit',
                                               color: Color(0xFF101213),
                                               fontSize: 18.0,
                                               fontWeight: FontWeight.normal,
-                                              useGoogleFonts:
-                                                  GoogleFonts.asMap()
-                                                      .containsKey(
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .subtitle1Family),
+                                              useGoogleFonts: GoogleFonts
+                                                      .asMap()
+                                                  .containsKey(
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .titleMediumFamily),
                                             ),
                                       ),
                                     ),
@@ -231,7 +232,7 @@ class _MemberNotificationsScreenWidgetState
                                           listViewNotificationsRecord
                                               .createdDate!),
                                       style: FlutterFlowTheme.of(context)
-                                          .bodyText2
+                                          .bodySmall
                                           .override(
                                             fontFamily: 'Outfit',
                                             color: Color(0xFF57636C),
@@ -240,7 +241,7 @@ class _MemberNotificationsScreenWidgetState
                                             useGoogleFonts: GoogleFonts.asMap()
                                                 .containsKey(
                                                     FlutterFlowTheme.of(context)
-                                                        .bodyText2Family),
+                                                        .bodySmallFamily),
                                           ),
                                     ),
                                   ),

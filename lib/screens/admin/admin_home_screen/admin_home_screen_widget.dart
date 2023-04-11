@@ -39,12 +39,12 @@ class _AdminHomeScreenWidgetState extends State<AdminHomeScreenWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      key: scaffoldKey,
-      backgroundColor: Color(0xFFF1F4F8),
-      body: GestureDetector(
-        onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
-        child: Container(
+    return GestureDetector(
+      onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
+      child: Scaffold(
+        key: scaffoldKey,
+        backgroundColor: Color(0xFFF1F4F8),
+        body: Container(
           width: 412.3,
           height: 866.9,
           decoration: BoxDecoration(
@@ -78,17 +78,16 @@ class _AdminHomeScreenWidgetState extends State<AdminHomeScreenWidget> {
                               child: Text(
                                 'Welcome',
                                 style: FlutterFlowTheme.of(context)
-                                    .title1
+                                    .displaySmall
                                     .override(
-                                      fontFamily: FlutterFlowTheme.of(context)
-                                          .title1Family,
+                                      fontFamily: 'Outfit',
                                       color: FlutterFlowTheme.of(context)
                                           .primaryBtnText,
                                       fontWeight: FontWeight.bold,
                                       useGoogleFonts: GoogleFonts.asMap()
                                           .containsKey(
                                               FlutterFlowTheme.of(context)
-                                                  .title1Family),
+                                                  .displaySmallFamily),
                                     ),
                               ),
                             ),
@@ -100,18 +99,16 @@ class _AdminHomeScreenWidgetState extends State<AdminHomeScreenWidget> {
                                   builder: (context) => Text(
                                     '${valueOrDefault(currentUserDocument?.firstName, '')} ${valueOrDefault(currentUserDocument?.lastName, '')}',
                                     style: FlutterFlowTheme.of(context)
-                                        .subtitle1
+                                        .titleMedium
                                         .override(
-                                          fontFamily:
-                                              FlutterFlowTheme.of(context)
-                                                  .subtitle1Family,
+                                          fontFamily: 'Outfit',
                                           color: FlutterFlowTheme.of(context)
                                               .primaryBtnText,
-                                          fontSize: 20.0,
+                                          fontSize: 18.0,
                                           useGoogleFonts: GoogleFonts.asMap()
                                               .containsKey(
                                                   FlutterFlowTheme.of(context)
-                                                      .subtitle1Family),
+                                                      .titleMediumFamily),
                                         ),
                                   ),
                                 ),
@@ -176,7 +173,7 @@ class _AdminHomeScreenWidgetState extends State<AdminHomeScreenWidget> {
                                                     'Members',
                                                     style: FlutterFlowTheme.of(
                                                             context)
-                                                        .title3
+                                                        .headlineSmall
                                                         .override(
                                                           fontFamily: 'Outfit',
                                                           color:
@@ -189,7 +186,7 @@ class _AdminHomeScreenWidgetState extends State<AdminHomeScreenWidget> {
                                                               .containsKey(
                                                                   FlutterFlowTheme.of(
                                                                           context)
-                                                                      .title3Family),
+                                                                      .headlineSmallFamily),
                                                         ),
                                                   ),
                                                   Padding(
@@ -204,7 +201,7 @@ class _AdminHomeScreenWidgetState extends State<AdminHomeScreenWidget> {
                                                       style:
                                                           FlutterFlowTheme.of(
                                                                   context)
-                                                              .bodyText2
+                                                              .bodySmall
                                                               .override(
                                                                 fontFamily:
                                                                     'Outfit',
@@ -218,7 +215,7 @@ class _AdminHomeScreenWidgetState extends State<AdminHomeScreenWidget> {
                                                                         .asMap()
                                                                     .containsKey(
                                                                         FlutterFlowTheme.of(context)
-                                                                            .bodyText2Family),
+                                                                            .bodySmallFamily),
                                                               ),
                                                     ),
                                                   ),
@@ -293,7 +290,7 @@ class _AdminHomeScreenWidgetState extends State<AdminHomeScreenWidget> {
                                                     'Church Service',
                                                     style: FlutterFlowTheme.of(
                                                             context)
-                                                        .title3
+                                                        .headlineSmall
                                                         .override(
                                                           fontFamily: 'Outfit',
                                                           color:
@@ -306,7 +303,7 @@ class _AdminHomeScreenWidgetState extends State<AdminHomeScreenWidget> {
                                                               .containsKey(
                                                                   FlutterFlowTheme.of(
                                                                           context)
-                                                                      .title3Family),
+                                                                      .headlineSmallFamily),
                                                         ),
                                                   ),
                                                   Padding(
@@ -321,7 +318,7 @@ class _AdminHomeScreenWidgetState extends State<AdminHomeScreenWidget> {
                                                       style:
                                                           FlutterFlowTheme.of(
                                                                   context)
-                                                              .bodyText2
+                                                              .bodySmall
                                                               .override(
                                                                 fontFamily:
                                                                     'Outfit',
@@ -335,7 +332,7 @@ class _AdminHomeScreenWidgetState extends State<AdminHomeScreenWidget> {
                                                                         .asMap()
                                                                     .containsKey(
                                                                         FlutterFlowTheme.of(context)
-                                                                            .bodyText2Family),
+                                                                            .bodySmallFamily),
                                                               ),
                                                     ),
                                                   ),
@@ -410,7 +407,7 @@ class _AdminHomeScreenWidgetState extends State<AdminHomeScreenWidget> {
                                                     'Notifications',
                                                     style: FlutterFlowTheme.of(
                                                             context)
-                                                        .title3
+                                                        .headlineSmall
                                                         .override(
                                                           fontFamily: 'Outfit',
                                                           color:
@@ -423,7 +420,7 @@ class _AdminHomeScreenWidgetState extends State<AdminHomeScreenWidget> {
                                                               .containsKey(
                                                                   FlutterFlowTheme.of(
                                                                           context)
-                                                                      .title3Family),
+                                                                      .headlineSmallFamily),
                                                         ),
                                                   ),
                                                   Padding(
@@ -438,7 +435,7 @@ class _AdminHomeScreenWidgetState extends State<AdminHomeScreenWidget> {
                                                       style:
                                                           FlutterFlowTheme.of(
                                                                   context)
-                                                              .bodyText2
+                                                              .bodySmall
                                                               .override(
                                                                 fontFamily:
                                                                     'Outfit',
@@ -452,7 +449,7 @@ class _AdminHomeScreenWidgetState extends State<AdminHomeScreenWidget> {
                                                                         .asMap()
                                                                     .containsKey(
                                                                         FlutterFlowTheme.of(context)
-                                                                            .bodyText2Family),
+                                                                            .bodySmallFamily),
                                                               ),
                                                     ),
                                                   ),
@@ -534,7 +531,7 @@ class _AdminHomeScreenWidgetState extends State<AdminHomeScreenWidget> {
                                                     'My Profile',
                                                     style: FlutterFlowTheme.of(
                                                             context)
-                                                        .title3
+                                                        .headlineSmall
                                                         .override(
                                                           fontFamily: 'Outfit',
                                                           color:
@@ -547,7 +544,7 @@ class _AdminHomeScreenWidgetState extends State<AdminHomeScreenWidget> {
                                                               .containsKey(
                                                                   FlutterFlowTheme.of(
                                                                           context)
-                                                                      .title3Family),
+                                                                      .headlineSmallFamily),
                                                         ),
                                                   ),
                                                   Padding(
@@ -562,7 +559,7 @@ class _AdminHomeScreenWidgetState extends State<AdminHomeScreenWidget> {
                                                       style:
                                                           FlutterFlowTheme.of(
                                                                   context)
-                                                              .bodyText2
+                                                              .bodySmall
                                                               .override(
                                                                 fontFamily:
                                                                     'Outfit',
@@ -576,7 +573,7 @@ class _AdminHomeScreenWidgetState extends State<AdminHomeScreenWidget> {
                                                                         .asMap()
                                                                     .containsKey(
                                                                         FlutterFlowTheme.of(context)
-                                                                            .bodyText2Family),
+                                                                            .bodySmallFamily),
                                                               ),
                                                     ),
                                                   ),
@@ -617,6 +614,7 @@ class _AdminHomeScreenWidgetState extends State<AdminHomeScreenWidget> {
                             // Logout
                             GoRouter.of(context).prepareAuthEvent();
                             await signOut();
+                            GoRouter.of(context).clearRedirectLocation();
 
                             context.goNamedAuth('Splashscreen', mounted);
                           },
@@ -630,15 +628,16 @@ class _AdminHomeScreenWidgetState extends State<AdminHomeScreenWidget> {
                                 0.0, 0.0, 0.0, 0.0),
                             color: FlutterFlowTheme.of(context).primaryBtnText,
                             textStyle: FlutterFlowTheme.of(context)
-                                .subtitle2
+                                .titleSmall
                                 .override(
                                   fontFamily: FlutterFlowTheme.of(context)
-                                      .subtitle2Family,
+                                      .titleSmallFamily,
                                   color: Colors.black,
                                   useGoogleFonts: GoogleFonts.asMap()
                                       .containsKey(FlutterFlowTheme.of(context)
-                                          .subtitle2Family),
+                                          .titleSmallFamily),
                                 ),
+                            elevation: 2.0,
                             borderSide: BorderSide(
                               color: Colors.transparent,
                               width: 1.0,

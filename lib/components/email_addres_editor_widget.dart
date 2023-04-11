@@ -45,21 +45,21 @@ class _EmailAddresEditorWidgetState extends State<EmailAddresEditorWidget> {
       controller: _model.emailAddressController,
       obscureText: false,
       decoration: InputDecoration(
-        labelStyle: FlutterFlowTheme.of(context).bodyText1.override(
+        labelStyle: FlutterFlowTheme.of(context).bodyMedium.override(
               fontFamily: 'Lexend Deca',
               color: Color(0xFF57636C),
               fontSize: 14.0,
               fontWeight: FontWeight.normal,
               useGoogleFonts: GoogleFonts.asMap()
-                  .containsKey(FlutterFlowTheme.of(context).bodyText1Family),
+                  .containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
             ),
-        hintStyle: FlutterFlowTheme.of(context).bodyText1.override(
+        hintStyle: FlutterFlowTheme.of(context).bodyMedium.override(
               fontFamily: 'Lexend Deca',
               color: Color(0xFF57636C),
               fontSize: 14.0,
               fontWeight: FontWeight.normal,
               useGoogleFonts: GoogleFonts.asMap()
-                  .containsKey(FlutterFlowTheme.of(context).bodyText1Family),
+                  .containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
             ),
         enabledBorder: OutlineInputBorder(
           borderSide: BorderSide(
@@ -93,13 +93,13 @@ class _EmailAddresEditorWidgetState extends State<EmailAddresEditorWidget> {
         fillColor: Colors.white,
         contentPadding: EdgeInsetsDirectional.fromSTEB(24.0, 24.0, 20.0, 24.0),
       ),
-      style: FlutterFlowTheme.of(context).bodyText1.override(
+      style: FlutterFlowTheme.of(context).bodyMedium.override(
             fontFamily: 'Lexend Deca',
             color: Color(0xFF1D2429),
             fontSize: 14.0,
             fontWeight: FontWeight.normal,
             useGoogleFonts: GoogleFonts.asMap()
-                .containsKey(FlutterFlowTheme.of(context).bodyText1Family),
+                .containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
           ),
       maxLines: null,
       validator: _model.emailAddressControllerValidator.asValidator(context),

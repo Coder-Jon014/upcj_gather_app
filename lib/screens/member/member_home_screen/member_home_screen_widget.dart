@@ -39,12 +39,12 @@ class _MemberHomeScreenWidgetState extends State<MemberHomeScreenWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      key: scaffoldKey,
-      backgroundColor: Color(0xFFF1F4F8),
-      body: GestureDetector(
-        onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
-        child: Container(
+    return GestureDetector(
+      onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
+      child: Scaffold(
+        key: scaffoldKey,
+        backgroundColor: Color(0xFFF1F4F8),
+        body: Container(
           width: 398.9,
           height: 857.0,
           decoration: BoxDecoration(
@@ -82,18 +82,16 @@ class _MemberHomeScreenWidgetState extends State<MemberHomeScreenWidget> {
                                     child: Text(
                                       'Welcome',
                                       style: FlutterFlowTheme.of(context)
-                                          .subtitle1
+                                          .titleMedium
                                           .override(
-                                            fontFamily:
-                                                FlutterFlowTheme.of(context)
-                                                    .subtitle1Family,
+                                            fontFamily: 'Outfit',
                                             color: FlutterFlowTheme.of(context)
                                                 .primaryBtnText,
                                             fontSize: 26.0,
                                             useGoogleFonts: GoogleFonts.asMap()
                                                 .containsKey(
                                                     FlutterFlowTheme.of(context)
-                                                        .subtitle1Family),
+                                                        .titleMediumFamily),
                                           ),
                                     ),
                                   ),
@@ -106,21 +104,19 @@ class _MemberHomeScreenWidgetState extends State<MemberHomeScreenWidget> {
                                         builder: (context) => Text(
                                           '${valueOrDefault(currentUserDocument?.firstName, '')} ${valueOrDefault(currentUserDocument?.lastName, '')}',
                                           style: FlutterFlowTheme.of(context)
-                                              .subtitle1
+                                              .titleMedium
                                               .override(
-                                                fontFamily:
-                                                    FlutterFlowTheme.of(context)
-                                                        .subtitle1Family,
+                                                fontFamily: 'Outfit',
                                                 color:
                                                     FlutterFlowTheme.of(context)
                                                         .primaryBtnText,
-                                                fontSize: 20.0,
+                                                fontSize: 18.0,
                                                 useGoogleFonts: GoogleFonts
                                                         .asMap()
                                                     .containsKey(
                                                         FlutterFlowTheme.of(
                                                                 context)
-                                                            .subtitle1Family),
+                                                            .titleMediumFamily),
                                               ),
                                         ),
                                       ),
@@ -188,7 +184,7 @@ class _MemberHomeScreenWidgetState extends State<MemberHomeScreenWidget> {
                                                 'My Profile',
                                                 style:
                                                     FlutterFlowTheme.of(context)
-                                                        .title3
+                                                        .headlineSmall
                                                         .override(
                                                           fontFamily: 'Outfit',
                                                           color:
@@ -201,7 +197,7 @@ class _MemberHomeScreenWidgetState extends State<MemberHomeScreenWidget> {
                                                               .containsKey(
                                                                   FlutterFlowTheme.of(
                                                                           context)
-                                                                      .title3Family),
+                                                                      .headlineSmallFamily),
                                                         ),
                                               ),
                                               Padding(
@@ -213,7 +209,7 @@ class _MemberHomeScreenWidgetState extends State<MemberHomeScreenWidget> {
                                                   textAlign: TextAlign.start,
                                                   style: FlutterFlowTheme.of(
                                                           context)
-                                                      .bodyText2
+                                                      .bodySmall
                                                       .override(
                                                         fontFamily: 'Outfit',
                                                         color:
@@ -226,7 +222,7 @@ class _MemberHomeScreenWidgetState extends State<MemberHomeScreenWidget> {
                                                             .containsKey(
                                                                 FlutterFlowTheme.of(
                                                                         context)
-                                                                    .bodyText2Family),
+                                                                    .bodySmallFamily),
                                                       ),
                                                 ),
                                               ),
@@ -301,7 +297,7 @@ class _MemberHomeScreenWidgetState extends State<MemberHomeScreenWidget> {
                                                 'Notifications',
                                                 style:
                                                     FlutterFlowTheme.of(context)
-                                                        .title3
+                                                        .headlineSmall
                                                         .override(
                                                           fontFamily: 'Outfit',
                                                           color:
@@ -314,7 +310,7 @@ class _MemberHomeScreenWidgetState extends State<MemberHomeScreenWidget> {
                                                               .containsKey(
                                                                   FlutterFlowTheme.of(
                                                                           context)
-                                                                      .title3Family),
+                                                                      .headlineSmallFamily),
                                                         ),
                                               ),
                                               Padding(
@@ -326,7 +322,7 @@ class _MemberHomeScreenWidgetState extends State<MemberHomeScreenWidget> {
                                                   textAlign: TextAlign.start,
                                                   style: FlutterFlowTheme.of(
                                                           context)
-                                                      .bodyText2
+                                                      .bodySmall
                                                       .override(
                                                         fontFamily: 'Outfit',
                                                         color:
@@ -339,7 +335,7 @@ class _MemberHomeScreenWidgetState extends State<MemberHomeScreenWidget> {
                                                             .containsKey(
                                                                 FlutterFlowTheme.of(
                                                                         context)
-                                                                    .bodyText2Family),
+                                                                    .bodySmallFamily),
                                                       ),
                                                 ),
                                               ),
@@ -415,7 +411,7 @@ class _MemberHomeScreenWidgetState extends State<MemberHomeScreenWidget> {
                                                 'Church Service',
                                                 style:
                                                     FlutterFlowTheme.of(context)
-                                                        .title3
+                                                        .headlineSmall
                                                         .override(
                                                           fontFamily: 'Outfit',
                                                           color:
@@ -428,7 +424,7 @@ class _MemberHomeScreenWidgetState extends State<MemberHomeScreenWidget> {
                                                               .containsKey(
                                                                   FlutterFlowTheme.of(
                                                                           context)
-                                                                      .title3Family),
+                                                                      .headlineSmallFamily),
                                                         ),
                                               ),
                                               Padding(
@@ -440,7 +436,7 @@ class _MemberHomeScreenWidgetState extends State<MemberHomeScreenWidget> {
                                                   textAlign: TextAlign.start,
                                                   style: FlutterFlowTheme.of(
                                                           context)
-                                                      .bodyText2
+                                                      .bodySmall
                                                       .override(
                                                         fontFamily: 'Outfit',
                                                         color:
@@ -453,7 +449,7 @@ class _MemberHomeScreenWidgetState extends State<MemberHomeScreenWidget> {
                                                             .containsKey(
                                                                 FlutterFlowTheme.of(
                                                                         context)
-                                                                    .bodyText2Family),
+                                                                    .bodySmallFamily),
                                                       ),
                                                 ),
                                               ),
@@ -528,7 +524,7 @@ class _MemberHomeScreenWidgetState extends State<MemberHomeScreenWidget> {
                                                 'Covid Alert',
                                                 style:
                                                     FlutterFlowTheme.of(context)
-                                                        .title3
+                                                        .headlineSmall
                                                         .override(
                                                           fontFamily: 'Outfit',
                                                           color:
@@ -541,7 +537,7 @@ class _MemberHomeScreenWidgetState extends State<MemberHomeScreenWidget> {
                                                               .containsKey(
                                                                   FlutterFlowTheme.of(
                                                                           context)
-                                                                      .title3Family),
+                                                                      .headlineSmallFamily),
                                                         ),
                                               ),
                                               Padding(
@@ -553,7 +549,7 @@ class _MemberHomeScreenWidgetState extends State<MemberHomeScreenWidget> {
                                                   textAlign: TextAlign.start,
                                                   style: FlutterFlowTheme.of(
                                                           context)
-                                                      .bodyText2
+                                                      .bodySmall
                                                       .override(
                                                         fontFamily: 'Outfit',
                                                         color:
@@ -566,7 +562,7 @@ class _MemberHomeScreenWidgetState extends State<MemberHomeScreenWidget> {
                                                             .containsKey(
                                                                 FlutterFlowTheme.of(
                                                                         context)
-                                                                    .bodyText2Family),
+                                                                    .bodySmallFamily),
                                                       ),
                                                 ),
                                               ),
@@ -611,6 +607,7 @@ class _MemberHomeScreenWidgetState extends State<MemberHomeScreenWidget> {
                       // Logout
                       GoRouter.of(context).prepareAuthEvent();
                       await signOut();
+                      GoRouter.of(context).clearRedirectLocation();
 
                       context.goNamedAuth('Splashscreen', mounted);
                     },
@@ -624,14 +621,15 @@ class _MemberHomeScreenWidgetState extends State<MemberHomeScreenWidget> {
                           EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                       color: Color(0xFF397BEF),
                       textStyle: FlutterFlowTheme.of(context)
-                          .subtitle2
+                          .titleSmall
                           .override(
                             fontFamily:
-                                FlutterFlowTheme.of(context).subtitle2Family,
+                                FlutterFlowTheme.of(context).titleSmallFamily,
                             color: FlutterFlowTheme.of(context).primaryBtnText,
                             useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                FlutterFlowTheme.of(context).subtitle2Family),
+                                FlutterFlowTheme.of(context).titleSmallFamily),
                           ),
+                      elevation: 2.0,
                       borderSide: BorderSide(
                         color: Colors.transparent,
                         width: 1.0,

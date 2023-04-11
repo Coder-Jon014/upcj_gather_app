@@ -1,11 +1,10 @@
 import 'package:built_value/standard_json_plugin.dart';
 import 'package:from_css_color/from_css_color.dart';
 
-import 'users_record.dart';
 import 'church_service_record.dart';
-import 'notifications_record.dart';
-
 import 'index.dart';
+import 'notifications_record.dart';
+import 'users_record.dart';
 
 export 'index.dart';
 

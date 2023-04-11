@@ -56,53 +56,53 @@ class _AdminChurchServiceEditScreenWidgetState
               width: 50.0,
               height: 50.0,
               child: CircularProgressIndicator(
-                color: FlutterFlowTheme.of(context).primaryColor,
+                color: FlutterFlowTheme.of(context).primary,
               ),
             ),
           );
         }
         final adminChurchServiceEditScreenChurchServiceRecord = snapshot.data!;
-        return Scaffold(
-          key: scaffoldKey,
-          backgroundColor: Colors.white,
-          appBar: AppBar(
+        return GestureDetector(
+          onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
+          child: Scaffold(
+            key: scaffoldKey,
             backgroundColor: Colors.white,
-            automaticallyImplyLeading: false,
-            title: Text(
-              'Edit Service',
-              style: FlutterFlowTheme.of(context).title2.override(
-                    fontFamily: 'Outfit',
-                    color: Color(0xFF14181B),
-                    fontSize: 28.0,
-                    fontWeight: FontWeight.normal,
-                    useGoogleFonts: GoogleFonts.asMap()
-                        .containsKey(FlutterFlowTheme.of(context).title2Family),
-                  ),
-            ),
-            actions: [
-              Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 12.0, 0.0),
-                child: FlutterFlowIconButton(
-                  borderColor: Colors.transparent,
-                  borderRadius: 30.0,
-                  buttonSize: 48.0,
-                  icon: Icon(
-                    Icons.close_rounded,
-                    color: Color(0xFF57636C),
-                    size: 30.0,
-                  ),
-                  onPressed: () async {
-                    context.pop();
-                  },
-                ),
+            appBar: AppBar(
+              backgroundColor: Colors.white,
+              automaticallyImplyLeading: false,
+              title: Text(
+                'Edit Service',
+                style: FlutterFlowTheme.of(context).headlineMedium.override(
+                      fontFamily: 'Outfit',
+                      color: Color(0xFF14181B),
+                      fontSize: 28.0,
+                      fontWeight: FontWeight.normal,
+                      useGoogleFonts: GoogleFonts.asMap().containsKey(
+                          FlutterFlowTheme.of(context).headlineMediumFamily),
+                    ),
               ),
-            ],
-            centerTitle: false,
-            elevation: 0.0,
-          ),
-          body: SafeArea(
-            child: GestureDetector(
-              onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
+              actions: [
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 12.0, 0.0),
+                  child: FlutterFlowIconButton(
+                    borderColor: Colors.transparent,
+                    borderRadius: 30.0,
+                    buttonSize: 48.0,
+                    icon: Icon(
+                      Icons.close_rounded,
+                      color: Color(0xFF57636C),
+                      size: 30.0,
+                    ),
+                    onPressed: () async {
+                      context.pop();
+                    },
+                  ),
+                ),
+              ],
+              centerTitle: false,
+              elevation: 0.0,
+            ),
+            body: SafeArea(
               child: Form(
                 key: _model.formKey,
                 autovalidateMode: AutovalidateMode.disabled,
@@ -119,16 +119,16 @@ class _AdminChurchServiceEditScreenWidgetState
                           'When editing please re-enter the details along with the updated details',
                           textAlign: TextAlign.center,
                           style: FlutterFlowTheme.of(context)
-                              .bodyText1
+                              .bodyMedium
                               .override(
                                 fontFamily: FlutterFlowTheme.of(context)
-                                    .bodyText1Family,
+                                    .bodyMediumFamily,
                                 color:
                                     FlutterFlowTheme.of(context).secondaryText,
                                 fontWeight: FontWeight.w500,
                                 useGoogleFonts: GoogleFonts.asMap().containsKey(
                                     FlutterFlowTheme.of(context)
-                                        .bodyText1Family),
+                                        .bodyMediumFamily),
                               ),
                         ),
                       ),
@@ -150,7 +150,7 @@ class _AdminChurchServiceEditScreenWidgetState
                               decoration: InputDecoration(
                                 labelText: 'Service Title',
                                 labelStyle: FlutterFlowTheme.of(context)
-                                    .title3
+                                    .headlineSmall
                                     .override(
                                       fontFamily: 'Outfit',
                                       color: Color(0xFF57636C),
@@ -159,7 +159,7 @@ class _AdminChurchServiceEditScreenWidgetState
                                       useGoogleFonts: GoogleFonts.asMap()
                                           .containsKey(
                                               FlutterFlowTheme.of(context)
-                                                  .title3Family),
+                                                  .headlineSmallFamily),
                                     ),
                                 enabledBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
@@ -192,17 +192,18 @@ class _AdminChurchServiceEditScreenWidgetState
                                 contentPadding: EdgeInsetsDirectional.fromSTEB(
                                     20.0, 32.0, 20.0, 12.0),
                               ),
-                              style:
-                                  FlutterFlowTheme.of(context).title3.override(
-                                        fontFamily: 'Outfit',
-                                        color: Color(0xFF14181B),
-                                        fontSize: 20.0,
-                                        fontWeight: FontWeight.w500,
-                                        useGoogleFonts: GoogleFonts.asMap()
-                                            .containsKey(
-                                                FlutterFlowTheme.of(context)
-                                                    .title3Family),
-                                      ),
+                              style: FlutterFlowTheme.of(context)
+                                  .headlineSmall
+                                  .override(
+                                    fontFamily: 'Outfit',
+                                    color: Color(0xFF14181B),
+                                    fontSize: 20.0,
+                                    fontWeight: FontWeight.w500,
+                                    useGoogleFonts: GoogleFonts.asMap()
+                                        .containsKey(
+                                            FlutterFlowTheme.of(context)
+                                                .headlineSmallFamily),
+                                  ),
                               textAlign: TextAlign.start,
                               validator: _model
                                   .churchServiceTitleControllerValidator
@@ -245,7 +246,7 @@ class _AdminChurchServiceEditScreenWidgetState
                                                 adminChurchServiceEditScreenChurchServiceRecord
                                                     .serviceDate!),
                                             style: FlutterFlowTheme.of(context)
-                                                .bodyText2
+                                                .bodySmall
                                                 .override(
                                                   fontFamily: 'Outfit',
                                                   color: Color(0xFF57636C),
@@ -256,7 +257,7 @@ class _AdminChurchServiceEditScreenWidgetState
                                                       .containsKey(
                                                           FlutterFlowTheme.of(
                                                                   context)
-                                                              .bodyText2Family),
+                                                              .bodySmallFamily),
                                                 ),
                                           ),
                                           InkWell(
@@ -320,7 +321,7 @@ class _AdminChurchServiceEditScreenWidgetState
                                     decoration: InputDecoration(
                                       hintText: 'Service Capacity',
                                       hintStyle: FlutterFlowTheme.of(context)
-                                          .bodyText2,
+                                          .bodySmall,
                                       enabledBorder: OutlineInputBorder(
                                         borderSide: BorderSide(
                                           color: Color(0xFFF1F4F8),
@@ -355,7 +356,7 @@ class _AdminChurchServiceEditScreenWidgetState
                                       ),
                                     ),
                                     style:
-                                        FlutterFlowTheme.of(context).bodyText2,
+                                        FlutterFlowTheme.of(context).bodySmall,
                                     keyboardType: TextInputType.number,
                                     validator: _model
                                         .serviceCapacityControllerValidator
@@ -408,7 +409,7 @@ class _AdminChurchServiceEditScreenWidgetState
                                 0.0, 0.0, 0.0, 0.0),
                             color: Color(0xFF4B39EF),
                             textStyle: FlutterFlowTheme.of(context)
-                                .subtitle1
+                                .titleMedium
                                 .override(
                                   fontFamily: 'Outfit',
                                   color: Colors.white,
@@ -416,7 +417,7 @@ class _AdminChurchServiceEditScreenWidgetState
                                   fontWeight: FontWeight.normal,
                                   useGoogleFonts: GoogleFonts.asMap()
                                       .containsKey(FlutterFlowTheme.of(context)
-                                          .subtitle1Family),
+                                          .titleMediumFamily),
                                 ),
                             elevation: 3.0,
                             borderSide: BorderSide(
